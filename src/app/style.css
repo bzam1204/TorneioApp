@@ -1,56 +1,124 @@
 main {
-  display: flex;background-color: rgb(73, 73, 73);
+  align-items: center;
+  background: linear-gradient(117deg, #3f3131 0%, #201a1a 100%);
+  border-radius: 0.34vw;
+  display: flex;
   flex-direction: column;
-  width: 100vw;
-  justify-content: flex-start;
-  align-items: center;
+  gap: 1.11vw;
   height: 100vh;
-  gap: 2vw;
+  justify-content: space-around;
+  padding: 1.11vw 0;
+  width: 100vw;
 }
-
-.btn {
-  width: 100px;
-  background-color: aqua;
-  height: 100px;
+.infoPanel {
   align-items: center;
+  background-color: #121212;
+  border-radius: 0.34vw;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 5px;
+  height: 9.02vw;
+  justify-content: space-between;
+  padding: 0 1.11vw;
+  width: 97.77vw;
 }
 
-.dragging {
-  opacity: 0.5;
-}
-
-.container_badges {
-  width: 49%;
-  gap:1vw;
-  height: 100%;
-  background: grey;
+.teamInfo {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: inherit;
 }
 
-.teams_panel {
-  width: 100%;
-  height: 50%;
+.teamInfo_logo {
+  background-color: rgb(255, 255, 255);
+  border-radius: 500vw;
+  height: 5.55vw;
+  max-height: 80px;
+  max-width: 80px;
+  width: 5.55vw;
+}
+
+.teamInfo_name {
+  color: #fff;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.playersPanel {
+  border-radius: 0.34vw;
+  height: inherit;
+  max-height: calc(100vh - 9.02vw - 7.6vw - 0.37vw * 4);
+  width: 97.77vw;
   display: flex;
   justify-content: space-between;
 }
 
-.badges_panel {
-  width: 90%;
-  height: 30%;
-  gap:1vw;
-  padding: 2vw;
-  background: grey;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+.logPanel {
   align-items: center;
+  background: #121212;
+  border-radius: 0.37vw;
+  display: flex;
+  flex-shrink: 0;
+  height: 7.6vw;
+  justify-content: center;
+  padding: 1.11vw;
+  width: 97.77vw;
+}
+.teamPanel {
+  border-radius: 0.37vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.11vw;
+  height: fit-content;
+  max-height: 100%;
+  overflow-y: auto;
+  width: fit-content;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.teamPanel::-webkit-scrollbar {
+  display: none;
+}
+
+.playerControlPanel {
+  border-radius: 0.37vw;
+  display: flex;
+  height: auto;
+  background: #121212;
+  width: 48.33vw;
+  padding: 0.55vw;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.55vw;
+  max-height: calc(96px + 1.11vw);
+}
+
+.playerControlPanel_statsCard {
+  background: white;
+  border-radius: 0.37vw;
+  width: 4.37vw;
+  height: 6.66vw;
+  max-height: 96px;
+  max-width: 64px;
+}
+.playerControlPanel_playerName {
+  color: #fff;
+  font-family: Poppins;
+  font-size: 1.11vw;
+  font-style: normal;
+  font-weight: 400;
+  height: 6.31vw;
+  line-height: normal;
+  max-height: 91px;
+  max-width: 107px;
+  text-transform: uppercase;
+  width: 7.45vw;
+}
+
+@media screen and (min-width: 1440px) {
+  .playerControlPanel_playerName {
+    font-size: 16px;
+  }
 }

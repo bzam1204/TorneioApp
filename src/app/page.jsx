@@ -5,78 +5,195 @@ import { useEffect, useState } from "react";
 import { Aoboshi_One } from "next/font/google";
 import { env } from "../../next.config";
 import BadgesPanel from "@/components/BadgesPanel";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
 export default function Home() {
-  const [isDroped, setIsDroped] = useState(false);
-
-  useEffect(() => {
-    DragEventListeners();
-  }, []);
-
-  function aoEntrarBadge(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const dragging = document.querySelector(".dragging");
-    const dragging_clone = dragging.cloneNode(true);
-    dragging_clone.classList.remove("dragging");
-    const main = document.querySelector("main");
-    e.target.appendChild(dragging);
-  }
-
-  function aoSairBadge(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const dragging = document.querySelector(".dragging");
-    // dragging.remove();
-  }
-
-  function DragEventListeners() {
-    let badgesPanelTemTudo;
-    let ultimoArrastado;
-    const main = document.querySelector("main");
-
-    document.addEventListener("dragstart", (e) => {
-      e.target.classList.add("dragging");
-      ultimoArrastado = e.target;
-    });
-    document.addEventListener("dragend", (e) => {
-      e.target.classList.remove("dragging");
-      ultimoArrastado = e.target;
-    });
-    document.addEventListener("drop", (e) => {
-      const badgesPanel = document.querySelector(".badges_panel");
-
-      badgesPanelTemTudo = badgesPanel.childElementCount == 2;
-
-      if (!badgesPanelTemTudo) {
-        const cloneUltiArrastado = ultimoArrastado.cloneNode(true);
-        cloneUltiArrastado.classList.remove("dragging");
-        badgesPanel.appendChild(cloneUltiArrastado);
-      }
-    });
-
-    document.querySelectorAll(".container_badges").forEach((item) => {
-      console.log("hello");
-    });
-  }
-
   return (
     <main>
-      <section className="teams_panel">
-        <div
-          onDragLeave={aoSairBadge}
-          onDragOver={aoEntrarBadge}
-          className="container_badges"
-        ></div>
-
-        <div
-          onDragOver={aoEntrarBadge}
-          onDragLeave={aoSairBadge}
-          className="container_badges"
-        ></div>
-      </section>
-
-      <BadgesPanel />
+      <div className="infoPanel">
+        <div className="teamInfo">
+          <div className="teamInfo_logo"></div>
+          <p className={`${poppins.className} teamInfo_name`}>
+            Golden State Warriors
+          </p>
+        </div>
+        <div className="gameInfo">
+          <div className="gameInfo_timer">15:22</div>
+          <div className="gameInfo_points">97</div>
+          <div className="gameInfo_points">102</div>
+        </div>
+        <div className="teamInfo">
+          <p className={`${poppins.className} teamInfo_name`}>
+            Los Angeles Lakers
+          </p>
+          <div className="teamInfo_logo"></div>
+        </div>
+      </div>
+      <div className="playersPanel">
+        <div className="teamPanel">
+          <div className="playerControlPanel">
+            <p className={`${poppins.className} playerControlPanel_playerName`}>
+              Bruno Zamorano
+            </p>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+          </div>
+          <div className="playerControlPanel">
+            <p className={`${poppins.className} playerControlPanel_playerName`}>
+              Bruno Zamorano
+            </p>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+          </div>
+          <div className="playerControlPanel">
+            <p className={`${poppins.className} playerControlPanel_playerName`}>
+              Bruno Zamorano
+            </p>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+          </div>
+          <div className="playerControlPanel">
+            <p className={`${poppins.className} playerControlPanel_playerName`}>
+              Bruno Zamorano
+            </p>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+          </div>
+          <div className="playerControlPanel">
+            <p className={`${poppins.className} playerControlPanel_playerName`}>
+              Bruno Zamorano
+            </p>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+          </div>
+          <div className="playerControlPanel">
+            <p className={`${poppins.className} playerControlPanel_playerName`}>
+              Bruno Zamorano
+            </p>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+          </div>
+        </div>
+        <div className="teamPanel">
+          <div className="playerControlPanel">
+            <p className={`${poppins.className} playerControlPanel_playerName`}>
+              Bruno Zamorano
+            </p>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+          </div>
+          <div className="playerControlPanel">
+            <p className={`${poppins.className} playerControlPanel_playerName`}>
+              Bruno Zamorano
+            </p>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+          </div>
+          <div className="playerControlPanel">
+            <p className={`${poppins.className} playerControlPanel_playerName`}>
+              Bruno Zamorano
+            </p>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+          </div>
+          <div className="playerControlPanel">
+            <p className={`${poppins.className} playerControlPanel_playerName`}>
+              Bruno Zamorano
+            </p>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+          </div>
+          <div className="playerControlPanel">
+            <p className={`${poppins.className} playerControlPanel_playerName`}>
+              Bruno Zamorano
+            </p>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+          </div>
+          <div className="playerControlPanel">
+            <p className={`${poppins.className} playerControlPanel_playerName`}>
+              Bruno Zamorano
+            </p>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+            <article className="playerControlPanel_statsCard"></article>
+          </div>
+        </div>
+      </div>
+      <div className="logPanel"></div>
     </main>
   );
 }
