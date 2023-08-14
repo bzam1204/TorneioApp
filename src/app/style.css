@@ -45,6 +45,43 @@ main {
   line-height: normal;
 }
 
+.gameInfo {
+  width: fit-content;
+  height: fit-content;
+}
+
+.gameInfo_timer {
+  align-items: center;
+  background: linear-gradient(135deg, #121212 0%, #222 100%);
+  color: #fff;
+  display: flex;
+  font-size: 2.5vw;
+  font-style: normal;
+  font-weight: 400;
+  height: 82px;
+  justify-content: center;
+  line-height: normal;
+  width: 166px;
+}
+
+.gameInfo_points_container{
+  display: flex;
+}
+
+.gameInfo_points {
+  align-items: center;
+  background: linear-gradient(135deg, #121212 0%, #222 100%);
+  color: #fff;
+  display: flex;
+  font-size: 1.5vw;
+  font-style: normal;
+  font-weight: 400;
+  height: 47px;
+  justify-content: center;
+  line-height: normal;
+  width: 83px;
+}
+
 .playersPanel {
   border-radius: 0.34vw;
   height: inherit;
