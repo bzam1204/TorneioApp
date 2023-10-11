@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tournaments {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(500)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Games     Games[]
+}
+
+model Players {
+  id            Int             @id @default(autoincrement())
+  name          String          @unique @db.VarChar(100)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  players_teams Players_Teams[]
+  StatsPlayer   Stats[]
+}
+
+model Teams {
+  id           Int             @id @default(autoincrement())
+  name         String          @db.VarChar(100)
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  playersTeams Players_Teams[]
+  teamOne      Games[]         @relation("TeamOne")
+  teamTwo      Games[]         @relation("TeamTwo")
+  teamWinner   Games[]         @relation("TeamWinner")
+}
+
+model Players_Teams {
+  id        Int      @id @default(autoincrement())
+  player    Players  @relation(fields: [player_id], references: [id])
+  team      Teams    @relation(fields: [team_id], references: [id])
+  player_id Int
+  team_id   Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Games {
+  id             Int         @id @default(autoincrement())
+  team_one       Teams       @relation("TeamOne", fields: [team_one_id], references: [id])
+  team_two       Teams       @relation("TeamTwo", fields: [team_two_id], references: [id])
+  team_winner    Teams?      @relation("TeamWinner", fields: [team_winner_id], references: [id])
+  tournament     Tournaments @relation(fields: [tournament_id], references: [id])
+  team_one_id    Int
+  team_two_id    Int
+  team_winner_id Int?
+  tournament_id  Int
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  StatsGame      Stats[]
+}
+
+model Stats {
+  id           Int               @id @default(autoincrement())
+  name         String            @db.VarChar(100)
+  player       Players           @relation(fields: [player_id], references: [id])
+  player_id    Int
+  game         Games             @relation(fields: [game_id], references: [id])
+  game_id      Int
+  categorie    CategoriesOfStats @relation(fields: [categorie_id], references: [id])
+  categorie_id Int
+  type         String            @db.VarChar(50)
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+}
+
+model CategoriesOfStats {
+  id             Int      @id @default(autoincrement())
+  name           String   @db.VarChar(50)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  StatsCategorie Stats[]
+}
+
+model PartidaCansada {
+  id                 Int      @id @default(autoincrement())
+  segundos_restantes Int
+  minutos_restantes  Int
+  tempo24s           Int
+  pontos_time_a      Int
+  pontos_time_b      Int
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
