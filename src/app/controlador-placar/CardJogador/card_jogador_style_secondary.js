@@ -100,6 +100,7 @@ export const IconeBotao = styled.div`width: 16px;
 export const BotaoStats = styled.div`width: 40px;
   height: 40px;
   width: 40px;
+  cursor: pointer;
   background-size: contain; /* Mantém a proporção original da imagem */
   background-position: center center; 
   border-radius: 50px;
