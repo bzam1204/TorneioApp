@@ -31,64 +31,102 @@ const jogadores_state = atom({
     default: {
         timeA: [
             {
-                nome: 'jogador',
-                pontuacao: 0
+                nome: 'ANTONINO PRAXEDES',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/C4E03AQGQDx9rDWPwLg/profile-displayphoto-shrink_200_200/0/1654445932350?e=1703116800&v=beta&t=1g34TPuDuhmRn_Ohxmm9kfmCiV1JXfzQm0Svoz1-Awc'
             }
             , {
-                nome: 'jogador',
-                pontuacao: 0
+                nome: 'BRUNO ZAMORANO',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/C4D03AQE0lReht2ivTQ/profile-displayphoto-shrink_200_200/0/1621264748663?e=1703116800&v=beta&t=S9uWIxojYNToJDpLuIcck99Y8-Y5pJBSc_HEFh6lROI'
+
             }
             , {
-                nome: 'jogador',
-                pontuacao: 0
+                nome: 'MATHEUS DELMONDES',
+                pontuacao: '0',
+                imagem_jogador: 'https://media.licdn.com/dms/image/C4D03AQEpOYtfwpUx8Q/profile-displayphoto-shrink_200_200/0/1651338328741?e=1703116800&v=beta&t=6lbQdLSDx_pIKCaAD-XR7QFfh3Q1fayI4Snf86Ubsk0'
             }
             , {
-                nome: 'jogador',
-                pontuacao: 0
+                nome: 'ALEXANDRE VISINTAINER',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/D4D03AQFq5SJzEXMu8w/profile-displayphoto-shrink_200_200/0/1691332716060?e=1703116800&v=beta&t=0PK5hPG4GBLKhJoQHBR9WWDFRhrJ2mYJgEdbK1fZSkE'
+
             }
             , {
-                nome: 'jogador',
-                pontuacao: 0
+                nome: 'HENRIQUE LINO',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/D4D03AQEwCKHa0WpO_Q/profile-displayphoto-shrink_200_200/0/1684711733991?e=1703116800&v=beta&t=xYiuKI1f1sTx6vTWYLWFlxwwekmxRqZzmT94f366FEg'
             }
             , {
-                nome: 'jogador',
+                nome: 'IAGO KAIQ',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/C4D03AQFnAmj3aWvYgw/profile-displayphoto-shrink_200_200/0/1592333539893?e=1703116800&v=beta&t=Oxoeolg_hz3mOtbD_rc0vSEpEqP4-3dMW9nSSSZ-ON8'
+            }
+            , {
+                nome: 'SAMUEL BEZERRA',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/C5603AQEiucMDq7xhHg/profile-displayphoto-shrink_200_200/0/1517821006470?e=1703116800&v=beta&t=Bp271b84SEbWMW-WxRpf9XBPxlSZFggpJtibAEGP7ec'
+
+            }
+            , {
+                nome: 'GABRIEL MANGABEIRA',
                 pontuacao: 0
             }
             ,
             {
-                nome: 'jogador',
-                pontuacao: 0
+                nome: 'LUCAS BESSA',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/D4D03AQHXf04MlsV1pg/profile-displayphoto-shrink_200_200/0/1676573285717?e=1703116800&v=beta&t=BIM9jnavK0Rtejq1ySU7LAvW8Qey6B-yBAWfBXLOPpU'
             }
         ],
         timeB: [
             {
-                nome: 'jogador',
-                pontuacao: 0
+                nome: 'ANTONINO PRAXEDES',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/C4E03AQGQDx9rDWPwLg/profile-displayphoto-shrink_200_200/0/1654445932350?e=1703116800&v=beta&t=1g34TPuDuhmRn_Ohxmm9kfmCiV1JXfzQm0Svoz1-Awc'
             }
             , {
-                nome: 'jogador',
-                pontuacao: 0
+                nome: 'BRUNO ZAMORANO',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/C4D03AQE0lReht2ivTQ/profile-displayphoto-shrink_200_200/0/1621264748663?e=1703116800&v=beta&t=S9uWIxojYNToJDpLuIcck99Y8-Y5pJBSc_HEFh6lROI'
+
             }
             , {
-                nome: 'jogador',
-                pontuacao: 0
+                nome: 'MATHEUS DELMONDES',
+                pontuacao: '0',
+                imagem_jogador: 'https://media.licdn.com/dms/image/C4D03AQEpOYtfwpUx8Q/profile-displayphoto-shrink_200_200/0/1651338328741?e=1703116800&v=beta&t=6lbQdLSDx_pIKCaAD-XR7QFfh3Q1fayI4Snf86Ubsk0'
             }
             , {
-                nome: 'jogador',
-                pontuacao: 0
+                nome: 'ALEXANDRE VISINTAINER',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/D4D03AQFq5SJzEXMu8w/profile-displayphoto-shrink_200_200/0/1691332716060?e=1703116800&v=beta&t=0PK5hPG4GBLKhJoQHBR9WWDFRhrJ2mYJgEdbK1fZSkE'
+
             }
             , {
-                nome: 'jogador',
-                pontuacao: 0
+                nome: 'HENRIQUE LINO',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/D4D03AQEwCKHa0WpO_Q/profile-displayphoto-shrink_200_200/0/1684711733991?e=1703116800&v=beta&t=xYiuKI1f1sTx6vTWYLWFlxwwekmxRqZzmT94f366FEg'
             }
             , {
-                nome: 'jogador',
+                nome: 'IAGO KAIQ',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/C4D03AQFnAmj3aWvYgw/profile-displayphoto-shrink_200_200/0/1592333539893?e=1703116800&v=beta&t=Oxoeolg_hz3mOtbD_rc0vSEpEqP4-3dMW9nSSSZ-ON8'
+            }
+            , {
+                nome: 'SAMUEL BEZERRA',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/C5603AQEiucMDq7xhHg/profile-displayphoto-shrink_200_200/0/1517821006470?e=1703116800&v=beta&t=Bp271b84SEbWMW-WxRpf9XBPxlSZFggpJtibAEGP7ec'
+
+            }
+            , {
+                nome: 'GABRIEL MANGABEIRA',
                 pontuacao: 0
             }
             ,
             {
-                nome: 'jogador',
-                pontuacao: 0
+                nome: 'LUCAS BESSA',
+                pontuacao: 0,
+                imagem_jogador: 'https://media.licdn.com/dms/image/D4D03AQHXf04MlsV1pg/profile-displayphoto-shrink_200_200/0/1676573285717?e=1703116800&v=beta&t=BIM9jnavK0Rtejq1ySU7LAvW8Qey6B-yBAWfBXLOPpU'
             }
         ]
     }

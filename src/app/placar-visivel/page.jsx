@@ -84,7 +84,7 @@ const ContainerTempo = styled.div`
   align-self: stretch;
 `;
 
-export default function Page() {
+export default function PlacarVisivel() {
   const [dadosDaPartida, setDadosDaPartida] = useState({
     id: 2,
     segundos_restantes: 59,

@@ -2,8 +2,8 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import localFont from "next/font/local";
-import CardJogadorA from "./CardJogadorA";
-import CardJogadorB from "./CardJogadorB";
+import CardJogadorA from "./CardJogador/CardJogadorA";
+import CardJogadorB from "./CardJogador/CardJogadorB";
 import {useRecoilState} from "recoil";
 import {
     jogadores_state,
@@ -78,8 +78,15 @@ const Jogadores = styled.div`
   align-items: flex-start;
 `;
 
+const JogadoresB = styled.div`
+  height: 600px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 32px;
+`;
 
-export default function Page() {
+
+export default function ControladorPlacar() {
     const [placar, setPlacar] = useRecoilState(placar_state);
     const [jogadores, setJogadores] = useRecoilState(jogadores_state);
 
@@ -103,6 +110,7 @@ export default function Page() {
                 </Info_Geral>
 
                 <Painel_Dos_Jogadores>
+
                     <Jogadores>
                         {jogadores.timeA.map((jogador, index) => {
                             return <CardJogadorA index={index} key={index}/>;
@@ -110,11 +118,11 @@ export default function Page() {
                     </Jogadores>
 
                     <PainelDeComando/>
-                    <Jogadores>
+                    <JogadoresB>
                         {jogadores.timeB.map((jogador, index) => {
                             return <CardJogadorB index={index} key={index}/>;
                         })}
-                    </Jogadores>
+                    </JogadoresB>
                 </Painel_Dos_Jogadores>
             </Placar>
         </>
