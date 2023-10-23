@@ -78,7 +78,7 @@ export default function CardJogadorA({index}) {
                         const novo_timeA = [...prev.timeA]
                         novo_timeA[_index] = {
                             ...novo_timeA[_index],
-                            pontuacao: novo_timeA[_index].pontuacao + pontuacao_a_modificar,
+                            pontuacao: novo_timeA[_index].pontuacao + pontuacao_a_modificar * 2,
                             stats: {
                                 ...novo_timeA[_index].stats,
                                 cesta_2: novo_timeA[_index].stats.cesta_2 + pontuacao_a_modificar
@@ -98,7 +98,7 @@ export default function CardJogadorA({index}) {
                         const novo_timeA = [...prev.timeA]
                         novo_timeA[_index] = {
                             ...novo_timeA[_index],
-                            pontuacao: novo_timeA[_index].pontuacao + pontuacao_a_modificar,
+                            pontuacao: novo_timeA[_index].pontuacao + pontuacao_a_modificar * 3,
                             stats: {
                                 ...novo_timeA[_index].stats,
                                 cesta_3: novo_timeA[_index].stats.cesta_3 + pontuacao_a_modificar
@@ -118,7 +118,6 @@ export default function CardJogadorA({index}) {
                         const novo_timeA = [...prev.timeA]
                         novo_timeA[_index] = {
                             ...novo_timeA[_index],
-                            pontuacao: novo_timeA[_index].pontuacao + pontuacao_a_modificar,
                             stats: {
                                 ...novo_timeA[_index].stats,
                                 faltas: novo_timeA[_index].stats.faltas + pontuacao_a_modificar
@@ -138,7 +137,6 @@ export default function CardJogadorA({index}) {
                         const novo_timeA = [...prev.timeA]
                         novo_timeA[_index] = {
                             ...novo_timeA[_index],
-                            pontuacao: novo_timeA[_index].pontuacao + pontuacao_a_modificar,
                             stats: {
                                 ...novo_timeA[_index].stats,
                                 rebotes: novo_timeA[_index].stats.rebotes + pontuacao_a_modificar
@@ -158,7 +156,6 @@ export default function CardJogadorA({index}) {
                         const novo_timeA = [...prev.timeA]
                         novo_timeA[_index] = {
                             ...novo_timeA[_index],
-                            pontuacao: novo_timeA[_index].pontuacao + pontuacao_a_modificar,
                             stats: {
                                 ...novo_timeA[_index].stats,
                                 roubos: novo_timeA[_index].stats.roubos + pontuacao_a_modificar
@@ -178,7 +175,6 @@ export default function CardJogadorA({index}) {
                         const novo_timeA = [...prev.timeA]
                         novo_timeA[_index] = {
                             ...novo_timeA[_index],
-                            pontuacao: novo_timeA[_index].pontuacao + pontuacao_a_modificar,
                             stats: {
                                 ...novo_timeA[_index].stats,
                                 tocos: novo_timeA[_index].stats.tocos + pontuacao_a_modificar
@@ -198,7 +194,6 @@ export default function CardJogadorA({index}) {
                         const novo_timeA = [...prev.timeA]
                         novo_timeA[_index] = {
                             ...novo_timeA[_index],
-                            pontuacao: novo_timeA[_index].pontuacao + pontuacao_a_modificar,
                             stats: {
                                 ...novo_timeA[_index].stats,
                                 assistencias: novo_timeA[_index].stats.assistencias + pontuacao_a_modificar
@@ -215,6 +210,7 @@ export default function CardJogadorA({index}) {
             ,
         }
     }
+
 
     function cesta1() {
         // changePontuacao(index, 1)
@@ -358,8 +354,8 @@ export default function CardJogadorA({index}) {
                                     style={{backgroundImage: `url(${img_btn_ponto_1.src})`}}>
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <div className={poppins.className} style={{
-                                width: '20px',
-                                height: '20px',
+                                width: '15px',
+                                height: '15px',
                                 backgroundSize: "cover",
                                 backgroundImage: `url(${img_btn_counter.src}`,
                                 textAlign: "center",
@@ -373,8 +369,8 @@ export default function CardJogadorA({index}) {
                         <BotaoStats onContextMenu={desfazer2} onClick={cesta2}
                                     style={{backgroundImage: `url(${img_btn_ponto_2.src})`}}>
                             <div className={poppins.className} style={{
-                                width: '20px',
-                                height: '20px',
+                                width: '15px',
+                                height: '15px',
                                 backgroundSize: "cover",
                                 backgroundImage: `url(${img_btn_counter.src}`,
                                 textAlign: "center",
@@ -388,8 +384,8 @@ export default function CardJogadorA({index}) {
                         <BotaoStats onContextMenu={desfazer3} onClick={cesta3}
                                     style={{backgroundImage: `url(${img_btn_ponto_3.src})`}}>
                             <div className={poppins.className} style={{
-                                width: '20px',
-                                height: '20px',
+                                width: '15px',
+                                height: '15px',
                                 backgroundSize: "cover",
                                 backgroundImage: `url(${img_btn_counter.src}`,
                                 textAlign: "center",
@@ -403,8 +399,8 @@ export default function CardJogadorA({index}) {
                         <BotaoStats onContextMenu={desfazerFalta} onClick={falta}
                                     style={{backgroundImage: `url(${img_btn_falta.src})`}}>
                             <div className={poppins.className} style={{
-                                width: '20px',
-                                height: '20px',
+                                width: '15px',
+                                height: '15px',
                                 backgroundSize: "cover",
                                 backgroundImage: `url(${img_btn_counter.src}`,
                                 textAlign: "center",
@@ -419,8 +415,8 @@ export default function CardJogadorA({index}) {
                         <BotaoStats onContextMenu={desfazerAssistencia} onClick={assistencia}
                                     style={{backgroundImage: `url(${img_btn_assist.src})`}}>
                             <div className={poppins.className} style={{
-                                width: '20px',
-                                height: '20px',
+                                width: '15px',
+                                height: '15px',
                                 backgroundSize: "cover",
                                 backgroundImage: `url(${img_btn_counter.src}`,
                                 textAlign: "center",
@@ -434,8 +430,8 @@ export default function CardJogadorA({index}) {
                         <BotaoStats onContextMenu={desfazerRebote} onClick={rebote}
                                     style={{backgroundImage: `url(${img_btn_rebote.src})`}}>
                             <div className={poppins.className} style={{
-                                width: '20px',
-                                height: '20px',
+                                width: '15px',
+                                height: '15px',
                                 backgroundSize: "cover",
                                 backgroundImage: `url(${img_btn_counter.src}`,
                                 textAlign: "center",
@@ -449,8 +445,8 @@ export default function CardJogadorA({index}) {
                         <BotaoStats onContextMenu={desfazerToco} onClick={toco}
                                     style={{backgroundImage: `url(${img_btn_toco.src})`}}>
                             <div className={poppins.className} style={{
-                                width: '20px',
-                                height: '20px',
+                                width: '15px',
+                                height: '15px',
                                 backgroundSize: "cover",
                                 backgroundImage: `url(${img_btn_counter.src}`,
                                 textAlign: "center",
@@ -464,8 +460,8 @@ export default function CardJogadorA({index}) {
                         <BotaoStats onContextMenu={desfazerRoubo} onClick={roubo}
                                     style={{backgroundImage: `url(${img_btn_roubo.src})`}}>
                             <div className={poppins.className} style={{
-                                width: '20px',
-                                height: '20px',
+                                width: '15px',
+                                height: '15px',
                                 backgroundSize: "cover",
                                 backgroundImage: `url(${img_btn_counter.src}`,
                                 textAlign: "center",
@@ -493,7 +489,7 @@ export default function CardJogadorA({index}) {
                             alignSelf: " stretch,"
                         }}>
                             <Botao>
-                                <TextoBotao>{jogadores.timeA.at(index).pontuacao}</TextoBotao>
+                                <TextoBotao>{jogadores.timeA[index].pontuacao}</TextoBotao>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16"
                                      fill="none">
                                     <path

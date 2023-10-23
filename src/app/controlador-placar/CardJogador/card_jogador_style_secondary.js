@@ -2,9 +2,9 @@ import styled from "styled-components";
 import colors from "../../../js/colors.js";
 
 export const Card_jogador = styled.article`
+
   border-radius: 12px;
-  border: 2px solid rgba(108, 108, 108, 0.59);
-  background: linear-gradient(0deg, #00010F 0%, #00010F 100%), rgba(8, 9, 19, 0.00);
+  border: 3px solid  ${colors.borda_jogador_card};
   display: inline-flex;
   padding-bottom: 0px;
   height: 168px;
@@ -12,6 +12,7 @@ export const Card_jogador = styled.article`
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
+
 `;
 
 export const Btn_Jogador_Default = styled.button`
@@ -48,9 +49,9 @@ export const NomeJogador = styled.p`
 `;
 
 export const ImagemJogador = styled.div`
-  border-radius: 0px 0px 20px 0px;
-  border-right: 2px solid rgba(34, 34, 34, 0.60);
-  border-bottom: 2px solid rgba(34, 34, 34, 0.60);
+  border-radius: 8px 0px 20px 0px;
+  border-right: 2px solid ${colors.borda_jogador_card};
+  border-bottom: 2px solid ${colors.borda_jogador_card};
   display: flex;
   background-size: cover;
   background-position: center center;

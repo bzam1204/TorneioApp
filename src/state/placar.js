@@ -76,7 +76,7 @@ const jogadores_state = atom({
                     tocos: 0
 
                 },
-                pontuacao: '0',
+                pontuacao: 0,
                 imagem_jogador: 'https://media.licdn.com/dms/image/C4D03AQEpOYtfwpUx8Q/profile-displayphoto-shrink_200_200/0/1651338328741?e=1703116800&v=beta&t=6lbQdLSDx_pIKCaAD-XR7QFfh3Q1fayI4Snf86Ubsk0'
             }
             , {
@@ -225,7 +225,7 @@ const jogadores_state = atom({
                     tocos: 0
 
                 },
-                pontuacao: '0',
+                pontuacao: 0,
                 imagem_jogador: 'https://media.licdn.com/dms/image/C4D03AQEpOYtfwpUx8Q/profile-displayphoto-shrink_200_200/0/1651338328741?e=1703116800&v=beta&t=6lbQdLSDx_pIKCaAD-XR7QFfh3Q1fayI4Snf86Ubsk0'
             }
             , {
