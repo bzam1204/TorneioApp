@@ -11,6 +11,7 @@ import img_btn_ponto_1 from "../../../img/btn_stats/ponto_1.png"
 import img_btn_ponto_2 from "../../../img/btn_stats/ponto_2.png"
 import img_btn_ponto_3 from "../../../img/btn_stats/ponto_3.png"
 import img_btn_roubo from "../../../img/btn_stats/roubo.png"
+import img_btn_counter from "../../../img/btn_stats/btn_counter.png"
 
 
 import {
@@ -22,15 +23,17 @@ import {
     NomeJogador,
     TextoBotao
 } from "./card_jogador_style_secondary";
+import localFont from "next/font/local";
 
-
+const digital_numbers = localFont({
+    src: "../../../fonts/DigitalNumbers-Regular.ttf"
+});
 const poppins = Poppins({subsets: ["latin"], weight: "400"});
 
 export default function CardJogadorB({index}) {
     const [placar, setPlacar] = useRecoilState(placar_state);
     const [jogadores, setJogadores] = useRecoilState(jogadores_state);
     const [showStats, setShowStats] = useState(false)
-
 
     function changeNomeJogador(e, _index,) {
         setJogadores((prev) => {
@@ -45,26 +48,177 @@ export default function CardJogadorB({index}) {
                 timeB: novo_timeB,
             }
         })
+
+
     }
 
     function changePontuacao(_index, pontuacao_a_modificar) {
-        setJogadores((prev) => {
-            const novo_timeB = [...prev.timeB]
-            novo_timeB[_index] = {
-                ...novo_timeB[_index],
-                pontuacao: novo_timeB[_index].pontuacao + pontuacao_a_modificar
-            }
+        return {
+            cesta_um(_index, pontuacao_a_modificar) {
+                setJogadores((prev) => {
+                        const novo_timeB = [...prev.timeB]
+                        novo_timeB[_index] = {
+                            ...novo_timeB[_index],
+                            pontuacao: novo_timeB[_index].pontuacao + pontuacao_a_modificar,
+                            stats: {
+                                ...novo_timeB[_index].stats,
+                                cesta_1: novo_timeB[_index].stats.cesta_1 + pontuacao_a_modificar
+                            }
+                        }
 
-            return {
-                ...prev,
-                timeB: novo_timeB,
+                        return {
+                            ...prev,
+                            timeB: novo_timeB,
+                        }
+                    }
+                )
+            },
+            cesta_dois(_index, pontuacao_a_modificar) {
+                setJogadores((prev) => {
+                        const novo_timeB = [...prev.timeB]
+                        novo_timeB[_index] = {
+                            ...novo_timeB[_index],
+                            pontuacao: novo_timeB[_index].pontuacao + pontuacao_a_modificar,
+                            stats: {
+                                ...novo_timeB[_index].stats,
+                                cesta_2: novo_timeB[_index].stats.cesta_2 + pontuacao_a_modificar
+                            }
+                        }
+
+                        return {
+                            ...prev,
+                            timeB: novo_timeB,
+                        }
+                    }
+                )
             }
-        })
+            ,
+            cesta_tres(_index, pontuacao_a_modificar) {
+                setJogadores((prev) => {
+                        const novo_timeB = [...prev.timeB]
+                        novo_timeB[_index] = {
+                            ...novo_timeB[_index],
+                            pontuacao: novo_timeB[_index].pontuacao + pontuacao_a_modificar,
+                            stats: {
+                                ...novo_timeB[_index].stats,
+                                cesta_3: novo_timeB[_index].stats.cesta_3 + pontuacao_a_modificar
+                            }
+                        }
+
+                        return {
+                            ...prev,
+                            timeB: novo_timeB,
+                        }
+                    }
+                )
+            }
+            ,
+            falta(_index, pontuacao_a_modificar) {
+                setJogadores((prev) => {
+                        const novo_timeB = [...prev.timeB]
+                        novo_timeB[_index] = {
+                            ...novo_timeB[_index],
+                            pontuacao: novo_timeB[_index].pontuacao + pontuacao_a_modificar,
+                            stats: {
+                                ...novo_timeB[_index].stats,
+                                faltas: novo_timeB[_index].stats.faltas + pontuacao_a_modificar
+                            }
+                        }
+
+                        return {
+                            ...prev,
+                            timeB: novo_timeB,
+                        }
+                    }
+                )
+            }
+            ,
+            rebote(_index, pontuacao_a_modificar) {
+                setJogadores((prev) => {
+                        const novo_timeB = [...prev.timeB]
+                        novo_timeB[_index] = {
+                            ...novo_timeB[_index],
+                            pontuacao: novo_timeB[_index].pontuacao + pontuacao_a_modificar,
+                            stats: {
+                                ...novo_timeB[_index].stats,
+                                rebotes: novo_timeB[_index].stats.rebotes + pontuacao_a_modificar
+                            }
+                        }
+
+                        return {
+                            ...prev,
+                            timeB: novo_timeB,
+                        }
+                    }
+                )
+            }
+            ,
+            roubo(_index, pontuacao_a_modificar) {
+                setJogadores((prev) => {
+                        const novo_timeB = [...prev.timeB]
+                        novo_timeB[_index] = {
+                            ...novo_timeB[_index],
+                            pontuacao: novo_timeB[_index].pontuacao + pontuacao_a_modificar,
+                            stats: {
+                                ...novo_timeB[_index].stats,
+                                roubos: novo_timeB[_index].stats.roubos + pontuacao_a_modificar
+                            }
+                        }
+
+                        return {
+                            ...prev,
+                            timeB: novo_timeB,
+                        }
+                    }
+                )
+            }
+            ,
+            toco(_index, pontuacao_a_modificar) {
+                setJogadores((prev) => {
+                        const novo_timeB = [...prev.timeB]
+                        novo_timeB[_index] = {
+                            ...novo_timeB[_index],
+                            pontuacao: novo_timeB[_index].pontuacao + pontuacao_a_modificar,
+                            stats: {
+                                ...novo_timeB[_index].stats,
+                                tocos: novo_timeB[_index].stats.tocos + pontuacao_a_modificar
+                            }
+                        }
+
+                        return {
+                            ...prev,
+                            timeB: novo_timeB,
+                        }
+                    }
+                )
+            }
+            ,
+            assistencia(_index, pontuacao_a_modificar) {
+                setJogadores((prev) => {
+                        const novo_timeB = [...prev.timeB]
+                        novo_timeB[_index] = {
+                            ...novo_timeB[_index],
+                            pontuacao: novo_timeB[_index].pontuacao + pontuacao_a_modificar,
+                            stats: {
+                                ...novo_timeB[_index].stats,
+                                assistencias: novo_timeB[_index].stats.assistencias + pontuacao_a_modificar
+                            }
+                        }
+
+                        return {
+                            ...prev,
+                            timeB: novo_timeB,
+                        }
+                    }
+                )
+            }
+            ,
+        }
     }
 
     function cesta1() {
-        changePontuacao(index, 1)
-
+        // changePontuacao(index, 1)
+        changePontuacao().cesta_um(index, 1)
         setPlacar((prev) => {
             return {...prev, timeB: prev.timeB + 1};
         });
@@ -72,8 +226,8 @@ export default function CardJogadorB({index}) {
 
     function desfazer1(event) {
         event.preventDefault();
-        if (jogadores.timeB[index].pontuacao >= 1) {
-            changePontuacao(index, -1)
+        if (jogadores.timeB[index].stats.cesta_1 >= 1) {
+            changePontuacao().cesta_um(index, -1)
             setPlacar((prev) => {
                 return {...prev, timeB: prev.timeB - 1};
             });
@@ -81,7 +235,7 @@ export default function CardJogadorB({index}) {
     }
 
     function cesta2() {
-        changePontuacao(index, 2)
+        changePontuacao().cesta_dois(index, 1)
 
         setPlacar((prev) => {
             return {...prev, timeB: prev.timeB + 2};
@@ -90,8 +244,8 @@ export default function CardJogadorB({index}) {
 
     function desfazer2(event) {
         event.preventDefault();
-        if (jogadores.timeB[index].pontuacao >= 2) {
-            changePontuacao(index, -2)
+        if (jogadores.timeB[index].stats.cesta_2 >= 1) {
+            changePontuacao().cesta_dois(index, -1)
             setPlacar((prev) => {
                 return {...prev, timeB: prev.timeB - 2};
             });
@@ -99,7 +253,7 @@ export default function CardJogadorB({index}) {
     }
 
     function cesta3() {
-        changePontuacao(index, 3)
+        changePontuacao().cesta_tres(index, 1)
 
         setPlacar((prev) => {
             return {...prev, timeB: prev.timeB + 3};
@@ -108,16 +262,73 @@ export default function CardJogadorB({index}) {
 
     function desfazer3(event) {
         event.preventDefault();
-        if (jogadores.timeB[index].pontuacao >= 3) {
-            changePontuacao(index, -3)
+        if (jogadores.timeB[index].stats.cesta_3 >= 1) {
+            changePontuacao().cesta_tres(index, -1)
             setPlacar((prev) => {
                 return {...prev, timeB: prev.timeB - 3};
             });
         }
     }
 
+    function falta() {
+        changePontuacao().falta(index, 1)
+    }
+
+    function desfazerFalta(event) {
+        event.preventDefault();
+        if (jogadores.timeB[index].stats.faltas >= 1) {
+            changePontuacao().falta(index, -1)
+        }
+    }
+
+    function assistencia() {
+        changePontuacao().assistencia(index, 1)
+    }
+
+    function desfazerAssistencia(event) {
+        event.preventDefault();
+        if (jogadores.timeB[index].stats.assistencias >= 1) {
+            changePontuacao().assistencia(index, -1)
+
+        }
+    }
+
+    function rebote() {
+        changePontuacao().rebote(index, 1)
+    }
+
+    function desfazerRebote(event) {
+        event.preventDefault();
+        if (jogadores.timeB[index].stats.rebotes >= 1) {
+            changePontuacao().rebote(index, -1)
+
+        }
+    }
+
+    function toco() {
+        changePontuacao().toco(index, 1)
+    }
+
+    function desfazerToco(event) {
+        event.preventDefault();
+        if (jogadores.timeB[index].stats.tocos >= 1) {
+            changePontuacao().toco(index, -1)
+        }
+    }
+
+    function roubo() {
+        changePontuacao().roubo(index, 1)
+    }
+
+    function desfazerRoubo(event) {
+        event.preventDefault();
+        if (jogadores.timeB[index].stats.roubos >= 1)
+            changePontuacao().roubo(index, -1)
+    }
+
+
     useEffect(function () {
-        const card_jogador = document.getElementById(`${jogadores.timeB[index].nome}${index}`)
+        const card_jogador = document.getElementById(`timeB${jogadores.timeB[index].nome}${index}`)
 
         card_jogador.addEventListener('mouseover', function (e) {
             setShowStats(true)
@@ -133,7 +344,7 @@ export default function CardJogadorB({index}) {
 
 
     return (
-        <Card_jogador id={`${jogadores.timeB[index].nome}${index}`}>
+        <Card_jogador id={`timeB${jogadores.timeB[index].nome}${index}`}>
 
             {showStats === true ? (
                 <>
@@ -141,17 +352,130 @@ export default function CardJogadorB({index}) {
                         alignItems: "center", padding: '8px',
                         display: 'grid',
                         gridTemplateColumns: 'repeat(3, 1fr)',
-                        gridGap: '7.5px'
+                        gridGap: '14px 5.5px '
                     }}>
-                        <BotaoStats style={{backgroundImage: `url(${img_btn_ponto_1.src})`}}></BotaoStats>
-                        <BotaoStats style={{backgroundImage: `url(${img_btn_ponto_2.src})`}}></BotaoStats>
-                        <BotaoStats style={{backgroundImage: `url(${img_btn_ponto_3.src})`}}></BotaoStats>
-                        <BotaoStats style={{backgroundImage: `url(${img_btn_falta.src})`}}></BotaoStats>
-                        <BotaoStats style={{background : 'transparent', display: 'content'}}></BotaoStats>
-                        <BotaoStats style={{backgroundImage: `url(${img_btn_assist.src})`}}></BotaoStats>
-                        <BotaoStats style={{backgroundImage: `url(${img_btn_rebote.src})`}}></BotaoStats>
-                        <BotaoStats style={{backgroundImage: `url(${img_btn_toco.src})`}}></BotaoStats>
-                        <BotaoStats style={{backgroundImage: `url(${img_btn_roubo.src})`}}></BotaoStats>
+                        <BotaoStats onContextMenu={desfazer1} onClick={cesta1}
+                                    style={{backgroundImage: `url(${img_btn_ponto_1.src})`}}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <div className={poppins.className} style={{
+                                width: '20px',
+                                height: '20px',
+                                backgroundSize: "cover",
+                                backgroundImage: `url(${img_btn_counter.src}`,
+                                textAlign: "center",
+                                fontSize: '10px',
+                                fontWeight: 'bold',
+                                display: "flex", justifyContent: "center", alignItems: "center"
+                            }}
+                                 alt="btn counter">{jogadores.timeB[index].stats.cesta_1}
+                            </div>
+                        </BotaoStats>
+                        <BotaoStats onContextMenu={desfazer2} onClick={cesta2}
+                                    style={{backgroundImage: `url(${img_btn_ponto_2.src})`}}>
+                            <div className={poppins.className} style={{
+                                width: '20px',
+                                height: '20px',
+                                backgroundSize: "cover",
+                                backgroundImage: `url(${img_btn_counter.src}`,
+                                textAlign: "center",
+                                fontSize: '10px',
+                                fontWeight: 'bold',
+                                display: "flex", justifyContent: "center", alignItems: "center"
+                            }}
+                                 alt="btn counter">{jogadores.timeB[index].stats.cesta_2}
+                            </div>
+                        </BotaoStats>
+                        <BotaoStats onContextMenu={desfazer3} onClick={cesta3}
+                                    style={{backgroundImage: `url(${img_btn_ponto_3.src})`}}>
+                            <div className={poppins.className} style={{
+                                width: '20px',
+                                height: '20px',
+                                backgroundSize: "cover",
+                                backgroundImage: `url(${img_btn_counter.src}`,
+                                textAlign: "center",
+                                fontSize: '10px',
+                                fontWeight: 'bold',
+                                display: "flex", justifyContent: "center", alignItems: "center"
+                            }}
+                                 alt="btn counter">{jogadores.timeB[index].stats.cesta_3}
+                            </div>
+                        </BotaoStats>
+                        <BotaoStats onContextMenu={desfazerFalta} onClick={falta}
+                                    style={{backgroundImage: `url(${img_btn_falta.src})`}}>
+                            <div className={poppins.className} style={{
+                                width: '20px',
+                                height: '20px',
+                                backgroundSize: "cover",
+                                backgroundImage: `url(${img_btn_counter.src}`,
+                                textAlign: "center",
+                                fontSize: '10px',
+                                fontWeight: 'bold',
+                                display: "flex", justifyContent: "center", alignItems: "center"
+                            }}
+                                 alt="btn counter">{jogadores.timeB[index].stats.faltas}
+                            </div>
+                        </BotaoStats>
+                        <div></div>
+                        <BotaoStats onContextMenu={desfazerAssistencia} onClick={assistencia}
+                                    style={{backgroundImage: `url(${img_btn_assist.src})`}}>
+                            <div className={poppins.className} style={{
+                                width: '20px',
+                                height: '20px',
+                                backgroundSize: "cover",
+                                backgroundImage: `url(${img_btn_counter.src}`,
+                                textAlign: "center",
+                                fontSize: '10px',
+                                fontWeight: 'bold',
+                                display: "flex", justifyContent: "center", alignItems: "center"
+                            }}
+                                 alt="btn counter">{jogadores.timeB[index].stats.assistencias}
+                            </div>
+                        </BotaoStats>
+                        <BotaoStats onContextMenu={desfazerRebote} onClick={rebote}
+                                    style={{backgroundImage: `url(${img_btn_rebote.src})`}}>
+                            <div className={poppins.className} style={{
+                                width: '20px',
+                                height: '20px',
+                                backgroundSize: "cover",
+                                backgroundImage: `url(${img_btn_counter.src}`,
+                                textAlign: "center",
+                                fontSize: '10px',
+                                fontWeight: 'bold',
+                                display: "flex", justifyContent: "center", alignItems: "center"
+                            }}
+                                 alt="btn counter">{jogadores.timeB[index].stats.rebotes}
+                            </div>
+                        </BotaoStats>
+                        <BotaoStats onContextMenu={desfazerToco} onClick={toco}
+                                    style={{backgroundImage: `url(${img_btn_toco.src})`}}>
+                            <div className={poppins.className} style={{
+                                width: '20px',
+                                height: '20px',
+                                backgroundSize: "cover",
+                                backgroundImage: `url(${img_btn_counter.src}`,
+                                textAlign: "center",
+                                fontSize: '10px',
+                                fontWeight: 'bold',
+                                display: "flex", justifyContent: "center", alignItems: "center"
+                            }}
+                                 alt="btn counter">{jogadores.timeB[index].stats.tocos}
+                            </div>
+                        </BotaoStats>
+                        <BotaoStats onContextMenu={desfazerRoubo} onClick={roubo}
+                                    style={{backgroundImage: `url(${img_btn_roubo.src})`}}>
+                            <div className={poppins.className} style={{
+                                width: '20px',
+                                height: '20px',
+                                backgroundSize: "cover",
+                                backgroundImage: `url(${img_btn_counter.src}`,
+                                textAlign: "center",
+                                fontSize: '10px',
+                                fontWeight: 'bold',
+                                display: "flex", justifyContent: "center", alignItems: "center"
+                            }}
+                                 alt="btn counter">{jogadores.timeB[index].stats.roubos}
+                            </div>
+                        </BotaoStats>
                     </div>
                 </>
             ) : (

@@ -334,13 +334,34 @@ function PainelDeComando() {
                             // Zera as pontuações dos jogadores no timeA.
                             const novoTimeA = prevTimes.timeA.map(jogador => ({
                                 ...jogador,
-                                pontuacao: 0
+                                pontuacao: 0, stats: {
+                                    cesta_1: 0,
+                                    cesta_2: 0,
+                                    cesta_3: 0,
+                                    faltas: 0,
+                                    rebotes: 0,
+                                    assistencias: 0,
+                                    roubos: 0,
+                                    tocos: 0
+
+                                },
                             }));
 
                             // Zera as pontuações dos jogadores no timeB.
                             const novoTimeB = prevTimes.timeB.map(jogador => ({
                                 ...jogador,
-                                pontuacao: 0
+                                pontuacao: 0,
+                                stats: {
+                                    cesta_1: 0,
+                                    cesta_2: 0,
+                                    cesta_3: 0,
+                                    faltas: 0,
+                                    rebotes: 0,
+                                    assistencias: 0,
+                                    roubos: 0,
+                                    tocos: 0
+
+                                },
                             }));
 
                             // Retorna os novos times.

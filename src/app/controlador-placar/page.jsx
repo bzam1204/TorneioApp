@@ -14,6 +14,8 @@ import {
 
 import colors from "../../js/colors.js";
 import PainelDeComando from "./PainelDeComando.jsx";
+import img_btn_counter from "../../img/btn_stats/btn_counter.png";
+import img_btn_plus from "../../img/btn_stats/plus.png";
 
 const digital_numbers = localFont({
     src: "../../fonts/DigitalNumbers-Regular.ttf"
@@ -71,14 +73,6 @@ const Pontuacao = styled.p`
   line-height: normal;
 `;
 const Jogadores = styled.div`
-  display: flex;
-  height: 600px;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-`;
-
-const JogadoresB = styled.div`
   height: 600px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -90,6 +84,9 @@ export default function ControladorPlacar() {
     const [placar, setPlacar] = useRecoilState(placar_state);
     const [jogadores, setJogadores] = useRecoilState(jogadores_state);
 
+    function criaJogador () {
+
+    }
 
     return (
         <>
@@ -115,16 +112,31 @@ export default function ControladorPlacar() {
                         {jogadores.timeA.map((jogador, index) => {
                             return <CardJogadorA index={index} key={index}/>;
                         })}
+                        {
+                            jogadores.timeA.length < 9 ?
+                                <div style={{
+                                    width: '80px',
+                                    height: '80px',
+                                    backgroundSize: "cover",
+                                    justifySelf: `center`, alignSelf: "center",
+                                    cursor: "pointer",
+                                    backgroundImage: `url(${img_btn_plus.src}`
+                                }}
+                                />
+
+                                : null}
+
                     </Jogadores>
 
                     <PainelDeComando/>
-                    <JogadoresB>
+                    <Jogadores>
                         {jogadores.timeB.map((jogador, index) => {
                             return <CardJogadorB index={index} key={index}/>;
                         })}
-                    </JogadoresB>
+                    </Jogadores>
                 </Painel_Dos_Jogadores>
             </Placar>
         </>
-    );
+    )
+        ;
 }

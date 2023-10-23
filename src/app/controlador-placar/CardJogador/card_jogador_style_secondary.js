@@ -98,10 +98,12 @@ export const IconeBotao = styled.div`width: 16px;
 
 
 export const BotaoStats = styled.div`width: 40px;
-  height: 40px;
-  width: 40px;
+  height: 42px;
+  width: 42px;
+  text-align: right;
   cursor: pointer;
   background-size: contain; /* Mantém a proporção original da imagem */
-  background-position: center center; 
+  background-position: center center;
   border-radius: 50px;
+  background-repeat: no-repeat;
 `
