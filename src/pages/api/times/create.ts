@@ -9,17 +9,14 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const torneio_id = req.query.id;
+    const {nome_time} = req.body;
 
-    const torneio_deletado = await prisma.torneios.delete({
-        where: {
-            id: Number(torneio_id)
-        }
+    const time_criado = await prisma.times.create({
+        data: {nome: nome_time.toUpperCase()}
     });
 
     res.status(200).json({
-        mensagem: "torneio deletado com sucesso",
-        dados_torneio_criado: torneio_deletado
+        mensagem: "time criado com sucesso",
+        dados_time_criado: time_criado
     });
-
 }

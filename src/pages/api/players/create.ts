@@ -1,54 +1,54 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import {NextApiRequest, NextApiResponse} from "next";
 
-const { PrismaClient } = require("@prisma/client");
+const {PrismaClient} = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
-async function verifyNameExists(req, res, player_name) {
-  const search = await prisma.players.findUnique({
-    where: {
-      name: player_name.toString()
-    }
-  });
+async function verifyNameExists(req, res, nome_jogador) {
+    const busca = await prisma.jogadores.findUnique({
+        where: {
+            nome: nome_jogador.toString()
+        }
+    });
 
-  if (search === null) {
-    res.status(200).json({ name_exists: false });
-  } else {
-    res.status(200).json({ name_exists: true });
-  }
+    if (busca === null) {
+        res.status(200).json({nome_exists: false});
+    } else {
+        res.status(200).json({nome_exists: true});
+    }
 }
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
+    req: NextApiRequest,
+    res: NextApiResponse
 ) {
-  const { player_name } = req.body;
-  let name_available = false;
+    const {nome_jogador} = req.body;
+    let nome_disponivel = false;
 
-  const search = await prisma.players.findUnique({
-    where: {
-      name: player_name.toString()
+    const busca = await prisma.jogadores.findUnique({
+        where: {
+            nome: nome_jogador.toString()
+        }
+    });
+
+    if (busca === null) {
+        nome_disponivel = true;
+    } else {
+        nome_disponivel = false;
     }
-  });
 
-  if (search === null) {
-    name_available = true;
-  } else {
-    name_available = false;
-  }
+    console.log(nome_disponivel);
 
-  console.log(name_available);
+    if (nome_disponivel) {
+        const criado_jogador = await prisma.jogadores.create({
+            data: {nome: nome_jogador.toUpperCase()}
+        });
 
-  if (name_available) {
-    const created_player = await prisma.players.create({
-      data: { name: player_name }
-    });
-
-    res.status(200).json({
-      message: "jogador criado com sucesso",
-      created_player_data: created_player
-    });
-  } else {
-    res.status(500).json("já existe um jogador com esse nome");
-  }
+        res.status(200).json({
+            message: "jogador criado com sucesso",
+            criado_jogador_data: criado_jogador
+        });
+    } else {
+        res.status(500).json("já existe um jogador com esse nome");
+    }
 }

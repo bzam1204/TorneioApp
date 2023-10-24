@@ -2,8 +2,6 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
-import {createFilterOptions} from '@mui/material/Autocomplete';
-
 
 function sleep(delay = 0) {
     return new Promise((resolve) => {
@@ -11,7 +9,7 @@ function sleep(delay = 0) {
     });
 }
 
-export default function AutocompleteSelectTorneios() {
+export default function AutocompleteInputTimeA() {
     const [open, setOpen] = React.useState(false);
     const [options, setOptions] = React.useState([]);
     const loading = open && options.length === 0;
@@ -24,16 +22,15 @@ export default function AutocompleteSelectTorneios() {
         }
 
         (async () => {
-            const response = await fetch("./api/torneios/all");
+            const response = await fetch("./api/times/all");
 
-            const torneios_list = await response.json();
+            const players_list = await response.json();
 
-            torneios_list.forEach((element) => {
+            players_list.forEach((element) => {
             });
 
-
             if (active) {
-                setOptions([...torneios_list]);
+                setOptions([...players_list]);
             }
         })();
 
@@ -48,18 +45,9 @@ export default function AutocompleteSelectTorneios() {
         }
     }, [open]);
 
-
-    const filterOptions = createFilterOptions({
-        matchFrom: 'start',
-    });
-
     return (
         <Autocomplete
-
-
-            filterOptions={filterOptions}
-
-            id="AutocompleteSelectTorneios"
+            id="AutocompleteInputTimeB"
             sx={{width: 300}}
             open={open}
             onOpen={() => {
@@ -68,14 +56,15 @@ export default function AutocompleteSelectTorneios() {
             onClose={() => {
                 setOpen(false);
             }}
-            isOptionEqualToValue={(option, value) => option.nome === value.nome}
+
+            isOptionEqualToValue={(option, value) => option.id === value.nome}
             getOptionLabel={(option) => option.nome}
             options={options}
             loading={loading}
             renderInput={(params) => (
                 <TextField
                     {...params}
-                    label="Torneios"
+                    label="TimeB"
                     InputProps={{
                         ...params.InputProps,
                         endAdornment: (
@@ -93,4 +82,5 @@ export default function AutocompleteSelectTorneios() {
     );
 }
 
-
+// Top films as rated by IMDb users. http://www.imdb.com/chart/top
+const topFilms = [];

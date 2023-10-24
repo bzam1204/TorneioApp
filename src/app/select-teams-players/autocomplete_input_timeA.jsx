@@ -9,7 +9,7 @@ function sleep(delay = 0) {
   });
 }
 
-export default function AutocompleteInput() {
+export default function AutocompleteInputTimeA() {
   const [open, setOpen] = React.useState(false);
   const [options, setOptions] = React.useState([]);
   const loading = open && options.length === 0;
@@ -22,7 +22,7 @@ export default function AutocompleteInput() {
     }
 
     (async () => {
-      const response = await fetch("./api/players/all");
+      const response = await fetch("./api/times/all");
 
       const players_list = await response.json();
 
@@ -46,7 +46,7 @@ export default function AutocompleteInput() {
 
   return (
     <Autocomplete
-      id="asynchronous-demo"
+      id="AutocompleteInputTimeA"
       sx={{ width: 300 }}
       open={open}
       onOpen={() => {
@@ -55,14 +55,14 @@ export default function AutocompleteInput() {
       onClose={() => {
         setOpen(false);
       }}
-      isOptionEqualToValue={(option, value) => option.name === value.name}
-      getOptionLabel={(option) => option.name}
+      isOptionEqualToValue={(option, value) => option.nome === value.nome}
+      getOptionLabel={(option) => option.nome}
       options={options}
       loading={loading}
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Asynchronous"
+          label="TimeA"
           InputProps={{
             ...params.InputProps,
             endAdornment: (

@@ -14,7 +14,7 @@
     "@fontsource/orbitron": "^5.0.11",
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.14.7",
-    "@prisma/client": "^5.4.2",
+    "@prisma/client": "^5.5.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
     "google-auth-library": "^8.9.0",
@@ -27,6 +27,6 @@
   },
   "devDependencies": {
     "@types/node": "20.5.9",
-    "prisma": "^5.4.2"
+    "prisma": "^5.5.0"
   }
 }

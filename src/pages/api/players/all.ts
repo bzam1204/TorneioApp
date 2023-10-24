@@ -8,7 +8,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const allPlayers = await prisma.players.findMany();
+  const allPlayers = await prisma.jogadores.findMany();
 
   return res.json(allPlayers);
 }

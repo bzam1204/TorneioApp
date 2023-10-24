@@ -2,7 +2,8 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
-import {createFilterOptions} from '@mui/material/Autocomplete';
+import {jogador_selecionado, jogadores_state} from "../../../state/placar";
+import {useRecoilState} from "recoil";
 
 
 function sleep(delay = 0) {
@@ -11,10 +12,11 @@ function sleep(delay = 0) {
     });
 }
 
-export default function AutocompleteSelectTorneios() {
+export default function AutocompleteInputPlayersForTeams({nome_time}) {
     const [open, setOpen] = React.useState(false);
     const [options, setOptions] = React.useState([]);
     const loading = open && options.length === 0;
+    const [jogador_escolhido, setJogadorEscolhido] = useRecoilState(jogador_selecionado)
 
     React.useEffect(() => {
         let active = true;
@@ -24,16 +26,15 @@ export default function AutocompleteSelectTorneios() {
         }
 
         (async () => {
-            const response = await fetch("./api/torneios/all");
+            const response = await fetch("./api/players/all");
 
-            const torneios_list = await response.json();
+            const players_list = await response.json();
 
-            torneios_list.forEach((element) => {
+            players_list.forEach((element) => {
             });
 
-
             if (active) {
-                setOptions([...torneios_list]);
+                setOptions([...players_list]);
             }
         })();
 
@@ -48,18 +49,9 @@ export default function AutocompleteSelectTorneios() {
         }
     }, [open]);
 
-
-    const filterOptions = createFilterOptions({
-        matchFrom: 'start',
-    });
-
     return (
         <Autocomplete
-
-
-            filterOptions={filterOptions}
-
-            id="AutocompleteSelectTorneios"
+            id={`AutocompleteInputPlayersFor${nome_time}`}
             sx={{width: 300}}
             open={open}
             onOpen={() => {
@@ -68,6 +60,10 @@ export default function AutocompleteSelectTorneios() {
             onClose={() => {
                 setOpen(false);
             }}
+            onChange={(event, _jogador_selecionado) => {
+                console.log(_jogador_selecionado)
+                setJogadorEscolhido(_jogador_selecionado)
+            }}
             isOptionEqualToValue={(option, value) => option.nome === value.nome}
             getOptionLabel={(option) => option.nome}
             options={options}
@@ -75,7 +71,7 @@ export default function AutocompleteSelectTorneios() {
             renderInput={(params) => (
                 <TextField
                     {...params}
-                    label="Torneios"
+                    label="Jogadores"
                     InputProps={{
                         ...params.InputProps,
                         endAdornment: (
@@ -93,4 +89,5 @@ export default function AutocompleteSelectTorneios() {
     );
 }
 
-
+// Top films as rated by IMDb users. http://www.imdb.com/chart/top
+const topFilms = [];

@@ -11,8 +11,8 @@ export default async function handler(
 ) {
     const {nome_torneio} = req.body;
 
-    const torneio_criado = await prisma.tournaments.create({
-        data: {name: nome_torneio}
+    const torneio_criado = await prisma.torneios.create({
+        data: {nome: nome_torneio.toUpperCase()}
     });
 
     res.status(200).json({

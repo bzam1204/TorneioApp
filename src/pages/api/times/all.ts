@@ -8,13 +8,6 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const torneio_id = req.query.id;
-
-    const found_torneio = await prisma.torneios.findUnique({
-        where: {
-            id: Number(torneio_id)
-        }
-    });
-
-    return res.json(found_torneio);
+    const todos_os_times = await prisma.times.findMany();
+    return res.json(todos_os_times);
 }

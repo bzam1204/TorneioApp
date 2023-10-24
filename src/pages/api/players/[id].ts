@@ -10,7 +10,7 @@ export default async function handler(
 ) {
   const player_id = req.query.id;
 
-  const found_player = await prisma.players.findUnique({
+  const found_player = await prisma.jogadores.findUnique({
     where: {
       id: Number(player_id)
     }

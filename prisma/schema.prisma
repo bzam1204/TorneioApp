@@ -10,78 +10,78 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Tournaments {
-  id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(500)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  Games     Games[]
+model Torneios {
+  id        Int        @id @default(autoincrement())
+  nome      String     @db.VarChar(500)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Partidas  Partidas[]
 }
 
-model Players {
-  id            Int             @id @default(autoincrement())
-  name          String          @unique @db.VarChar(100)
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  players_teams Players_Teams[]
-  StatsPlayer   Stats[]
+model Jogadores {
+  id              Int              @id @default(autoincrement())
+  nome            String           @unique @db.VarChar(100)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  jogadores_times JogadoresTimes[]
+  StatsPlayer     Stats[]
 }
 
-model Teams {
-  id           Int             @id @default(autoincrement())
-  name         String          @db.VarChar(100)
-  createdAt    DateTime        @default(now())
-  updatedAt    DateTime        @updatedAt
-  playersTeams Players_Teams[]
-  teamOne      Games[]         @relation("TeamOne")
-  teamTwo      Games[]         @relation("TeamTwo")
-  teamWinner   Games[]         @relation("TeamWinner")
+model Times {
+  id              Int              @id @default(autoincrement())
+  nome            String           @db.VarChar(100)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  jogadores_times JogadoresTimes[]
+  timeA           Partidas[]       @relation("TeamOne")
+  timeB           Partidas[]       @relation("TeamTwo")
+  timeVencedor    Partidas[]       @relation("TeamWinner")
 }
 
-model Players_Teams {
-  id        Int      @id @default(autoincrement())
-  player    Players  @relation(fields: [player_id], references: [id])
-  team      Teams    @relation(fields: [team_id], references: [id])
-  player_id Int
-  team_id   Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model JogadoresTimes {
+  id         Int       @id @default(autoincrement())
+  jogador    Jogadores @relation(fields: [jogador_id], references: [id])
+  team       Times     @relation(fields: [time_id], references: [id])
+  jogador_id Int
+  time_id    Int
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 
-model Games {
-  id             Int         @id @default(autoincrement())
-  team_one       Teams       @relation("TeamOne", fields: [team_one_id], references: [id])
-  team_two       Teams       @relation("TeamTwo", fields: [team_two_id], references: [id])
-  team_winner    Teams?      @relation("TeamWinner", fields: [team_winner_id], references: [id])
-  tournament     Tournaments @relation(fields: [tournament_id], references: [id])
-  team_one_id    Int
-  team_two_id    Int
-  team_winner_id Int?
-  tournament_id  Int
-  createdAt      DateTime    @default(now())
-  updatedAt      DateTime    @updatedAt
-  StatsGame      Stats[]
+model Partidas {
+  id               Int      @id @default(autoincrement())
+  time_A           Times    @relation("TeamOne", fields: [time_A_id], references: [id])
+  time_B           Times    @relation("TeamTwo", fields: [time_B_id], references: [id])
+  time_vencedor    Times?   @relation("TeamWinner", fields: [time_vencedor_id], references: [id])
+  torneio          Torneios @relation(fields: [torneio_id], references: [id])
+  time_A_id        Int
+  time_B_id        Int
+  time_vencedor_id Int?
+  torneio_id       Int
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  StatsPartida     Stats[]
 }
 
 model Stats {
-  id           Int               @id @default(autoincrement())
-  name         String            @db.VarChar(100)
-  player       Players           @relation(fields: [player_id], references: [id])
-  player_id    Int
-  game         Games             @relation(fields: [game_id], references: [id])
-  game_id      Int
-  categorie    CategoriesOfStats @relation(fields: [categorie_id], references: [id])
-  categorie_id Int
-  createdAt    DateTime          @default(now())
-  updatedAt    DateTime          @updatedAt
+  id           Int             @id @default(autoincrement())
+  nome         String          @db.VarChar(100)
+  jogador      Jogadores       @relation(fields: [jogador_id], references: [id])
+  jogador_id   Int
+  partida      Partidas        @relation(fields: [partida_id], references: [id])
+  partida_id   Int
+  categoria    CategoriasStats @relation(fields: [categoria_id], references: [id])
+  categoria_id Int
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
 }
 
-model CategoriesOfStats {
+model CategoriasStats {
   id             Int      @id @default(autoincrement())
-  name           String   @db.VarChar(50)
+  nome           String   @db.VarChar(50)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
-  StatsCategorie Stats[]
+  StatsCategoria Stats[]
 }
 
 model PartidaCansada {

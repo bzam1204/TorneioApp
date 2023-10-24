@@ -11,7 +11,7 @@ export default async function handler(
 ) {
     const _data = req.body;
 
-    const torneio_atualizado = await prisma.torneios.update({
+    const time_atualizado = await prisma.times.update({
         where: {
             id: _data.id
         },
@@ -21,7 +21,7 @@ export default async function handler(
     });
 
     res.status(200).json({
-        mensagem: "torneio atualizado com sucesso",
-        dados_torneio_criado: torneio_atualizado
+        mensagem: "time atualizado com sucesso",
+        dados_time_criado: time_atualizado
     });
 }
