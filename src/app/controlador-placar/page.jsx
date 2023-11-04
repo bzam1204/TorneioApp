@@ -84,59 +84,133 @@ export default function ControladorPlacar() {
     const [placar, setPlacar] = useRecoilState(placar_state);
     const [jogadores, setJogadores] = useRecoilState(jogadores_state);
 
-    function criaJogador () {
+    function criaJogador() {
 
     }
 
-    return (
-        <>
-            <Placar>
-                <Info_Geral>
-                    <Nome_Time>Vermelho</Nome_Time>
-                    <Info_Container>
-                        <Pontuacao className={digital_numbers.className}>
-                            {placar.timeA}
-                        </Pontuacao>
-                        <Nome_Time style={{textAlign: "center"}}>vs</Nome_Time>
-                        <Pontuacao className={digital_numbers.className}>
-                            {placar.timeB}
-                        </Pontuacao>
-                    </Info_Container>
+    return (<>
+        <Placar>
+            <Info_Geral>
+                <Nome_Time>Vermelho</Nome_Time>
+                <Info_Container>
+                    <Pontuacao className={digital_numbers.className}>
+                        {placar.timeA}
+                    </Pontuacao>
+                    <Nome_Time style={{textAlign: "center"}}>vs</Nome_Time>
+                    <Pontuacao className={digital_numbers.className}>
+                        {placar.timeB}
+                    </Pontuacao>
+                </Info_Container>
 
-                    <Nome_Time style={{textAlign: "right"}}>Preto</Nome_Time>
-                </Info_Geral>
+                <Nome_Time style={{textAlign: "right"}}>Preto</Nome_Time>
+            </Info_Geral>
 
-                <Painel_Dos_Jogadores>
+            <Painel_Dos_Jogadores>
 
-                    <Jogadores>
-                        {jogadores.timeA.map((jogador, index) => {
-                            return <CardJogadorA index={index} key={index}/>;
-                        })}
-                        {
-                            jogadores.timeA.length < 9 ?
-                                <div style={{
-                                    width: '80px',
-                                    height: '80px',
-                                    backgroundSize: "cover",
-                                    justifySelf: `center`, alignSelf: "center",
-                                    cursor: "pointer",
-                                    backgroundImage: `url(${img_btn_plus.src}`
-                                }}
-                                />
+                <Jogadores>
+                    {jogadores.timeA.map((jogador, index) => {
+                        return <CardJogadorA index={index} key={index}/>;
+                    })}
+                    {jogadores.timeA.length < 9 ?
+                        <div>
 
-                                : null}
+                            <div id={'botao_add_jogador'} onClick={(e) => {
+                                e.preventDefault()
+                                e.stopPropagation()
+                                const input = document.querySelector('#input_nome_jogador')
+                                let nome_jogador = input.value
 
-                    </Jogadores>
+                                setJogadores(prev => {
+                                    return {
+                                        ...prev, timeA: [...prev.timeA, {
+                                            nome: nome_jogador,
+                                            stats: {
+                                                cesta_1: 0,
+                                                cesta_2: 0,
+                                                cesta_3: 0,
+                                                faltas: 0,
+                                                rebotes: 0,
+                                                assistencias: 0,
+                                                roubos: 0,
+                                                tocos: 0
 
-                    <PainelDeComando/>
-                    <Jogadores>
-                        {jogadores.timeB.map((jogador, index) => {
-                            return <CardJogadorB index={index} key={index}/>;
-                        })}
-                    </Jogadores>
-                </Painel_Dos_Jogadores>
-            </Placar>
-        </>
-    )
-        ;
+                                            },
+                                            pontuacao: 0,
+                                            imagem_jogador: ''
+                                        }]
+                                    }
+                                })
+
+                            }} style={{
+                                width: '80px',
+                                height: '80px',
+                                backgroundSize: "cover",
+                                justifySelf: `center`,
+                                alignSelf: "center",
+                                cursor: "pointer",
+                                backgroundImage: `url(${img_btn_plus.src}`
+                            }}
+                            >
+                            </div>
+                            <input id={'input_nome_jogador'} type={"text"} placeholder={'nome do jogador'}/>
+                        </div>
+
+                        : null}
+
+                </Jogadores>
+
+                <PainelDeComando/>
+                <Jogadores>
+                    {jogadores.timeB.map((jogador, index) => {
+                        return <CardJogadorB index={index} key={index}/>;
+                    })}
+                    {jogadores.timeB.length < 9 ?
+                        <div>
+
+                            <div id={'botao_add_jogador'} onClick={(e) => {
+                                e.preventDefault()
+                                e.stopPropagation()
+                                const input = document.querySelector('#input_nome_jogador_timeB')
+                                let nome_jogador = input.value
+
+                                setJogadores(prev => {
+                                    return {
+                                        ...prev, timeB: [...prev.timeB, {
+                                            nome: nome_jogador,
+                                            stats: {
+                                                cesta_1: 0,
+                                                cesta_2: 0,
+                                                cesta_3: 0,
+                                                faltas: 0,
+                                                rebotes: 0,
+                                                assistencias: 0,
+                                                roubos: 0,
+                                                tocos: 0
+
+                                            },
+                                            pontuacao: 0,
+                                            imagem_jogador: ''
+                                        }]
+                                    }
+                                })
+
+                            }} style={{
+                                width: '80px',
+                                height: '80px',
+                                backgroundSize: "cover",
+                                justifySelf: `center`,
+                                alignSelf: "center",
+                                cursor: "pointer",
+                                backgroundImage: `url(${img_btn_plus.src}`
+                            }}
+                            >
+                            </div>
+                            <input id={'input_nome_jogador_timeB'} type={"text"} placeholder={'nome do jogador'}/>
+                        </div>
+
+                        : null}
+                </Jogadores>
+            </Painel_Dos_Jogadores>
+        </Placar>
+    </>);
 }

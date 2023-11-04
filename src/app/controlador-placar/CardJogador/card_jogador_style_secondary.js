@@ -107,4 +107,5 @@ export const BotaoStats = styled.div`width: 40px;
   background-position: center center;
   border-radius: 50px;
   background-repeat: no-repeat;
+    
 `

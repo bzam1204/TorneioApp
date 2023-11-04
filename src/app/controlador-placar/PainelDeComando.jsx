@@ -325,6 +325,9 @@ function PainelDeComando() {
 
             <Controlador_Partida>
                 <Btn_Desfazer
+                    onclick={function () {
+                        set
+                    }}
                     style={{backgroundImage: `url(${desfazer.src})`}}
                 />
                 <Btn_New_Game
