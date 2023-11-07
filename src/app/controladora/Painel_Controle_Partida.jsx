@@ -1,9 +1,5 @@
 "use client";
 import React, {useState, useEffect} from "react";
-import styled from "styled-components";
-import localFont from "next/font/local";
-
-import colors from "../../js/colors.js";
 import {
     Frame_Container_Painel_Controle_Partida,
     Container_Painel_Controle_Partida,
@@ -12,9 +8,7 @@ import {
     Nome_Time, Pontuacao_Time, Container_Pontuacao, Botao_Menu_Opcoes, Botao_24_Segundos, Botao_Tempo
 } from "./estilo/estilo_painel_controle_partida";
 
-const digital_numbers = localFont({
-    src: "../../fonts/DigitalNumbers-Regular.ttf"
-});
+
 
 export default function Painel_Controle_Partida() {
     return (
