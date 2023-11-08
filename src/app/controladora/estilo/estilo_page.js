@@ -1,7 +1,4 @@
-"use client";
-import React, {useState, useEffect} from "react";
 import styled from "styled-components";
-
 
 export const Container_Principal = styled.div`
   display: flex;
