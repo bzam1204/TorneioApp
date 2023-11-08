@@ -32,7 +32,7 @@ export default function Painel_Controle_Partida() {
                             fontFamily: 'Orbitron',
                             fontWeight: '700'
                         }}>x</p>
-                        {/*apenas insere o 'x' entre os times*/}
+                        {/*apenas insere o 'x' entre os nomes dos times*/}
                         <Nome_Time>
                             los angeles lakers
                         </Nome_Time>
