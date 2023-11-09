@@ -1,6 +1,7 @@
 "use client";
 import React, {useState, useEffect} from "react";
 
+
 import {Container_Principal, Container_Time} from "./estilo/estilo_page";
 import Painel_Controle_Partida from "./Painel_Controle_Partida";
 import Cartao_Jogador from "./Cartao_Jogador";
@@ -8,10 +9,12 @@ import Cartao_Jogador from "./Cartao_Jogador";
 
 export default function Page() {
 
+
     const jogadores_selecionados_no_check_in = {
         time_a: [{
+            id: 1,
             nome: 'Bruno',
-            rota_imagem: '',
+            imagem_url: 'https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958',
             numero_camisa: 76,
             pontuacao: 0,
             cestas_3: 0,
@@ -22,8 +25,9 @@ export default function Page() {
             assistencias: 0,
             roubos: 0
         }, {
+            id: 1,
             nome: 'Bruno',
-            rota_imagem: '',
+            imagem_url: 'https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958',
             numero_camisa: 76,
             pontuacao: 0,
             cestas_3: 0,
@@ -34,8 +38,9 @@ export default function Page() {
             assistencias: 0,
             roubos: 0
         }, {
+            id: 1,
             nome: 'Bruno',
-            rota_imagem: '',
+            imagem_url: 'https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958',
             numero_camisa: 76,
             pontuacao: 0,
             cestas_3: 0,
@@ -46,8 +51,9 @@ export default function Page() {
             assistencias: 0,
             roubos: 0
         }, {
+            id: 1,
             nome: 'Bruno',
-            rota_imagem: '',
+            imagem_url: 'https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958',
             numero_camisa: 76,
             pontuacao: 0,
             cestas_3: 0,
@@ -58,8 +64,9 @@ export default function Page() {
             assistencias: 0,
             roubos: 0
         }, {
+            id: 1,
             nome: 'Bruno',
-            rota_imagem: '',
+            imagem_url: 'https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958',
             numero_camisa: 76,
             pontuacao: 0,
             cestas_3: 0,
@@ -70,8 +77,9 @@ export default function Page() {
             assistencias: 0,
             roubos: 0
         }], time_b: [{
+            id: 1,
             nome: 'Bruno',
-            rota_imagem: '',
+            imagem_url: 'https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958',
             numero_camisa: 76,
             pontuacao: 0,
             cestas_3: 0,
@@ -82,8 +90,9 @@ export default function Page() {
             assistencias: 0,
             roubos: 0
         }, {
+            id: 1,
             nome: 'Bruno',
-            rota_imagem: '',
+            imagem_url: 'https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958',
             numero_camisa: 76,
             pontuacao: 0,
             cestas_3: 0,
@@ -94,8 +103,9 @@ export default function Page() {
             assistencias: 0,
             roubos: 0
         }, {
+            id: 1,
             nome: 'Bruno',
-            rota_imagem: '',
+            imagem_url: 'https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958',
             numero_camisa: 76,
             pontuacao: 0,
             cestas_3: 0,
@@ -106,8 +116,9 @@ export default function Page() {
             assistencias: 0,
             roubos: 0
         }, {
+            id: 1,
             nome: 'Bruno',
-            rota_imagem: '',
+            imagem_url: 'https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958',
             numero_camisa: 76,
             pontuacao: 0,
             cestas_3: 0,
@@ -118,8 +129,9 @@ export default function Page() {
             assistencias: 0,
             roubos: 0
         }, {
+            id: 1,
             nome: 'Bruno',
-            rota_imagem: '',
+            imagem_url: 'https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958',
             numero_camisa: 76,
             pontuacao: 0,
             cestas_3: 0,

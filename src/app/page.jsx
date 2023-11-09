@@ -1,6 +1,5 @@
 'use client'
 import React, {useEffect, useState} from 'react'
-import AutocompleteSelectTorneios from "./AutocompleteSelectTorneios";
 
 export default function page() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -9,7 +8,6 @@ export default function page() {
     async function criaTorneio() {
 
         const select = document.querySelector('#AutocompleteSelectTorneios')
-        console.log(select.value)
 
 
         /* let torneio_criado;
@@ -53,48 +51,6 @@ export default function page() {
             justifyContent: "center",
             alignItems: "center"
         }}>
-
-            <p>Criar um Torneio ou Selecionar um Já Existente?</p>
-            <button onClick={() => {
-                setSelecionarTorneio(false)
-            }}>Criar Torneio
-            </button>
-            <button onClick={() => {
-                setSelecionarTorneio(true)
-            }}>Selecionar Torneio
-            </button>
-
-            {
-                selecionar_torneio === true ? (
-                    <div style={{
-                        display: "flex",
-                        flexDirection: "column", gap: '30px',
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}>
-
-
-                        <AutocompleteSelectTorneios></AutocompleteSelectTorneios>
-                        <button onClick={criaTorneio} style={{width: 'fit-content', height: 'fit-content'}}>Selecionar
-                            Torneio
-                        </button>
-                    </div>) : null
-            }
-            {
-                selecionar_torneio === false ? (
-                    <div style={{
-                        display: "flex",
-                        flexDirection: "column", gap: '30px',
-                        justifyContent: "center",
-                        alignItems: "center"
-                    }}>
-                        <input placeholder={'Nome do Torneio'} type={"text"}/>
-                        <button onClick={criaTorneio} style={{width: 'fit-content', height: 'fit-content'}}>Criar
-                            Torneio
-                        </button>
-                    </div>
-                ) : null
-            }
         </div>
 
     )

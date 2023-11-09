@@ -21,7 +21,6 @@ async function CreateNewPlayer(playerName) {
 
 async function findAllPlayers() {
   const allPlayers = await prisma.players.findMany();
-  console.log(allPlayers);
   return allPlayers;
 }
 

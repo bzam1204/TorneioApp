@@ -2,24 +2,24 @@ import styled from "styled-components";
 
 export const Frame_Container_Painel_Controle_Partida = styled.section`
   display: flex;
-  padding: 16px;
+  padding: 1.17vw;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 1.17vw;
   flex: 1 0 0;
-  align-self: stretch;
+  align-self: stretch; width: calc( 100% - 1.17vw * 2);
 `
 
 export const Container_Painel_Controle_Partida = styled.div`
-  border-radius: 20px;
-  border: 5px solid rgba(54, 54, 54, 0.01);
+  border-radius: 1.46vw;
   background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(90deg, rgba(27, 0, 2, 0.60) -14.22%, rgba(1, 1, 27, 0.60) 120.29%);
   backdrop-filter: blur(29.5px);
   display: flex;
-  padding: 48px;
+  width: auto;
+  padding: 1.17vw 0 ;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 1.17vw;
   flex: 1 0 0;
   align-self: stretch;
 `
@@ -33,7 +33,7 @@ export const Container_Time_Info = styled.div`
 `
 export const Container_Nome_Time = styled.div`
   display: flex;
-  width: 391.333px;
+  width: 28.62vw;
   justify-content: space-between;
   align-items: center;
 `
@@ -43,7 +43,7 @@ export const Nome_Time = styled.div`
   text-transform: uppercase;
   text-align: center;
   font-family: Orbitron;
-  font-size: 23px;
+  font-size: 1.68vw;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -52,28 +52,28 @@ export const Nome_Time = styled.div`
 export const Container_Pontuacao = styled.div`
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1.17vw;
 `
 export const Pontuacao_Time = styled.div`
   text-align: center;
   font-family: Orbitron;
-  font-size: 50px;
+  font-size: 3.66vw;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   display: flex;
   text-transform: uppercase;
-  width: 195.667px;
+  width: 14.27vw;
   background: linear-gradient(104deg, #FFF 69.99%, #D0D0D0 89.91%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   justify-content: center;
   align-items: center;
-  gap: 10px;`
+  gap: 7vw;`
 
-export const Botao_Tempo = styled.div`border-radius: 20px;
-  backdrop-filter: blur(2px);
+export const Botao_Tempo = styled.div`border-radius: 1.46vw;
+  backdrop-filter: blur(.14vw);
   display: flex;
   height: fit-content;
   text-align: center;
@@ -83,7 +83,7 @@ export const Botao_Tempo = styled.div`border-radius: 20px;
   -webkit-text-fill-color: transparent;
   text-align: center;
   font-family: Orbitron;
-  font-size: 50px;
+  font-size: 3.66vw;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
