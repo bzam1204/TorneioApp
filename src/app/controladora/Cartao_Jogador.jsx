@@ -78,8 +78,7 @@ export default function Cartao_Jogador({dados_jogador, index, time}) {
 
     return (<>
         {time === 'time_a' ? <Container_Cartao_Jogador_Time_A onClick={function () {
-            router.push(`/tela-jogador-partida?id=${dados_jogador.id}`
-            )
+            router.push(`/tela-jogador-partida?id=${dados_jogador.id}`)
         }} background_color={retornaCorDoCartao().fundo}>
             <Dica_Cor_Botao borda={retornaCorDoCartao().borda} cor={retornaCorDoCartao().indicador_botao}/>
             <Imagem_Jogador imagem_url={dados_jogador.imagem_url}/>
@@ -97,7 +96,7 @@ export default function Cartao_Jogador({dados_jogador, index, time}) {
         </Container_Cartao_Jogador_Time_A> : null}
 
         {time === 'time_b' ? <Container_Cartao_Jogador_Time_B onClick={function () {
-            router.push(`/tela-jogador-partida/${dados_jogador.id}`)
+            router.push(`/tela-jogador-partida?id=${dados_jogador.id}`)
         }} background_color={retornaCorDoCartao().fundo}>
             <div style={{
                 display: 'flex',
