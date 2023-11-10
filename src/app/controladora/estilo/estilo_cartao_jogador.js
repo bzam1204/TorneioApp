@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container_Cartao_Jogador_Time_A = styled.article`
-  border-radius: 20px;
+  border-radius: 1.46vw;
   cursor: pointer;
   background: ${props => props.background_color};
   height: 17.44vh;

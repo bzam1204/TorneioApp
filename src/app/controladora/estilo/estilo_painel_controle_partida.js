@@ -35,7 +35,9 @@ export const Container_Nome_Time = styled.div`
   display: flex;
   width: 28.62vw;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  align-self: stretch;
+  flex: 1 1 0;
 `
 export const Nome_Time = styled.div`
   flex: 1 0 0;
@@ -51,8 +53,10 @@ export const Nome_Time = styled.div`
 `
 export const Container_Pontuacao = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.17vw;
+  align-self: stretch;
+  flex: 1 1 0;
 `
 export const Pontuacao_Time = styled.div`
   text-align: center;

@@ -1,12 +1,16 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import localFont from "next/font/local";
-
 import colors from "../../js/colors.js";
+import {useRecoilState} from "recoil";
+import {tempo_partida} from "../../State/tempo_partida";
+import {segundos_posse} from "../../State/segundos_posse";
+import {placar} from "../../State/placar";
+import socket from "../../config/socket_config";
 
 const digital_numbers = localFont({
-  src: "../../fonts/DigitalNumbers-Regular.ttf"
+    src: "../../fonts/DigitalNumbers-Regular.ttf"
 });
 
 const Placar = styled.main`
@@ -85,77 +89,83 @@ const ContainerTempo = styled.div`
 `;
 
 export default function PlacarVisivel() {
-  const [dadosDaPartida, setDadosDaPartida] = useState({
-    id: 2,
-    segundos_restantes: 59,
-    minutos_restantes: 10,
-    tempo24s: 23,
-    pontos_time_a: 35,
-    pontos_time_b: 89,
-    createdAt: "2023-10-07T12:13:42.866Z",
-    updatedAt: "2023-10-07T12:13:42.866Z"
-  });
 
-  useEffect(() => {
-    setTimeout(() => {
-      (async () => {
-        const response = await fetch("./api/partida_cansada/dados_partida");
+    const [_tempo_partida, setTempoPartida] = useRecoilState(tempo_partida)
+    const [_segundos_posse, setSegundosPosse] = useRecoilState(segundos_posse)
+    const [_placar, setPlacar] = useRecoilState(placar)
+    useEffect(() => {
+        socket.on('update', function ({currentTime, possessionTime, isRunning}) {
+            setSegundosPosse(possessionTime)
+            setTempoPartida(currentTime)
+        })
+    }, [_tempo_partida, _segundos_posse]);
 
-        const dados_partida = await response.json();
-        console.log(dados_partida)
-        setDadosDaPartida(dados_partida);
-      })();
-    }, 250);
-  }, [dadosDaPartida]);
 
-  return (
-    <>
-      <Placar>
-        <ContainerNomeTime>
-          <Nome_Time>Vermelho</Nome_Time>
-          <div
-            style={{
-              color: "#FFF",
-              textAlign: "center",
-              fontFamily: "Orbitron",
-              fontSize: "50px",
-              fontStyle: "normal",
-              fontWeight: "400",
-              lineHeight: "normal",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "10px",
-              alignSelf: "stretch"
-            }}
-          >
-            vs
-          </div>
-          <Nome_Time>Preto</Nome_Time>
-        </ContainerNomeTime>
+    const [dadosDaPartida, setDadosDaPartida] = useState({
+        id: 2,
+        segundos_restantes: 59,
+        minutos_restantes: 10,
+        tempo24s: 23,
+        pontos_time_a: 35,
+        pontos_time_b: 89,
+        createdAt: "2023-10-07T12:13:42.866Z",
+        updatedAt: "2023-10-07T12:13:42.866Z"
+    });
 
-        <ContainerPontuacao>
-          <Pontuacao className={digital_numbers.className}>{dadosDaPartida.pontos_time_a}</Pontuacao>
+    useEffect(() => {
+        setTimeout(() => {
+            (async () => {
+                const response = await fetch("./api/partida_cansada/dados_partida");
 
-          <Pontuacao className={digital_numbers.className}>{dadosDaPartida.pontos_time_b}</Pontuacao>
-        </ContainerPontuacao>
+                const dados_partida = await response.json();
+                console.log(dados_partida)
+                setDadosDaPartida(dados_partida);
+            })();
+        }, 250);
+    }, [dadosDaPartida]);
 
-        <ContainerTempo>
-          <Tempo_24seg className={digital_numbers.className}>
-            {`${dadosDaPartida.tempo24s.toString().padStart(2, "0")}`}
-          </Tempo_24seg>
-          <Tempo_Partida className={digital_numbers.className}>
-            {`${dadosDaPartida.minutos_restantes
-              .toString()
-              .padStart(2, "0")}:${dadosDaPartida.segundos_restantes
-              .toString()
-              .padStart(2, "0")}`}{" "}
-          </Tempo_Partida>
-          <Tempo_24seg className={digital_numbers.className}>
-            {`${dadosDaPartida.tempo24s.toString().padStart(2, "0")}`}
-          </Tempo_24seg>
-        </ContainerTempo>
-      </Placar>
-    </>
-  );
+    return (<>
+        <Placar>
+            <ContainerNomeTime>
+                <Nome_Time>Vermelho</Nome_Time>
+                <div
+                    style={{
+                        color: "#FFF",
+                        textAlign: "center",
+                        fontFamily: "Orbitron",
+                        fontSize: "50px",
+                        fontStyle: "normal",
+                        fontWeight: "400",
+                        lineHeight: "normal",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: "10px",
+                        alignSelf: "stretch"
+                    }}
+                >
+                    vs
+                </div>
+                <Nome_Time>Preto</Nome_Time>
+            </ContainerNomeTime>
+
+            <ContainerPontuacao>
+                <Pontuacao className={digital_numbers.className}>{dadosDaPartida.pontos_time_a}</Pontuacao>
+
+                <Pontuacao className={digital_numbers.className}>{dadosDaPartida.pontos_time_b}</Pontuacao>
+            </ContainerPontuacao>
+
+            <ContainerTempo>
+                <Tempo_24seg className={digital_numbers.className}>
+                    {`${_segundos_posse.toString().padStart(2, "0")}`}
+                </Tempo_24seg>
+                <Tempo_Partida className={digital_numbers.className}>
+                    {`${Math.trunc(_tempo_partida / 60).toString().padStart(2, "0")}:${Math.trunc(_tempo_partida % 60).toString().padStart(2, "0")}`}
+                </Tempo_Partida>
+                <Tempo_24seg className={digital_numbers.className}>
+                    {`${_segundos_posse.toString().padStart(2, "0")}`}
+                </Tempo_24seg>
+            </ContainerTempo>
+        </Placar>
+    </>);
 }
