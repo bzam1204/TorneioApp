@@ -3,21 +3,20 @@ import React, {useState, useEffect} from "react";
 import {useRouter} from 'next/navigation';
 
 import {
-    Container_Cartao_Jogador_Time_A,
-    Container_Cartao_Jogador_Time_B,
+    Container_Cartao_Botoes_Esquerdo,
+    Container_Cartao_Botoes_Direito,
     Dica_Cor_Botao,
-    Imagem_Jogador,
-    Nome_Jogador,
-    Numero_Camisa
-} from "./estilo/estilo_cartao_jogador";
+    Imagem_Icone_Botao,
+    Nome_Estatistica,
+} from "./estilo/estilo_cartao_botao";
 import colors from "../../js/colors";
 
-export default function Cartao_Jogador({dados_jogador, index, time}) {
+export default function Cartao_Botao({dados_botao, index, lado}) {
 
     function retornaCorDoCartao() {
         let cor = {fundo: 'Não atribuído', indicador_botao: '', borda: ''}
 
-        if (time === 'time_a') {
+        if (lado === 'ESQUERDO') {
             if (index === 0) {
                 cor.fundo = colors.cores_fundo_botoes_laterais.lado_esquerdo.azul.fundo
                 cor.indicador_botao = colors.cores_fundo_botoes_laterais.lado_esquerdo.azul.indicador_botao_cor
@@ -44,7 +43,7 @@ export default function Cartao_Jogador({dados_jogador, index, time}) {
                 cor.borda = colors.borda_indicador_cor_botao_esquerda
             }
         }
-        if (time === 'time_b') {
+        if (lado === 'DIREITO') {
             if (index === 0) {
                 cor.fundo = colors.cores_fundo_botoes_laterais.lado_direito.azul.fundo
                 cor.indicador_botao = colors.cores_fundo_botoes_laterais.lado_direito.azul.indicador_botao_cor
@@ -77,44 +76,39 @@ export default function Cartao_Jogador({dados_jogador, index, time}) {
     const router = useRouter()
 
     return (<>
-        {time === 'time_a' ? <Container_Cartao_Jogador_Time_A onClick={function () {
-            router.push(`/tela-jogador-partida?dados-jogador=${JSON.stringify(dados_jogador)}`)
+        {lado === 'ESQUERDO' ? <Container_Cartao_Botoes_Esquerdo onClick={function () {
+            router.push('./controladora')
         }} background_color={retornaCorDoCartao().fundo}>
             <Dica_Cor_Botao borda={retornaCorDoCartao().borda} cor={retornaCorDoCartao().indicador_botao}/>
-            <Imagem_Jogador imagem_url={dados_jogador.imagem_url}/>
             <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                width: 'calc(21.66vw - 48px)',
+                width: 'calc(30vw - 48px)',
                 alignItems: "center",
                 padding: '24px'
             }}>
 
-                <Nome_Jogador>
-                    <pre>{dados_jogador.nome.replace(' ', '\n')}</pre>
-                </Nome_Jogador>
-                <Numero_Camisa>{dados_jogador.numero_camisa}</Numero_Camisa>
+                <Nome_Estatistica>{dados_botao.nome}</Nome_Estatistica>
+                <Imagem_Icone_Botao imagem_url={dados_botao.imagem_url}/>
             </div>
-        </Container_Cartao_Jogador_Time_A> : null}
+        </Container_Cartao_Botoes_Esquerdo> : null}
 
-        {time === 'time_b' ? <Container_Cartao_Jogador_Time_B onClick={function () {
-            router.push(`/tela-jogador-partida?dados-jogador=${JSON.stringify(dados_jogador)}`)
+        {lado === 'DIREITO' ? <Container_Cartao_Botoes_Direito onClick={function () {
+            router.push('./controladora')
         }} background_color={retornaCorDoCartao().fundo}>
             <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                width: 'calc(21.66vw - 48px)',
+                width: 'calc(30vw - 48px)',
                 alignItems: "center",
                 padding: '24px'
             }}>
 
-                <Numero_Camisa>{dados_jogador.numero_camisa}</Numero_Camisa>
-                <Nome_Jogador style={{textAlign: "right"}}>
-                    <pre>{dados_jogador.nome.replace(' ', '\n')}</pre>
-                </Nome_Jogador>
+                <Imagem_Icone_Botao imagem_url={dados_botao.imagem_url}/>
+                <Nome_Estatistica style={{textAlign: 'right'}}
+                >{dados_botao.nome}</Nome_Estatistica>
             </div>
-            <Imagem_Jogador imagem_url={dados_jogador.imagem_url}/>
             <Dica_Cor_Botao borda={retornaCorDoCartao().borda} cor={retornaCorDoCartao().indicador_botao}/>
-        </Container_Cartao_Jogador_Time_B> : null}
+        </Container_Cartao_Botoes_Direito> : null}
     </>)
 }
