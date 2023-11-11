@@ -18,6 +18,7 @@ export const Container_Cartao_Botoes_Esquerdo = styled.article`
 export const Container_Cartao_Botoes_Direito = styled(Container_Cartao_Botoes_Esquerdo)`
   background: ${props => props.background_color};
   justify-content: flex-end;
+  
 `
 
 export const Dica_Cor_Botao = styled.div`

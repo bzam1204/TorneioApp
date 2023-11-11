@@ -97,6 +97,12 @@ export default function Cartao_Botao({dados_botao, index, lado}) {
             router.push('./controladora')
         }} background_color={retornaCorDoCartao().fundo}>
             <div style={{
+                width: '30px', height: '30px', display: "flex", justifyContent: "flex-start", paddingLeft: '.5vw',
+                background: '#ccc', borderRadius: '500px'
+            }}
+            >{}//cada um dos botoes será mockado aqui.
+            </div>
+            <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 width: 'calc(30vw - 48px)',

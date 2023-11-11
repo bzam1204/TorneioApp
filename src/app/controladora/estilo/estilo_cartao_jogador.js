@@ -53,3 +53,8 @@ export const Nome_Jogador = styled.div`
   font-weight: 700;
   line-height: normal;
 `
+
+export const Select_Jogador = styled.div`
+  position: absolute;
+  
+`

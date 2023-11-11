@@ -13,7 +13,7 @@ export default function Page() {
     const [_times_montados, setJogadoresSelecionadoNoCheckIn] = useRecoilState(times_montados)
 
     return <>
-        <Container_Principal>
+        <Container_Principal id={'container_principal'}>
             <Container_Time>
                 {_times_montados.time_a.map(function (jogador, _key) {
                     return (<Cartao_Jogador dados_jogador={jogador} key={_key} index={_key}

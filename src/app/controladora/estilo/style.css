@@ -1,0 +1,44 @@
+.jogadores_select {
+    width: 660px;
+    border-radius: 20px;
+    height: 64px;
+    padding: 8px 32px;
+    font-family: Orbitron;
+    font-weight: bold;
+    font-size: 30px;
+    color: #2a2a2a;
+}
+
+.layer_jogadores_select {
+    width: 100vw;
+    backdrop-filter: blur(6px);
+    height: 100vh;
+    display: flex;
+    gap: 2vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.botao_adicionar {
+    cursor: pointer;
+    border-radius: 20px;
+    display: flex;
+    padding: 8px 32px;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    font-family: Orbitron;
+    background: rgba(255, 255, 255, 0.40);
+    backdrop-filter: blur(2px);
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    &:hover{
+        backdrop-filter: brightness(200%);
+        -webkit-filter: brightness(200%);
+    }
+}
