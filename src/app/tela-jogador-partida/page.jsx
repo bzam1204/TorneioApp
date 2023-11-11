@@ -21,8 +21,7 @@ const botoes_info = {
     }, {
         nome: 'VOLTAR',
         imagem_url: 'https://lh3.googleusercontent.com/u/2/drive-viewer/AK7aPaB3xQ7uaiehbdo4eN5dxXgZAG1T9xafgxZjtDvlOdkfL530R_qxKRcPfHWOMxff1OCD_nTb2eVXoIMGZVXViI0R2zHOdA=w1920-h943'
-    },],
-    direita: [{
+    },], direita: [{
         nome: 'ASSISTÊNCIA',
         imagem_url: 'https://lh3.googleusercontent.com/u/2/drive-viewer/AK7aPaD13kj3aYczFqNTr_nHvx-4VuBUSF_iWJDOvsSTEdOnG5lxcOujcEuZdrX0guiseAOYq5nSC1zfWI_u9rCa6QdXST0OOg=w1920-h943'
     }, {
@@ -65,31 +64,27 @@ export default function Page() {
     return <>
         <Container_Principal>
             <Container_Botoes>
-                {
-                    botoes_info.esquerda.map(function (_dados_botao, _key) {
-                        return (
-                            <Cartao_Botao dados_botao={_dados_botao}
+                {botoes_info.esquerda.map(function (_dados_botao, _key) {
+                    return (<Cartao_Botao dados_botao={_dados_botao}
+                                          dados_jogador={_dados_jogador}
                                           key={_key}
                                           index={_key}
                                           lado={'ESQUERDO'}>
 
-                            </Cartao_Botao>)
-                    })
-                }
+                    </Cartao_Botao>)
+                })}
             </Container_Botoes>
             <Painel_Jogador_Info dados_jogador={_dados_jogador}/>
             <Container_Botoes>
-                {
-                    botoes_info.direita.map(function (_dados_botao, _key) {
-                        return (
-                            <Cartao_Botao
-                                dados_botao={_dados_botao}
-                                key={_key}
-                                index={_key}
-                                lado={'DIREITO'}>
-                            </Cartao_Botao>)
-                    })
-                }
+                {botoes_info.direita.map(function (_dados_botao, _key) {
+                    return (<Cartao_Botao
+                        dados_jogador={_dados_jogador}
+                        dados_botao={_dados_botao}
+                        key={_key}
+                        index={_key}
+                        lado={'DIREITO'}>
+                    </Cartao_Botao>)
+                })}
             </Container_Botoes>
         </Container_Principal>
     </>
