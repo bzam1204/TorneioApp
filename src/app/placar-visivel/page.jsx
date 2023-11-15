@@ -4,6 +4,7 @@ import styled from "styled-components";
 import localFont from "next/font/local";
 
 import colors from "../../js/colors.js";
+import socket from "../../config/socket.js";
 
 const digital_numbers = localFont({
   src: "../../fonts/DigitalNumbers-Regular.ttf"

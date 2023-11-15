@@ -22,6 +22,7 @@ import {
     interpolateColor,
     updateDadosPartida
 } from "./functions";
+import socket from "../../config/socket.js";
 
 const digital_numbers = localFont({
     src: "../../fonts/DigitalNumbers-Regular.ttf"
@@ -163,58 +164,25 @@ function PainelDeComando() {
     useEffect(() => {
         let timer;
 
-        if (isRunning && segundosRestantes > 0) {
-            timer = setTimeout(() => {
-                setTempoRestante((old_info) => {
+        socket.on("update", ({currentTime, possessionTime, isRunning}) => {
+            setTempoRestante({
+                minutos: Math.trunc(currentTime/ 60),
+                segundos: Math.trunc(currentTime% 60)
+            })
 
-                    updateDadosPartida({
-                        segundos_restantes: tempoRestante.segundos,
-                        minutos_restantes: tempoRestante.minutos,
-                        tempo24s: segundosRestantes,
-                        pontos_time_a: placar.timeA,
-                        pontos_time_b: placar.timeB
-                    });
-                    let _minutos = tempoRestante.minutos;
-                    let _segundos = tempoRestante.segundos;
+            setIsRunning(isRunning)
+            setSegundosRestantes(possessionTime)
 
-                    if (tempoRestante.minutos === 0 && tempoRestante.segundos === 0) {
-                        alert("tempo acabou");
-                    } else if (tempoRestante.segundos - 1 < 0) {
-                        _minutos = tempoRestante.minutos - 1;
-                        _segundos = 59;
-                    } else if (
-                        (tempoRestante.segundos <= 0 && tempoRestante <= 0) === false
-                    ) {
-                        _segundos = tempoRestante.segundos - 1;
-                    }
+            const startColor = [0, 87, 255]; // Azul 0057FF
+            const endColor = [255, 0, 0]; // Vermelho FF0000
+            const factor = (24 - segundosRestantes) / 24;
+            setCurrentColor(interpolateColor(startColor, endColor, factor));
 
-                    return {minutos: _minutos, segundos: _segundos};
-                });
-                setSegundosRestantes((prev) => prev - 1);
-            }, 1000);
-        } else if (segundosRestantes === 0) {
-            setIsRunning(false);
-            sound_buzzer().play();
-        }
+            if(currentTime == 0) sound_buzzer().play()
+            if(possessionTime == 12) sound_24seg_torcida_nervosa().play()
+            else if(possessionTime == 0) sound_apito().play()
+        })
 
-        if (isRunning === false) {
-            clearTimeout(timer);
-        }
-
-        if (segundosRestantes === 12) {
-            sound_24seg_torcida_nervosa().play()
-        }
-
-
-        // Calcular a cor
-        const startColor = [0, 87, 255]; // Azul 0057FF
-        const endColor = [255, 0, 0]; // Vermelho FF0000
-        const factor = (24 - segundosRestantes) / 24;
-        setCurrentColor(interpolateColor(startColor, endColor, factor));
-
-        return () => {
-            clearTimeout(timer);
-        };
     }, [isRunning, segundosRestantes]);
 
     function togglePausePlayTempoPartida() {
@@ -222,37 +190,33 @@ function PainelDeComando() {
         if (isRunning) {
             sound_24seg_torcida_nervosa().stop()
             setIsRunning(false);
+            socket.emit("playpause")
             btnPlayPause.style.backgroundImage = `url(${play.src})`;
         } else {
-
+            socket.emit("playpause")
             setIsRunning(true);
             btnPlayPause.style.backgroundImage = `url(${pause.src})`;
         }
     }
 
     function addMinute() {
-        setTempoRestante((prev) => {
-            return {...prev, minutos: prev.minutos + 1};
-        });
+        socket.emit("addminute")
     }
 
     function removeMinute() {
-        setTempoRestante((prev) => {
-            return {...prev, minutos: prev.minutos - 1};
-        });
+        socket.emit("removeminute")
     }
 
 
     function timeControlDevice(e) {
-        if (e.code === "Numpad5") {
+        if (e.code === "ArrowUp") {
             togglePausePlayTempoPartida();
-
         }
 
-        if (e.code === "ArrowLeft") {
+        if (e.code === "ArrowRight") {
             handleResetAndPlayClick();
         }
-        if (e.code === "ArrowRight") {
+        if (e.code === "ArrowLeft") {
             apitar();
         }
     }
@@ -260,10 +224,8 @@ function PainelDeComando() {
     function handleResetAndPlayClick() {
         sound_24seg_torcida_nervosa().stop()
         const btnPlayPause = document.querySelector("#btnPlayPause");
-        setIsRunning(true);
-        setSegundosRestantes(24);
+        socket.emit("reset")
         setCurrentColor([0, 87, 255]);
-        btnPlayPause.style.backgroundImage = `url(${pause.src})`;
     }
 
     function apitar() {
@@ -356,11 +318,7 @@ function PainelDeComando() {
                             btnPlayPause.style.backgroundImage = `url(${play.src})`;
                         }
                         setPlacar({timeA: 0, timeB: 0});
-                        setSegundosRestantes(24);
-                        setTempoRestante({
-                            minutos: 10,
-                            segundos: 0
-                        });
+                        socket.emit("start")
                         updateDadosPartida({
                             segundos_restantes: 59,
                             minutos_restantes: 10,
