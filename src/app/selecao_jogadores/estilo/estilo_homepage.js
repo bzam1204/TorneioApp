@@ -10,13 +10,14 @@ export const Container_Principal = styled.article`
 
 export const Container_Jogadores = styled.section`
   width: 100%;
-  height: 100%;
+  flex: 1 1 0;
+  align-self: stretch;
   display: flex;
-  padding: 16px 0px;
+  padding: 1.17vw 0px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 1.17vw;
 `
 
 export const Painel_Interacao = styled(Container_Jogadores)`
