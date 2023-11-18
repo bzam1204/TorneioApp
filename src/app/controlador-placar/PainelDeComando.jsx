@@ -1,13 +1,13 @@
 "use client";
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import localFont from "next/font/local";
-import {useRecoilState} from "recoil";
+import { useRecoilState } from "recoil";
 import {
     jogadores_state,
+    placar_state,
     current_color_state,
     is_running_state,
-    placar_state,
     segundos_restantes_state,
     tempo_restante_state
 } from "../../state/placar";
@@ -164,39 +164,41 @@ function PainelDeComando() {
     useEffect(() => {
         let timer;
 
-        socket.on("update", ({currentTime, possessionTime, isRunning}) => {
+        socket.on("update", ({ currentTime, possessionTime, isRunning }) => {
+            setIsRunning(isRunning)
+            const btnPlayPause = document.querySelector("#btnPlayPause");
+
+            if (isRunning) btnPlayPause.style.backgroundImage = `url(${pause.src})`;
+            else btnPlayPause.style.backgroundImage = `url(${play.src})`;
+
+            setSegundosRestantes(possessionTime)
+
             setTempoRestante({
-                minutos: Math.trunc(currentTime/ 60),
-                segundos: Math.trunc(currentTime% 60)
+                minutos: Math.trunc(currentTime / 60),
+                segundos: Math.trunc(currentTime % 60)
             })
 
-            setIsRunning(isRunning)
-            setSegundosRestantes(possessionTime)
 
             const startColor = [0, 87, 255]; // Azul 0057FF
             const endColor = [255, 0, 0]; // Vermelho FF0000
             const factor = (24 - segundosRestantes) / 24;
             setCurrentColor(interpolateColor(startColor, endColor, factor));
 
-            if(currentTime == 0) sound_buzzer().play()
-            if(possessionTime == 12) sound_24seg_torcida_nervosa().play()
-            else if(possessionTime == 0) sound_apito().play()
+            if (currentTime == 0) sound_buzzer().play()
+            if (possessionTime <= 12 && isRunning) sound_24seg_torcida_nervosa().play()
+            if (!isRunning) sound_24seg_torcida_nervosa().pause()
+            else if (possessionTime == 0) {
+                sound_apito().play()
+                sound_24seg_torcida_nervosa().stop()
+            }
         })
 
-    }, [isRunning, segundosRestantes]);
+    });
 
     function togglePausePlayTempoPartida() {
-        const btnPlayPause = document.querySelector("#btnPlayPause");
-        if (isRunning) {
-            sound_24seg_torcida_nervosa().stop()
-            setIsRunning(false);
-            socket.emit("playpause")
-            btnPlayPause.style.backgroundImage = `url(${play.src})`;
-        } else {
-            socket.emit("playpause")
-            setIsRunning(true);
-            btnPlayPause.style.backgroundImage = `url(${pause.src})`;
-        }
+        socket.emit("playpause")
+
+        if(segundosRestantes == 0) setCurrentColor([0, 87, 255]);
     }
 
     function addMinute() {
@@ -222,10 +224,9 @@ function PainelDeComando() {
     }
 
     function handleResetAndPlayClick() {
-        sound_24seg_torcida_nervosa().stop()
-        const btnPlayPause = document.querySelector("#btnPlayPause");
-        socket.emit("reset")
         setCurrentColor([0, 87, 255]);
+        sound_24seg_torcida_nervosa().stop()
+        socket.emit("reset")
     }
 
     function apitar() {
@@ -240,9 +241,9 @@ function PainelDeComando() {
     }, [isRunning])
     return (
         <Painel_De_Comando>
-            <audio ref={audioRef_24seg_torcida_nervosa} src="./audio/basquete_sound_24s_torcida_nervosa_cut.mp3"/>
-            <audio ref={audioRef_buzzer} src="./audio/buzzer.mp3"/>
-            <audio ref={audioRef_apito} src="./audio/apito.mp3"/>
+            <audio ref={audioRef_24seg_torcida_nervosa} src="./audio/basquete_sound_24s_torcida_nervosa_cut.mp3" />
+            <audio ref={audioRef_buzzer} src="./audio/buzzer.mp3" />
+            <audio ref={audioRef_apito} src="./audio/apito.mp3" />
 
 
             <Controlador_Tempo>
@@ -250,11 +251,11 @@ function PainelDeComando() {
                     {`${tempoRestante.minutos
                         .toString()
                         .padStart(2, "0")}:${tempoRestante.segundos
-                        .toString()
-                        .padStart(2, "0")}`}
+                            .toString()
+                            .padStart(2, "0")}`}
                 </Tempo_Partida>
                 <Tempo_24seg
-                    style={{color: rgbToCSS(currentColor)}}
+                    style={{ color: rgbToCSS(currentColor) }}
                     className={digital_numbers.className}
                 >
                     {segundosRestantes}
@@ -264,22 +265,22 @@ function PainelDeComando() {
                         <Btn_Play_Pause
                             id="btnPlayPause"
                             onClick={togglePausePlayTempoPartida}
-                            style={{backgroundImage: `url(${play.src})`}}
+                            style={{ backgroundImage: `url(${play.src})` }}
                         />{" "}
                         <Btn_Reset_24seg
                             onClick={handleResetAndPlayClick}
-                            style={{backgroundImage: `url(${reset_24s.src})`}}
+                            style={{ backgroundImage: `url(${reset_24s.src})` }}
                         />
                     </Container_Btn_Controle>
 
                     <Container_Btn_Controle>
                         <Btn_Mais_Um
                             onClick={addMinute}
-                            style={{backgroundImage: `url(${mais_um.src})`}}
+                            style={{ backgroundImage: `url(${mais_um.src})` }}
                         />
                         <Btn_Menos_Um
                             onClick={removeMinute}
-                            style={{backgroundImage: `url(${menos_1.src})`}}
+                            style={{ backgroundImage: `url(${menos_1.src})` }}
                         />
                     </Container_Btn_Controle>
                 </Botoes_Controle_Tempo>
@@ -287,7 +288,7 @@ function PainelDeComando() {
 
             <Controlador_Partida>
                 <Btn_Desfazer
-                    style={{backgroundImage: `url(${desfazer.src})`}}
+                    style={{ backgroundImage: `url(${desfazer.src})` }}
                 />
                 <Btn_New_Game
                     onClick={() => {
@@ -317,10 +318,10 @@ function PainelDeComando() {
                             setIsRunning(false);
                             btnPlayPause.style.backgroundImage = `url(${play.src})`;
                         }
-                        setPlacar({timeA: 0, timeB: 0});
+                        setPlacar({ timeA: 0, timeB: 0 });
                         socket.emit("start")
                         updateDadosPartida({
-                            segundos_restantes: 59,
+                            segundos_restantes: 0,
                             minutos_restantes: 10,
                             tempo24s: 24,
                             pontos_time_a: 0,
@@ -328,7 +329,7 @@ function PainelDeComando() {
                         });
                     }
                     }
-                    style={{backgroundImage: `url(${new_game.src})`}}
+                    style={{ backgroundImage: `url(${new_game.src})` }}
                 />
             </Controlador_Partida>
         </Painel_De_Comando>

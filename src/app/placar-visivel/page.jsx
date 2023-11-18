@@ -10,6 +10,9 @@ const digital_numbers = localFont({
   src: "../../fonts/DigitalNumbers-Regular.ttf"
 });
 
+import { useRecoilState, useRecoilValue } from "recoil";
+import { placar_state } from "../../state/placar.js";
+
 const Placar = styled.main`
   border-radius: 10px;
   border: 10px solid ${colors.bordas};
@@ -87,27 +90,24 @@ const ContainerTempo = styled.div`
 
 export default function Page() {
   const [dadosDaPartida, setDadosDaPartida] = useState({
-    id: 2,
-    segundos_restantes: 59,
+    segundos_restantes: 0,
     minutos_restantes: 10,
-    tempo24s: 23,
-    pontos_time_a: 35,
-    pontos_time_b: 89,
-    createdAt: "2023-10-07T12:13:42.866Z",
-    updatedAt: "2023-10-07T12:13:42.866Z"
+    tempo24s: 24,
   });
 
-  useEffect(() => {
-    setTimeout(() => {
-      (async () => {
-        const response = await fetch("./api/partida_cansada/dados_partida");
+  const [placarPartida, setPlacar] = useRecoilState(placar_state);
 
-        const dados_partida = await response.json();
-        console.log(dados_partida)
-        setDadosDaPartida(dados_partida);
-      })();
-    }, 250);
-  }, [dadosDaPartida]);
+  useEffect(() => {
+    socket.on("update", ({ currentTime, possessionTime, iRunning }) => {
+      setDadosDaPartida({
+        minutos_restantes: Math.trunc(currentTime / 60),
+        segundos_restantes: Math.trunc(currentTime % 60),
+        tempo24s: possessionTime
+      })
+
+      console.log(placarPartida)
+    })
+  }, [dadosDaPartida, placarPartida]);
 
   return (
     <>
@@ -136,9 +136,9 @@ export default function Page() {
         </ContainerNomeTime>
 
         <ContainerPontuacao>
-          <Pontuacao className={digital_numbers.className}>{dadosDaPartida.pontos_time_a}</Pontuacao>
+          <Pontuacao className={digital_numbers.className}>{placarPartida.timeA}</Pontuacao>
 
-          <Pontuacao className={digital_numbers.className}>{dadosDaPartida.pontos_time_b}</Pontuacao>
+          <Pontuacao className={digital_numbers.className}>{placarPartida.timeB}</Pontuacao>
         </ContainerPontuacao>
 
         <ContainerTempo>
@@ -149,8 +149,8 @@ export default function Page() {
             {`${dadosDaPartida.minutos_restantes
               .toString()
               .padStart(2, "0")}:${dadosDaPartida.segundos_restantes
-              .toString()
-              .padStart(2, "0")}`}{" "}
+                .toString()
+                .padStart(2, "0")}`}{" "}
           </Tempo_Partida>
           <Tempo_24seg className={digital_numbers.className}>
             {`${dadosDaPartida.tempo24s.toString().padStart(2, "0")}`}
