@@ -2,7 +2,7 @@
 'use client'
 import {useRouter} from 'next/navigation';
 
-import '../controladora/estilo/style.css'
+import '../tela-controlador-partida/estilo/style.css'
 import {React, useState} from 'react';
 import {jogadores_cadastrados} from "../../State/jogadores_cadastrados";
 import {useRecoilState} from "recoil";

@@ -7,24 +7,12 @@ import styled from "styled-components";
 
 const Container_Botao_Avancar = styled.div`
   background-image: url(${props => props.img_url});
-  display: flex;
   width: 16.76vw;
   height: 9.37vw;
-  flex-direction: column;
   background-repeat: no-repeat;
-  background-size: 16.76vw 9.37vw;
-  justify-content: flex-start;
-  text-transform: uppercase;
-  text-align: center;
-  font-family: Orbitron;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  color: #62DBFF;
-  align-items: center;
+  background-size: 100% 100%;
   cursor: pointer;
-  transition: 150ms;
+  transition: 20ms;
 
   &:hover {
     background-image: url(${props => props.img_hover_url});
