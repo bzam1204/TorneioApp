@@ -4,16 +4,16 @@ import {useRouter} from 'next/navigation';
 import {React, useState} from 'react';
 import {Container_Jogadores, Container_Principal} from './estilo/estilo_homepage'
 
-import Jogador_Esquerda_A from "./card_jogadores/Jogador_Esquerda_A";
-import Jogador_Esquerda_B from "./card_jogadores/Jogador_Esquerda_B";
-import Jogador_Esquerda_C from "./card_jogadores/Jogador_Esquerda_C";
-import Jogador_Esquerda_D from "./card_jogadores/Jogador_Esquerda_D";
-import Jogador_Esquerda_E from "./card_jogadores/Jogador_Esquerda_E";
-import Jogador_Direita_A from "./card_jogadores/Jogador_Direita_A";
-import Jogador_Direita_B from "./card_jogadores/Jogador_Direita_B";
-import Jogador_Direita_C from "./card_jogadores/Jogador_Direita_C";
-import Jogador_Direita_D from "./card_jogadores/Jogador_Direita_D";
-import Jogador_Direita_E from "./card_jogadores/Jogador_Direita_E";
+import Jogador_Esquerda_A from "./cartao_jogadores/Jogador_Esquerda_A";
+import Jogador_Esquerda_B from "./cartao_jogadores/Jogador_Esquerda_B";
+import Jogador_Esquerda_C from "./cartao_jogadores/Jogador_Esquerda_C";
+import Jogador_Esquerda_D from "./cartao_jogadores/Jogador_Esquerda_D";
+import Jogador_Esquerda_E from "./cartao_jogadores/Jogador_Esquerda_E";
+import Jogador_Direita_A from "./cartao_jogadores/Jogador_Direita_A";
+import Jogador_Direita_B from "./cartao_jogadores/Jogador_Direita_B";
+import Jogador_Direita_C from "./cartao_jogadores/Jogador_Direita_C";
+import Jogador_Direita_D from "./cartao_jogadores/Jogador_Direita_D";
+import Jogador_Direita_E from "./cartao_jogadores/Jogador_Direita_E";
 
 import Painel_Interacao from "./Painel_Interacao/Painel_Interacao";
 

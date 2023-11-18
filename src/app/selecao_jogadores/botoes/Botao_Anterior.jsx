@@ -1,6 +1,6 @@
-import imagem_botao from '../../../../../public/img/botoes_especiais/avancar_half_azul.png'
-import imagem_botao_hover from '../../../../../public/img/botoes_especiais/avancar_half_azul_hovered.png'
-import imagem_botao_pressionado from '../../../../../public/img/botoes_especiais/avancar_half_azul_pressionado.png'
+import imagem_botao from '../../../../public/img/botoes_especiais/avancar_half_azul.png'
+import imagem_botao_hover from '../../../../public/img/botoes_especiais/avancar_half_azul_hovered.png'
+import imagem_botao_pressionado from '../../../../public/img/botoes_especiais/avancar_half_azul_pressionado.png'
 
 
 import styled from "styled-components";

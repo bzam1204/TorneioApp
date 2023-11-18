@@ -4,11 +4,11 @@ import {
     Container_Painel_Interacao, Jogadores_Label, Numero_Jogadores_Selecionados,
     Titulo_Pagina
 } from "../estilo/painel_interacao";
-import Botao_Desfazer from './botoes/Botao_Desfazer'
-import Botao_Opcoes from './botoes/Botao_Opcoes'
-import Botao_Tempo from "./botoes/Botao_Tempo";
-import Botao_Tela_Inicial from "./botoes/Botao_24_Seg";
-import Botao_Informativo from "./botoes/Botao_Informativo";
+import Botao_Desfazer from '../botoes/Botao_Desfazer'
+import Botao_Opcoes from '../botoes/Botao_Opcoes'
+import Botao_Tempo from "../botoes/Botao_Tempo";
+import Botao_Tela_Inicial from "../botoes/Botao_24_Seg";
+import Botao_Informativo from "../botoes/Botao_Informativo";
 import Frame_Placar from "./Frame_Placar";
 
 

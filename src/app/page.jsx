@@ -1,5 +1,6 @@
 'use client'
 import React, {useEffect, useState} from 'react'
+import './tela-controlador-partida/estilo/style.css'
 
 export default function page() {
     // eslint-disable-next-line react-hooks/rules-of-hooks

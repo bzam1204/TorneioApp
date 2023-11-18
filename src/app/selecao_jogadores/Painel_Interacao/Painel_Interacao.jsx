@@ -4,10 +4,10 @@ import {
     Container_Painel_Interacao, Jogadores_Label, Numero_Jogadores_Selecionados,
     Titulo_Pagina
 } from "../estilo/painel_interacao";
-import Botao_Anterior from './botoes/Botao_Anterior'
-import Botao_Proximo from './botoes/Botao_Proximo'
-import Botao_Sortear from "./botoes/Botao_Sortear";
-import Botao_Tela_Inicial from "./botoes/Botao_Tela_Inicial";
+import Botao_Anterior from '../botoes/Botao_Anterior'
+import Botao_Proximo from '../botoes/Botao_Proximo'
+import Botao_Sortear from "../botoes/Botao_Sortear";
+import Botao_Tela_Inicial from "../botoes/Botao_Tela_Inicial";
 
 
 export default function Painel_Interacao() {

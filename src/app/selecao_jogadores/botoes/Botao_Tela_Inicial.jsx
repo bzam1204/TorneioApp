@@ -1,7 +1,7 @@
 'use client'
-import imagem_botao from '../../../../../public/img/botoes_especiais/tela_inicial_red.png'
-import imagem_botao_hover from '../../../../../public/img/botoes_especiais/tela_inicial_red_hovered.png'
-import imagem_botao_pressionado from '../../../../../public/img/botoes_especiais/tela_inicial_red_pressionado.png'
+import imagem_botao from '../../../../public/img/botoes_especiais/tela_inicial_red.png'
+import imagem_botao_hover from '../../../../public/img/botoes_especiais/tela_inicial_red_hovered.png'
+import imagem_botao_pressionado from '../../../../public/img/botoes_especiais/tela_inicial_red_pressionado.png'
 import {useRouter} from 'next/navigation';
 
 

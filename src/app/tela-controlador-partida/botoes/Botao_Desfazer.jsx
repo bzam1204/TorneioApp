@@ -1,6 +1,6 @@
-import imagem_botao from '../../../../../public/img/botoes_especiais/desfazer_half_verde.png'
-import imagem_botao_hover from '../../../../../public/img/botoes_especiais/desfazer_half_verde_hovered.png'
-import imagem_botao_pressionado from '../../../../../public/img/botoes_especiais/desfazer_half_verde_pressionado.png'
+import imagem_botao from '../../../../public/img/botoes_especiais/desfazer_half_verde.png'
+import imagem_botao_hover from '../../../../public/img/botoes_especiais/desfazer_half_verde_hovered.png'
+import imagem_botao_pressionado from '../../../../public/img/botoes_especiais/desfazer_half_verde_pressionado.png'
 
 
 import styled from "styled-components";

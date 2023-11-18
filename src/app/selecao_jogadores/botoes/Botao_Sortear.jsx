@@ -1,6 +1,6 @@
-import imagem_botao from '../../../../../public/img/botoes_especiais/sortear_amarelo.png'
-import imagem_botao_hover from '../../../../../public/img/botoes_especiais/sortear_amarelo_hovered.png'
-import imagem_botao_pressionado from '../../../../../public/img/botoes_especiais/sortear_amarelo_pressionado.png'
+import imagem_botao from '../../../../public/img/botoes_especiais/sortear_amarelo.png'
+import imagem_botao_hover from '../../../../public/img/botoes_especiais/sortear_amarelo_hovered.png'
+import imagem_botao_pressionado from '../../../../public/img/botoes_especiais/sortear_amarelo_pressionado.png'
 import {useRouter} from 'next/navigation';
 
 

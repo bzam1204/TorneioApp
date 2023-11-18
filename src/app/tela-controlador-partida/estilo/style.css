@@ -42,3 +42,8 @@
         -webkit-filter: brightness(200%);
     }
 }
+
+.botao_cinza {
+    backdrop-filter: saturate(0%);
+    -webkit-filter: saturate(0%);
+}
