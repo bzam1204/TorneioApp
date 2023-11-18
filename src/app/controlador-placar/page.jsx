@@ -14,6 +14,7 @@ import {
 
 import colors from "../../js/colors.js";
 import PainelDeComando from "./PainelDeComando.jsx";
+import socket from "../../config/socket.js";
 
 const digital_numbers = localFont({
     src: "../../fonts/DigitalNumbers-Regular.ttf"
@@ -82,6 +83,10 @@ const Jogadores = styled.div`
 export default function Page() {
     const [placar, setPlacar] = useRecoilState(placar_state);
     const [jogadores, setJogadores] = useRecoilState(jogadores_state);
+
+    useEffect(() => {
+        socket.emit("update-pontuacao", placar)
+    }, [placar])
 
 
     return (

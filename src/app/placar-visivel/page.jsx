@@ -95,7 +95,7 @@ export default function Page() {
     tempo24s: 24,
   });
 
-  const [placarPartida, setPlacar] = useRecoilState(placar_state);
+  const [placarPartida, setPlacar] = useState({timeA: 0, timeB: 0});
 
   useEffect(() => {
     socket.on("update", ({ currentTime, possessionTime, iRunning }) => {
@@ -106,6 +106,10 @@ export default function Page() {
       })
 
       console.log(placarPartida)
+    })
+
+    socket.on("pontuacao", (pontuacao) => {
+      setPlacar(pontuacao)
     })
   }, [dadosDaPartida, placarPartida]);
 
