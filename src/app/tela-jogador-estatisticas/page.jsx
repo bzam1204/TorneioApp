@@ -13,7 +13,6 @@ import Botao_Direita_B from "./Botoes_Estatisticas/Botao_Direita_B";
 import Botao_Direita_C from "./Botoes_Estatisticas/Botao_Direita_C";
 import Botao_Direita_D from "./Botoes_Estatisticas/Botao_Direita_D";
 import Botao_Direita_E from "./Botoes_Estatisticas/Botao_Direita_E";
-import Botao_Finalizar_Partida from "./Botoes_Estatisticas/Botao_Finalizar_Partida";
 
 
 export default function page() {
@@ -39,7 +38,6 @@ export default function page() {
                 <Botao_Direita_D/>
                 <Botao_Direita_E/>
             </Container_Jogadores>
-            <Botao_Finalizar_Partida id={'modal_finalizar_partida'}/>
         </Container_Principal>
     </>
 };

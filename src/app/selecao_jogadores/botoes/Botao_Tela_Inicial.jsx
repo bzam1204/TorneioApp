@@ -31,7 +31,7 @@ export default function Botao_Sortear() {
         onClick={function () {
             //para o usuario ver a animação inteira
             setTimeout(function () {
-                router.push(`/homepage`)
+                router.push(`/`)
             }, 100)
         }}
         img_url={imagem_botao.src}
