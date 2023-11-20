@@ -1,7 +1,7 @@
 import {atom} from 'recoil'
 
-export const partida_config = atom({
-    key: "partida_config", default: {
+export const metadados_partida = atom({
+    key: "metadados_partida", default: {
         evento_id: 1,
         partida_id: null,
         time_a_code: 0,
