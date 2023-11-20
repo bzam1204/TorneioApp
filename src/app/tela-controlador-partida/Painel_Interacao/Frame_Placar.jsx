@@ -18,6 +18,7 @@ const Container_Botao_Tela_Inicial = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   width: calc(100% - 3.51vw);
+  user-select: none;
 `
 
 export const Pontuacao = styled.p`

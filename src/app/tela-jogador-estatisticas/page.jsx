@@ -3,17 +3,17 @@ import {useRouter} from 'next/navigation';
 import {React, useState} from 'react';
 import {Container_Jogadores, Container_Principal} from './estilo/opcoes'
 
-import Botao_Esquerda_A from "./Botoes_Opcoes/Botao_Esquerda_A";
-import Botao_Esquerda_B from "./Botoes_Opcoes/Botao_Esquerda_B";
-import Botao_Esquerda_C from "./Botoes_Opcoes/Botao_Esquerda_C";
-import Botao_Esquerda_D from "./Botoes_Opcoes/Botao_Esquerda_D";
-import Botao_Esquerda_E from "./Botoes_Opcoes/Botao_Esquerda_E";
-import Botao_Direita_A from "./Botoes_Opcoes/Botao_Direita_A";
-import Botao_Direita_B from "./Botoes_Opcoes/Botao_Direita_B";
-import Botao_Direita_C from "./Botoes_Opcoes/Botao_Direita_C";
-import Botao_Direita_D from "./Botoes_Opcoes/Botao_Direita_D";
-import Botao_Direita_E from "./Botoes_Opcoes/Botao_Direita_E";
-import Botao_Finalizar_Partida from "./Botoes_Opcoes/Botao_Finalizar_Partida";
+import Botao_Esquerda_A from "./Botoes_Estatisticas/Botao_Esquerda_A";
+import Botao_Esquerda_B from "./Botoes_Estatisticas/Botao_Esquerda_B";
+import Botao_Esquerda_C from "./Botoes_Estatisticas/Botao_Esquerda_C";
+import Botao_Esquerda_D from "./Botoes_Estatisticas/Botao_Esquerda_D";
+import Botao_Esquerda_E from "./Botoes_Estatisticas/Botao_Esquerda_E";
+import Botao_Direita_A from "./Botoes_Estatisticas/Botao_Direita_A";
+import Botao_Direita_B from "./Botoes_Estatisticas/Botao_Direita_B";
+import Botao_Direita_C from "./Botoes_Estatisticas/Botao_Direita_C";
+import Botao_Direita_D from "./Botoes_Estatisticas/Botao_Direita_D";
+import Botao_Direita_E from "./Botoes_Estatisticas/Botao_Direita_E";
+import Botao_Finalizar_Partida from "./Botoes_Estatisticas/Botao_Finalizar_Partida";
 
 
 export default function page() {

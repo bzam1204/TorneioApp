@@ -11,6 +11,7 @@ export const Container_Cartao = styled.div`
   cursor: pointer;
   padding: 0 1.75vw;
   transition: 50ms;
+  user-select: none;
 
   &:hover {
     backdrop-filter: brightness(130%);

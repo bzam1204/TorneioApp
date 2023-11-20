@@ -9,9 +9,9 @@ import {
     Imagem_Icone_Botao,
     Nome_Estatistica,
 } from "./estilo/estilo_cartao_botao";
-import colors from "../../js/colors";
+import colors from "../js/colors";
 import {useRecoilState} from "recoil";
-import {times_montados} from "../../state/times_montados";
+import {times_montados} from "../State/times_montados";
 
 export default function Cartao_Botao({dados_botao, index, lado, dados_jogador}) {
     const [_times_montados, setTimesMontados] = useRecoilState(times_montados)

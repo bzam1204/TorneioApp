@@ -11,7 +11,6 @@ export const Container_Cartao = styled.div`
   cursor: pointer;
   padding: 0 1.75vw;
   transition: 50ms;
-  user-select: none;
 
   &:hover {
     backdrop-filter: brightness(130%);
@@ -25,30 +24,23 @@ export const Container_Cartao = styled.div`
 
 `
 
-export const Nome_Jogador = styled.div`
+export const Nome_Opcao = styled.p`
   color: #FFF;
-  width: fit-content;
+width: 100%;
   text-transform: uppercase;
-  text-align: left;
+  text-align: center;
   font-family: Orbitron, serif;
   font-size: 1.46vw;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   line-height: normal;
 `
 
-export const Numero_Camisa = styled(Nome_Jogador)`
-  font-size: 3.66vw;
-  font-weight: 700;
-  width: 6.14vw;
-`
+export const Opcao_Icone = styled(Nome_Opcao)`
+  width: 74px;
+  height: 74px;
+  background-size: 74px;
+  background-repeat: no-repeat;
+  background-image: url(${props => props.image_url});
 
-export const Imagem_Jogador = styled.article`
-  display: flex;
-  width: 8.63vw;
-  align-self: stretch;
-  justify-content: space-between;
-  align-items: center;
-  background-size: 100% 9.80vw;
-  cursor: pointer;
 `

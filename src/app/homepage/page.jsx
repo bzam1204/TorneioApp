@@ -8,7 +8,7 @@ import {jogadores_cadastrados} from "../../State/jogadores_cadastrados";
 import {useRecoilState} from "recoil";
 
 import {Container_Principal} from './estilo/estilo_homepage'
-import {partida_config} from "../../State/partida.config";
+import {partida_config} from "../../State/partida.metadados";
 
 
 async function criaPartida() {

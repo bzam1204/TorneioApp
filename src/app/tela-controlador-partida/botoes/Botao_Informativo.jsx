@@ -10,11 +10,12 @@ import styled from "styled-components";
 
 const Container_Botao_Sorteio = styled.div`
   background-image: url(${props => props.img_url});
-  width: calc( 100% - 4.68vw);
+  width: calc(100% - 4.68vw);
   height: 5.12vw;
   background-repeat: no-repeat;
   padding: 0 2.34vw;
   display: flex;
+  user-select: none;
   align-items: center;
   background-size: 100% 100%;
 `
