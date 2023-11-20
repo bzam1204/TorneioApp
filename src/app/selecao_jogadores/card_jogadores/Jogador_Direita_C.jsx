@@ -1,5 +1,5 @@
 'use client'
-import {Container_Cartao, Numero_Camisa, Nome_Jogador, Imagem_Jogador} from "../../opcoes/estilo/botao_opcao";
+import {Container_Cartao, Numero_Camisa, Nome_Jogador, Imagem_Jogador} from "../estilo/cartao_jogador";
 import imagem_cartao from '../../../../public/img/botoes_jogador/direita-3.png'
 
 export default function Jogador_Direita_C({dados_jogador}) {
