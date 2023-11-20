@@ -88,7 +88,7 @@ export default function Botao_Finalizar_Partida() {
     }
 
     function finalizarPartida(partida_id) {
-        router.push(`homepage/`)
+        router.push(`/`)
     }
 
     return (<Layer id={'modal_finalizar_partida'}>

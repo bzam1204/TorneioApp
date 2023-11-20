@@ -1,58 +1,52 @@
+// pages/sorteio.js
 'use client'
-import React, {useEffect, useState} from 'react'
+import {useRouter} from 'next/navigation';
+
 import './tela-controlador-partida/estilo/style.css'
+import {React, useState} from 'react';
+import {jogadores_cadastrados} from "../State/jogadores_cadastrados";
+import {useRecoilState} from "recoil";
 
-export default function page() {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [selecionar_torneio, setSelecionarTorneio] = useState(null)
-
-    async function criaTorneio() {
-
-        const select = document.querySelector('#AutocompleteSelectTorneios')
+import {Container_Principal} from './homepage/estilo/estilo_homepage'
+import {metadados_partida} from "../State/partida.metadados";
 
 
-        /* let torneio_criado;
+async function criaPartida() {
+    let partida_id = null
+    await fetch('http://localhost:3000/api/partida', {
+        method: 'POST', headers: {
+            'Content-Type': 'application/json'
 
-         function handleResponse(response) {
-             if (!response.ok) {
-                 throw new Error(`HTTP error! Status: ${response.status}`);
-             }
-
-             // Parse the response JSON
-             return response.json();
-         }
-
-         const res = await fetch("/api/torneios/create", {
-             method: "POST",
-             headers: {
-                 "Content-Type": "application/json"
-             },
-             body: JSON.stringify({
-                 torneio_name: _torneio_name
-             })
-         })
-             .then(handleResponse) // Call the callback function
-             .then((data) => {
-                 console.log("Data:", data);
-                 torneio_criado = true;
-                 // You can perform further processing on the data here
-             })
-             .catch((error) => {
-                 console.error("Error:", error);
-                 torneio_criado = false;
-             });
-
-         return torneio_criado;*/
-    }
-
-    return (
-        <div style={{
-            display: "flex",
-            flexDirection: "column", gap: '30px',
-            justifyContent: "center",
-            alignItems: "center"
-        }}>
-        </div>
-
-    )
+        }, body: JSON.stringify({
+            "eventoId": 1, "inicio": null, "fim": null
+        })
+    }).then(res => {
+        return res.json()
+    }).then(res => {
+        setPartidaConfig(res.id)
+    }).catch(err => {
+        console.log(err)
+    })
 }
+
+
+const page = () => {
+    const [_metadados_partida, setPartidaConfig] = useRecoilState(metadados_partida)
+    const router = useRouter()
+    const event_id = 1
+    return <>
+        <Container_Principal className="layer_jogadores_select">
+
+            <div onClick={function () {
+                criaPartida()
+                router.push(`/selecao_jogadores`)
+            }} className="botao_adicionar">
+                INICIAR EVENTO
+            </div>
+
+            <img src="/img/LOGO_BASQUETE_RANKEADA.png" alt=""/>
+        </Container_Principal>
+    </>
+};
+
+export default page;

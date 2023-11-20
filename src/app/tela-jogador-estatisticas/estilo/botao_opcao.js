@@ -37,9 +37,9 @@ width: 100%;
 `
 
 export const Opcao_Icone = styled(Nome_Opcao)`
-  width: 74px;
+  width: 100px;
   height: 74px;
-  background-size: 74px;
+  background-size: contain;
   background-repeat: no-repeat;
   background-image: url(${props => props.image_url});
 
