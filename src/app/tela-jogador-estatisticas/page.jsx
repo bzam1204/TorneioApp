@@ -1,7 +1,7 @@
 'use client'
 import {useRouter} from 'next/navigation';
 import {React, useState} from 'react';
-import {Container_Jogadores, Container_Principal} from './estilo/opcoes'
+import {Container_Jogadores, Container_Principal} from './estilo/estatisticas'
 
 import Botao_Esquerda_A from "./Botoes_Estatisticas/Botao_Esquerda_A";
 import Botao_Esquerda_B from "./Botoes_Estatisticas/Botao_Esquerda_B";
@@ -13,6 +13,7 @@ import Botao_Direita_B from "./Botoes_Estatisticas/Botao_Direita_B";
 import Botao_Direita_C from "./Botoes_Estatisticas/Botao_Direita_C";
 import Botao_Direita_D from "./Botoes_Estatisticas/Botao_Direita_D";
 import Botao_Direita_E from "./Botoes_Estatisticas/Botao_Direita_E";
+import Painel_Jogador from "./Painel_Jogador/Painel_Jogador";
 
 
 export default function page() {
@@ -29,8 +30,7 @@ export default function page() {
                 <Botao_Esquerda_D/>
                 <Botao_Esquerda_E/>
             </Container_Jogadores>
-            <img src="/img/frame_opcoes.png" alt=""/>
-
+            <Painel_Jogador/>
             <Container_Jogadores>
                 <Botao_Direita_A/>
                 <Botao_Direita_B/>
