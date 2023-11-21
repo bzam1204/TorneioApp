@@ -1,5 +1,5 @@
 'use client'
-import {Container_Cartao, Opcao_Icone, Nome_Opcao} from "../estilo/botao_opcao";
+import {Container_Cartao, Opcao_Icone, Nome_Opcao} from "../estilo/botao_estisticas";
 import imagem_cartao from '../../../../public/img/botoes_jogador/esquerda-5.png'
 import {useRouter} from "next/navigation";
 import image_url from "../../../../public/img/botoes_estatisticas/voltar.png";
