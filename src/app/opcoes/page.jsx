@@ -1,6 +1,4 @@
 'use client'
-import {useRouter} from 'next/navigation';
-import {React, useState} from 'react';
 import {Container_Jogadores, Container_Principal} from './estilo/opcoes'
 
 import Botao_Esquerda_A from "./Botoes_Opcoes/Botao_Esquerda_A";
@@ -16,9 +14,7 @@ import Botao_Direita_E from "./Botoes_Opcoes/Botao_Direita_E";
 import Botao_Finalizar_Partida from "./Botoes_Opcoes/Botao_Finalizar_Partida";
 
 
-export default function page() {
-    const router = useRouter()
-    const event_id = 1
+export default function Page() {
     return <>
 
         <Container_Principal id={'main'}>

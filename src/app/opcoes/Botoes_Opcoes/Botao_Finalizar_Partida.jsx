@@ -80,8 +80,6 @@ const Modal = styled.div`
 export default function Botao_Finalizar_Partida() {
     const router = useRouter()
     const _metadados_partida = useRecoilState(metadados_partida)
-    useEffect(() => {
-    }, []);
 
     function voltarParaPartida(partida_id) {
         router.push(`tela-controlador-partida/`)

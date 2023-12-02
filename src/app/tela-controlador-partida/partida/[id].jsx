@@ -1,20 +1,20 @@
 'use client'
 import {useRouter} from 'next/navigation';
 import {React, useEffect, useState} from 'react';
-import {Container_Jogadores, Container_Principal} from './estilo/estilo_homepage'
-import Jogador_Esquerda_A from "./cartao_jogadores/Jogador_Esquerda_A";
-import Jogador_Esquerda_B from "./cartao_jogadores/Jogador_Esquerda_B";
-import Jogador_Esquerda_C from "./cartao_jogadores/Jogador_Esquerda_C";
-import Jogador_Esquerda_D from "./cartao_jogadores/Jogador_Esquerda_D";
-import Jogador_Esquerda_E from "./cartao_jogadores/Jogador_Esquerda_E";
-import Jogador_Direita_A from "./cartao_jogadores/Jogador_Direita_A";
-import Jogador_Direita_B from "./cartao_jogadores/Jogador_Direita_B";
-import Jogador_Direita_C from "./cartao_jogadores/Jogador_Direita_C";
-import Jogador_Direita_D from "./cartao_jogadores/Jogador_Direita_D";
-import Jogador_Direita_E from "./cartao_jogadores/Jogador_Direita_E";
-import Painel_Interacao from "./Painel_Interacao/Painel_Interacao";
+import {Container_Jogadores, Container_Principal} from '../estilo/estilo_homepage'
+import Jogador_Esquerda_A from "../cartao_jogadores/Jogador_Esquerda_A";
+import Jogador_Esquerda_B from "../cartao_jogadores/Jogador_Esquerda_B";
+import Jogador_Esquerda_C from "../cartao_jogadores/Jogador_Esquerda_C";
+import Jogador_Esquerda_D from "../cartao_jogadores/Jogador_Esquerda_D";
+import Jogador_Esquerda_E from "../cartao_jogadores/Jogador_Esquerda_E";
+import Jogador_Direita_A from "../cartao_jogadores/Jogador_Direita_A";
+import Jogador_Direita_B from "../cartao_jogadores/Jogador_Direita_B";
+import Jogador_Direita_C from "../cartao_jogadores/Jogador_Direita_C";
+import Jogador_Direita_D from "../cartao_jogadores/Jogador_Direita_D";
+import Jogador_Direita_E from "../cartao_jogadores/Jogador_Direita_E";
+import Painel_Interacao from "../Painel_Interacao/Painel_Interacao";
 import {useRecoilState} from "recoil";
-import {times_montados} from "../../State/times_montados";
+import {times_montados} from "../../../State/times_montados";
 
 
 export default function Page() {
@@ -30,14 +30,14 @@ export default function Page() {
         }).then(res => {
             return res.json()
         }).then(res => {
-            jogadores = res
+            // jogadores = res
         }).catch(err => {
             console.log(err)
         })
     }
 
-    useEffect(function () {
-        buscaTodosJogadoresTime()
+    useEffect( function () {
+         buscaTodosJogadoresTime()
     }, [_times_montados])
 
     return <>

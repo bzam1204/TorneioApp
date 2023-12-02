@@ -2,21 +2,18 @@
 import {Container_Cartao, Opcao_Icone, Nome_Opcao} from "../estilo/botao_opcao";
 import {useEffect, useState} from "react";
 import imagem_cartao from '../../../../public/img/botoes_jogador/esquerda-3.png'
-import Botao_Finalizar_Partida from "./Botao_Finalizar_Partida";
-import {createRoot} from 'react-dom/client';
 
+function alternaVisibilidadeModalFinalizarPartida(modal_is_hidden) {
+    const modal = document.getElementById('modal_finalizar_partida')
+    modal.style.display = modal_is_hidden ? 'none' : 'flex'
+}
 
 export default function Botao_Esquerda_C() {
     const [modal_is_hidden, setModalIsHidden] = useState(true)
 
     useEffect(() => {
-        alternaVisibilidadeModalFinalizarPartida()
+        alternaVisibilidadeModalFinalizarPartida(modal_is_hidden)
     }, [modal_is_hidden]);
-
-    function alternaVisibilidadeModalFinalizarPartida() {
-        const modal = document.getElementById('modal_finalizar_partida')
-        modal.style.display = modal_is_hidden ? 'none' : 'flex'
-    }
 
 
     return <Container_Cartao
