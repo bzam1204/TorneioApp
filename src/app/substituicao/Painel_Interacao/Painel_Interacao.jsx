@@ -21,11 +21,8 @@ export default function Painel_Interacao() {
                 <Botao_Anterior></Botao_Anterior>
                 <Botao_Proximo></Botao_Proximo>
             </div>
-            <Contador_Jogadores_Selecionados>
-                <Jogadores_Label>JOGADORES</Jogadores_Label>
-                <Numero_Jogadores_Selecionados>0</Numero_Jogadores_Selecionados>
-            </Contador_Jogadores_Selecionados>
-            <Titulo_Pagina>selecione jogadores</Titulo_Pagina>
+
+            <Titulo_Pagina>selecione o jogador</Titulo_Pagina>
             <Botao_Sortear></Botao_Sortear>
             <Botao_Tela_Inicial></Botao_Tela_Inicial>
         </Container_Camada_Interna>

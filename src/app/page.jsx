@@ -26,7 +26,7 @@ async function criaPartida(setPartidaConfig) {
 }
 
 
-const Page = () => {
+export default function Page() {
     const [_metadados_partida, setPartidaConfig] = useRecoilState(metadados_partida)
     const router = useRouter()
     return <>
@@ -43,5 +43,3 @@ const Page = () => {
         </Container_Principal>
     </>
 };
-
-export default page;
