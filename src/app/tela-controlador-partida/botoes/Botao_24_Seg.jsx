@@ -6,9 +6,10 @@ import imagem_botao_pressionado from '../../../../public/img/botoes_especiais/de
 import {useRouter} from 'next/navigation';
 import {useRecoilState} from "recoil";
 import {time_is_running} from "../../../State/time_is_running";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 import '../estilo/style.css'
+import socket from "../../../config/socket_config";
 
 const Container_Botao_24_seg = styled.div`
   background-image: url(${props => props.img_url});
@@ -39,7 +40,7 @@ const Container_Botao_24_seg = styled.div`
 
 function handleBotaoCinza(_time_is_running) {
     const botao = document.querySelector('#botao_24_seg')
-    if (_time_is_running) {
+    if (!_time_is_running) {
         botao.classList.add('botao_cinza')
     } else {
         botao.classList.remove('botao_cinza')
@@ -57,15 +58,35 @@ export const Label_24_seg = styled.p`
   color: #FE5E5E;
   user-select: none;
 `
+
+function playPauseTimerOnServer() {
+    socket.emit('playPauseTimer');
+}
+
+function emitUpdatedInfo(setTempo) {
+    socket.emit('emitUpdatedInfo', (dados) => {
+        setTempo(dados.currentTime)
+    });
+
+}
 export default function Botao_24_Seg() {
     const router = useRouter()
     const [_time_is_running, setTimeIsRunning] = useRecoilState(time_is_running)
-
-    function resetAndPlay() {}
+    const [tempo_possessao, setTempoPossessao] = useState(24)
 
     useEffect(() => {
         handleBotaoCinza(_time_is_running)
     }, [_time_is_running])
+
+    useEffect(() => {
+        socket.on('update', ({possessionTime}) => {
+            setTempoPossessao(possessionTime)
+        })
+    }, [tempo_possessao])
+
+
+
+
 
     return (<Container_Botao_24_seg
 
@@ -75,6 +96,6 @@ export default function Botao_24_Seg() {
         img_hover_url={imagem_botao_hover.src}
         img_active_url={imagem_botao_pressionado.src}>
 
-        <Label_24_seg>24</Label_24_seg>
+        <Label_24_seg>{tempo_possessao}</Label_24_seg>
     </Container_Botao_24_seg>)
 }

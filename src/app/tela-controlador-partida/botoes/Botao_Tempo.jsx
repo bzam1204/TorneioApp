@@ -50,7 +50,7 @@ export const Label_Tempo = styled.p`
 
 function handleBotaoCinza(_time_is_running) {
     const botao = document.querySelector('#botao_tempo')
-    if (_time_is_running) {
+    if (!_time_is_running) {
         botao.classList.add('botao_cinza')
     } else {
         botao.classList.remove('botao_cinza')
@@ -77,8 +77,7 @@ function emitUpdatedInfo(setTempo) {
 export default function Botao_Tempo() {
     const router = useRouter()
     const [_time_is_running, setTimeIsRunning] = useRecoilState(time_is_running)
-    const [tempo_partida, setTempoPartida] = useState("10:00")
-
+    const [tempo_partida, setTempoPartida] = useState("Iniciar")
 
     useEffect(() => {
         handleBotaoCinza(_time_is_running)
@@ -97,7 +96,7 @@ export default function Botao_Tempo() {
     return (<Container_Botao_Tempo
         onClick={function () {
             toggleTimeIsRunning(_time_is_running, setTimeIsRunning)
-            playPauseTimerOnServer()
+            socket.emit("playpause")
         }}
         id={'botao_tempo'}
         img_url={imagem_botao.src}
