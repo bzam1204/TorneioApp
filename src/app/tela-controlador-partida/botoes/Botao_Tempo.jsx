@@ -77,7 +77,7 @@ function emitUpdatedInfo(setTempo) {
 export default function Botao_Tempo() {
     const router = useRouter()
     const [_time_is_running, setTimeIsRunning] = useRecoilState(time_is_running)
-    const [tempo_partida, setTempoPartida] = useState("Iniciar")
+    const [tempo_partida, setTempoPartida] = useState('Iniciar')
 
     // atualiza o time is running
     useEffect(() => {
@@ -105,7 +105,7 @@ export default function Botao_Tempo() {
         img_url={imagem_botao.src}
         img_hover_url={imagem_botao_hover.src}
         img_active_url={imagem_botao_pressionado.src}>
-        <Label_Tempo>{tempo_partida}</Label_Tempo>
+        <Label_Tempo>{tempo_partida === 'Iniciar' ? tempo_partida : `${Math.trunc(tempo_partida / 60)}:${Math.trunc(tempo_partida % 60)}`}</Label_Tempo>
 
     </Container_Botao_Tempo>)
 }
