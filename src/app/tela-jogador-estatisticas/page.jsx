@@ -16,7 +16,7 @@ import Botao_Direita_E from "./Botoes_Estatisticas/Botao_Direita_E";
 import Painel_Jogador from "./Painel_Jogador/Painel_Jogador";
 
 
-export default function page() {
+export default function Page() {
     const router = useRouter()
     const event_id = 1
     return <>

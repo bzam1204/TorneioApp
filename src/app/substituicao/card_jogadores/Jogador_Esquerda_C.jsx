@@ -1,14 +1,11 @@
 'use client'
 import {Container_Cartao, Numero_Camisa, Nome_Jogador, Imagem_Jogador} from "../estilo/cartao_jogador";
-import imagem_cartao from '../../../../public/img/botoes_jogador/esquerda-4.png'
-import {useRouter} from "next/navigation";
+import imagem_cartao from '../../../../public/img/botoes_jogador/esquerda-3.png'
 
-export default function Jogador_Esquerda_D({dados_jogador}) {
-    const router = useRouter()
+export default function Jogador_Esquerda_C({dados_jogador}) {
 
-    return (<Container_Cartao onClick={function () {
-        router.push(`/tela-jogador-estatisticas?id=${dados_jogador.id}`)
-    }} style={{borderRadius: '0 20px 20px 0'}}  imagem_url={imagem_cartao.src} className="jogador_esquerda_a">
+
+    return (<Container_Cartao  style={{borderRadius: '0 20px 20px 0'}} imagem_url={imagem_cartao.src} className="jogador_esquerda_a">
         <div style={{display: "flex", alignSelf: "stretch", alignItems:"center"}}>
             <Imagem_Jogador style={{backgroundImage: `url(${dados_jogador.imagem_url})`}}></Imagem_Jogador>
             <Nome_Jogador>

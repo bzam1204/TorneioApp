@@ -8,7 +8,7 @@ export default function Jogador_Direita_B({dados_jogador}) {
     const router = useRouter()
 
     return (<Container_Cartao onClick={function () {
-        router.push('/tela-jogador-estatisticas')
+        router.push(`/tela-jogador-estatisticas?id=${dados_jogador.id}`)
     }} style={{borderRadius: '20px 0 0 20px'}} imagem_url={imagem_cartao.src}
                               className="jogador_esquerda_a">
         <Numero_Camisa>{dados_jogador.numero_camisa}</Numero_Camisa>

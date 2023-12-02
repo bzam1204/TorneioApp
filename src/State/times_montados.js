@@ -4,7 +4,7 @@ export const times_montados = atom({
     key: "times_montados", default: {
         time_a: [
             {
-                "id": 1,
+                "id": null,
                 "nome": "JOGADOR VAZIO",
                 "altura": 187,
                 "dataNascimento": "2000-09-21T04:00:00.000Z",
@@ -12,7 +12,7 @@ export const times_montados = atom({
                 "nickname": "brunozamorano",
                 "numeroCamisa": 76
             }, {
-                "id": 1,
+                "id": null,
                 "nome": "JOGADOR VAZIO",
                 "altura": 187,
                 "dataNascimento": "2000-09-21T04:00:00.000Z",
@@ -20,7 +20,7 @@ export const times_montados = atom({
                 "nickname": "brunozamorano",
                 "numeroCamisa": 76
             }, {
-                "id": 1,
+                "id": null,
                 "nome": "JOGADOR VAZIO",
                 "altura": 187,
                 "dataNascimento": "2000-09-21T04:00:00.000Z",
@@ -28,7 +28,7 @@ export const times_montados = atom({
                 "nickname": "brunozamorano",
                 "numeroCamisa": 76
             }, {
-                "id": 1,
+                "id": null,
                 "nome": "JOGADOR VAZIO",
                 "altura": 187,
                 "dataNascimento": "2000-09-21T04:00:00.000Z",
@@ -36,7 +36,7 @@ export const times_montados = atom({
                 "nickname": "brunozamorano",
                 "numeroCamisa": 76
             }, {
-                "id": 1,
+                "id": null,
                 "nome": "JOGADOR VAZIO",
                 "altura": 187,
                 "dataNascimento": "2000-09-21T04:00:00.000Z",
@@ -46,7 +46,7 @@ export const times_montados = atom({
             },],
         time_b: [
             {
-                "id": 1,
+                "id": null,
                 "nome": "JOGADOR VAZIO",
                 "altura": 187,
                 "dataNascimento": "2000-09-21T04:00:00.000Z",
@@ -54,7 +54,7 @@ export const times_montados = atom({
                 "nickname": "brunozamorano",
                 "numeroCamisa": 76
             }, {
-                "id": 1,
+                "id": null,
                 "nome": "JOGADOR VAZIO",
                 "altura": 187,
                 "dataNascimento": "2000-09-21T04:00:00.000Z",
@@ -62,7 +62,7 @@ export const times_montados = atom({
                 "nickname": "brunozamorano",
                 "numeroCamisa": 76
             }, {
-                "id": 1,
+                "id": null,
                 "nome": "JOGADOR VAZIO",
                 "altura": 187,
                 "dataNascimento": "2000-09-21T04:00:00.000Z",
@@ -70,7 +70,7 @@ export const times_montados = atom({
                 "nickname": "brunozamorano",
                 "numeroCamisa": 76
             }, {
-                "id": 1,
+                "id": null,
                 "nome": "JOGADOR VAZIO",
                 "altura": 187,
                 "dataNascimento": "2000-09-21T04:00:00.000Z",
@@ -78,7 +78,7 @@ export const times_montados = atom({
                 "nickname": "brunozamorano",
                 "numeroCamisa": 76
             }, {
-                "id": 1,
+                "id": null,
                 "nome": "JOGADOR VAZIO",
                 "altura": 187,
                 "dataNascimento": "2000-09-21T04:00:00.000Z",
