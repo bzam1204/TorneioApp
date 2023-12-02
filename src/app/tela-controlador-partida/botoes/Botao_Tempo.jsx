@@ -89,8 +89,8 @@ export default function Botao_Tempo() {
 
     }, [_time_is_running])
     useEffect(() => {
-        socket.on('update', dados => {
-            setTempoPartida(dados.currentTime)
+        socket.on('update', ({currentTime}) => {
+            setTempoPartida(currentTime)
         })
     }, [tempo_partida])
 
