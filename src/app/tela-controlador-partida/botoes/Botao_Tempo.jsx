@@ -79,14 +79,17 @@ export default function Botao_Tempo() {
     const [_time_is_running, setTimeIsRunning] = useRecoilState(time_is_running)
     const [tempo_partida, setTempoPartida] = useState("Iniciar")
 
+    // atualiza o time is running
     useEffect(() => {
-        handleBotaoCinza(_time_is_running)
 
-        socket.emit('update', (dados) => {
-            setTimeout(dados.currentTime)
+        socket.on('update', ({isRunning}) => {
+            setTimeIsRunning(isRunning)
+            handleBotaoCinza(isRunning)
         })
 
     }, [_time_is_running])
+
+    // atualiza o tempo da partida
     useEffect(() => {
         socket.on('update', ({currentTime}) => {
             setTempoPartida(currentTime)

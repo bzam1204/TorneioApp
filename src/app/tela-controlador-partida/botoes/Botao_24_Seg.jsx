@@ -59,8 +59,8 @@ export const Label_24_seg = styled.p`
   user-select: none;
 `
 
-function playPauseTimerOnServer() {
-    socket.emit('playPauseTimer');
+function resetPossessionTime() {
+    socket.emit('reset');
 }
 
 function emitUpdatedInfo(setTempo) {
@@ -69,13 +69,19 @@ function emitUpdatedInfo(setTempo) {
     });
 
 }
+
 export default function Botao_24_Seg() {
     const router = useRouter()
     const [_time_is_running, setTimeIsRunning] = useRecoilState(time_is_running)
     const [tempo_possessao, setTempoPossessao] = useState(24)
 
     useEffect(() => {
-        handleBotaoCinza(_time_is_running)
+
+        socket.on('update', ({isRunning}) => {
+            setTimeIsRunning(isRunning)
+            handleBotaoCinza(isRunning)
+        })
+
     }, [_time_is_running])
 
     useEffect(() => {
@@ -85,12 +91,11 @@ export default function Botao_24_Seg() {
     }, [tempo_possessao])
 
 
-
-
-
     return (<Container_Botao_24_seg
 
-
+        onClick={() => {
+            resetPossessionTime()
+        }}
         id={'botao_24_seg'}
         img_url={imagem_botao.src}
         img_hover_url={imagem_botao_hover.src}
