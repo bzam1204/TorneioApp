@@ -7,7 +7,8 @@ import {useRouter} from 'next/navigation';
 import styled from "styled-components";
 import {useRecoilState} from "recoil";
 import {time_is_running} from "../../../State/time_is_running";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import socket from "../../../config/socket_config";
 
 const Container_Botao_Tempo = styled.div`
   background-image: url(${props => props.img_url});
@@ -62,24 +63,47 @@ function toggleTimeIsRunning(_time_is_running, setTimeIsRunning) {
     setTimeIsRunning(!_time_is_running)
 }
 
+function playPauseTimerOnServer() {
+    socket.emit('playPauseTimer');
+}
+
+function emitUpdatedInfo(setTempo) {
+    socket.emit('emitUpdatedInfo', (dados) => {
+        setTempo(dados.currentTime)
+    });
+
+}
+
 export default function Botao_Tempo() {
     const router = useRouter()
     const [_time_is_running, setTimeIsRunning] = useRecoilState(time_is_running)
+    const [tempo_partida, setTempoPartida] = useState("10:00")
 
 
     useEffect(() => {
         handleBotaoCinza(_time_is_running)
+
+        socket.emit('update', (dados) => {
+            setTimeout(dados.currentTime)
+        })
+
     }, [_time_is_running])
+    useEffect(() => {
+        socket.on('update', dados => {
+            setTempoPartida(dados.currentTime)
+        })
+    }, [tempo_partida])
 
     return (<Container_Botao_Tempo
         onClick={function () {
             toggleTimeIsRunning(_time_is_running, setTimeIsRunning)
+            playPauseTimerOnServer()
         }}
         id={'botao_tempo'}
         img_url={imagem_botao.src}
         img_hover_url={imagem_botao_hover.src}
         img_active_url={imagem_botao_pressionado.src}>
-        <Label_Tempo>08:55</Label_Tempo>
+        <Label_Tempo>{tempo_partida}</Label_Tempo>
 
     </Container_Botao_Tempo>)
 }

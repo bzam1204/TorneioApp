@@ -1,18 +1,14 @@
 // pages/sorteio.js
 'use client'
 import {useRouter} from 'next/navigation';
-
 import './tela-controlador-partida/estilo/style.css'
-import {React, useState} from 'react';
-import {jogadores_cadastrados} from "../State/jogadores_cadastrados";
+import {React} from 'react';
 import {useRecoilState} from "recoil";
-
 import {Container_Principal} from './homepage/estilo/estilo_homepage'
 import {metadados_partida} from "../State/partida.metadados";
 
 
-async function criaPartida() {
-    let partida_id = null
+async function criaPartida(setPartidaConfig) {
     await fetch('http://localhost:3000/api/partida', {
         method: 'POST', headers: {
             'Content-Type': 'application/json'
@@ -30,16 +26,15 @@ async function criaPartida() {
 }
 
 
-const page = () => {
+const Page = () => {
     const [_metadados_partida, setPartidaConfig] = useRecoilState(metadados_partida)
     const router = useRouter()
-    const event_id = 1
     return <>
         <Container_Principal className="layer_jogadores_select">
 
             <div onClick={function () {
-                criaPartida()
-                router.push(`/selecao_jogadores`)
+                criaPartida(setPartidaConfig)
+                router.push(`/tela-controlador-partida`)
             }} className="botao_adicionar">
                 INICIAR EVENTO
             </div>
