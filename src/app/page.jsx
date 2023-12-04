@@ -9,6 +9,7 @@ import {metadados_partida} from "../State/partida.metadados";
 
 
 async function criaPartida(setPartidaConfig, router, _metadados_partida) {
+    let partida_id = null
     await fetch('http://localhost:3000/api/partida', {
         method: 'POST', headers: {
             'Content-Type': 'application/json'
@@ -21,13 +22,15 @@ async function criaPartida(setPartidaConfig, router, _metadados_partida) {
     }).then(res => {
         //atribui o id da partida ao atributo 'partida_id' do estado de metadados da partida
         console.log(res)
+        partida_id = res.id
         setPartidaConfig(prev => {
             return {
                 ...prev,
                 partida_id: res.id
             }
         })
-        router.push(`/tela-controlador-partida?id=${_metadados_partida.partida_id}`)
+        router.push(`/tela-controlador-partida?id=${partida_id}`)
+        console.log(partida_id)
 
     }).catch(err => {
         console.log(err)
@@ -39,16 +42,16 @@ async function criaPartida(setPartidaConfig, router, _metadados_partida) {
 export default function Page() {
     const [_metadados_partida, setPartidaConfig] = useRecoilState(metadados_partida)
     const router = useRouter()
-    return <>
+    return (
         <Container_Principal className="layer_jogadores_select">
 
             <div onClick={async function () {
-                await (setPartidaConfigT)
+                await criaPartida(setPartidaConfig, router, _metadados_partida)
             }} className="botao_adicionar">
                 INICIAR EVENTO
             </div>
 
             <img src="/img/LOGO_BASQUETE_RANKEADA.png" alt=""/>
         </Container_Principal>
-    </>
+    )
 };

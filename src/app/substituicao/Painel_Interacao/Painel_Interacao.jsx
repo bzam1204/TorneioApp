@@ -23,7 +23,6 @@ export default function Painel_Interacao() {
             </div>
 
             <Titulo_Pagina>selecione o jogador</Titulo_Pagina>
-            <Botao_Sortear></Botao_Sortear>
             <Botao_Tela_Inicial></Botao_Tela_Inicial>
         </Container_Camada_Interna>
     </Container_Painel_Interacao>)

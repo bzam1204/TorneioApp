@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-
 export const Container_Painel_Interacao = styled.section`
   display: flex;
   padding: 16px;
@@ -25,7 +24,6 @@ export const Container_Camada_Interna = styled(Container_Painel_Interacao)`
   backdrop-filter: blur(29.5px);
   -webkit-backdrop-filter: blur(29.5px);
 `
-
 export const Titulo_Pagina = styled.h1`
   color: #FBB507;
   text-align: center;
@@ -51,7 +49,6 @@ export const Contador_Jogadores_Selecionados = styled.div`
   align-items: center;
   align-self: stretch;
 `
-
 export const Jogadores_Label = styled.p`
   background: linear-gradient(180deg, #FFF 0%, #FFF 100%);
   background-clip: text;
