@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import "./globals.css";
 import "./style.css";
 import "@fontsource/roboto/300.css";
@@ -13,8 +13,6 @@ import { RecoilRoot } from "recoil";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
-
-
 
 export default function RootLayout({ children }) {
   return (

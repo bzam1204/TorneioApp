@@ -1,4 +1,3 @@
-// pages/sorteio.js
 'use client'
 import {useRouter} from 'next/navigation';
 import './tela-controlador-partida/estilo/style.css'
@@ -21,7 +20,6 @@ async function criaPartida(setPartidaConfig, router, _metadados_partida) {
         return res.json()
     }).then(res => {
         //atribui o id da partida ao atributo 'partida_id' do estado de metadados da partida
-        console.log(res)
         partida_id = res.id
         setPartidaConfig(prev => {
             return {
@@ -30,7 +28,6 @@ async function criaPartida(setPartidaConfig, router, _metadados_partida) {
             }
         })
         router.push(`/tela-controlador-partida?id=${partida_id}`)
-        console.log(partida_id)
 
     }).catch(err => {
         console.log(err)

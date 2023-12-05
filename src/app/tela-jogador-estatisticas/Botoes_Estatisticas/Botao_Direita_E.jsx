@@ -7,13 +7,13 @@ import {useRecoilState} from "recoil";
 import {metadados_partida} from "../../../State/partida.metadados";
 import {useRouter} from "next/navigation";
 
-export default function Botao_Direita_E({id}) {
+export default function Botao_Direita_E({jogador_id, time}) {
     const router = useRouter()
     const [_metadados_partida, setPartidaConfig] = useRecoilState(metadados_partida)
 
     return (
         <Container_Cartao onClick={function () {
-            setTimeout(router.push(`/substituicao?id=${id}`), 100)
+            setTimeout(router.push(`/substituicao?id=${jogador_id}&time=${time}`), 100)
         }} style={{borderRadius: '20px 0 0 20px'}} imagem_url={imagem_cartao.src}>
             <Opcao_Icone image_url={image_url.src}></Opcao_Icone>
             <Nome_Opcao style={{textAlign: "center"}}>substituição</Nome_Opcao>

@@ -1,7 +1,7 @@
 // pages/sorteio.js
 'use client'
 import {useRouter} from 'next/navigation';
-import {React, useState} from 'react';
+import {React, useEffect, useState} from 'react';
 import {Container_Jogadores, Container_Principal} from './estilo/estilo_homepage'
 
 import Jogador_Esquerda_A from "./card_jogadores/Jogador_Esquerda_A";
@@ -25,9 +25,18 @@ const dado_mockado = {
     imagem_url: 'https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958'
 }
 
-export default function page() {
+
+
+export default function Page() {
+    const [conjunto_10_todos_jogadores, setConjunto10TodosJogadores] = useState([])
     const router = useRouter()
     const event_id = 1
+
+    useEffect(() => {
+        buscaTodosJogadoresTime(setConjunto10TodosJogadores)
+
+    }, []);
+
     return <>
         <Container_Principal>
 

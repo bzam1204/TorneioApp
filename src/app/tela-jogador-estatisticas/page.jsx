@@ -1,6 +1,7 @@
 'use client'
-import {useRouter, useSearchParams} from 'next/navigation';
+import {useRouter} from 'next/navigation';
 import {React, useState} from 'react';
+import {useSearchParams} from 'next/navigation'
 import {Container_Jogadores, Container_Principal} from './estilo/estatisticas'
 
 import Botao_Esquerda_A from "./Botoes_Estatisticas/Botao_Esquerda_A";
@@ -16,13 +17,15 @@ import Botao_Direita_E from "./Botoes_Estatisticas/Botao_Direita_E";
 import Painel_Jogador from "./Painel_Jogador/Painel_Jogador";
 
 
-export default function Page({_jogador_id}) {
+export default function Page() {
     const router = useRouter()
+    const searchParams = useSearchParams()
+
     const event_id = 1
 
-    let search = useSearchParams()
-    let id = search.get('id')
-    console.log('jogador id: ' + id)
+    const id = searchParams.get("id")
+    const _time = searchParams.get("time")
+
     return <>
 
         <Container_Principal id={'main'}>
@@ -40,7 +43,7 @@ export default function Page({_jogador_id}) {
                 <Botao_Direita_B/>
                 <Botao_Direita_C/>
                 <Botao_Direita_D/>
-                <Botao_Direita_E jogador_id={_jogador_id}/>
+                <Botao_Direita_E time={_time} jogador_id={id}/>
             </Container_Jogadores>
         </Container_Principal>
     </>

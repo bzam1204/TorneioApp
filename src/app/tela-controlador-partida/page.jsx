@@ -30,7 +30,7 @@ export default function Page() {
         }).then(res => {
             return res.json()
         }).then(res => {
-            jogadores = res
+            console.log(res)
         }).catch(err => {
             console.log(err)
         })
@@ -44,19 +44,19 @@ export default function Page() {
         <Container_Principal>
 
             <Container_Jogadores>
-                <Jogador_Esquerda_A dados_jogador={_times_montados.time_a[0]}></Jogador_Esquerda_A>
-                <Jogador_Esquerda_B dados_jogador={_times_montados.time_a[1]}></Jogador_Esquerda_B>
-                <Jogador_Esquerda_C dados_jogador={_times_montados.time_a[2]}></Jogador_Esquerda_C>
-                <Jogador_Esquerda_D dados_jogador={_times_montados.time_a[3]}></Jogador_Esquerda_D>
-                <Jogador_Esquerda_E dados_jogador={_times_montados.time_a[4]}></Jogador_Esquerda_E>
+                <Jogador_Esquerda_A time={0} dados_jogador={_times_montados.time_a[0]}></Jogador_Esquerda_A>
+                <Jogador_Esquerda_B time={0} dados_jogador={_times_montados.time_a[1]}></Jogador_Esquerda_B>
+                <Jogador_Esquerda_C time={0} dados_jogador={_times_montados.time_a[2]}></Jogador_Esquerda_C>
+                <Jogador_Esquerda_D time={0} dados_jogador={_times_montados.time_a[3]}></Jogador_Esquerda_D>
+                <Jogador_Esquerda_E time={0} dados_jogador={_times_montados.time_a[4]}></Jogador_Esquerda_E>
             </Container_Jogadores>
             <Painel_Interacao/>
             <Container_Jogadores>
-                <Jogador_Direita_A dados_jogador={_times_montados.time_b[0]}></Jogador_Direita_A>
-                <Jogador_Direita_B dados_jogador={_times_montados.time_b[1]}></Jogador_Direita_B>
-                <Jogador_Direita_C dados_jogador={_times_montados.time_b[2]}></Jogador_Direita_C>
-                <Jogador_Direita_D dados_jogador={_times_montados.time_b[3]}></Jogador_Direita_D>
-                <Jogador_Direita_E dados_jogador={_times_montados.time_b[4]}></Jogador_Direita_E>
+                <Jogador_Direita_A time={1} dados_jogador={_times_montados.time_b[0]}></Jogador_Direita_A>
+                <Jogador_Direita_B time={1} dados_jogador={_times_montados.time_b[1]}></Jogador_Direita_B>
+                <Jogador_Direita_C time={1} dados_jogador={_times_montados.time_b[2]}></Jogador_Direita_C>
+                <Jogador_Direita_D time={1} dados_jogador={_times_montados.time_b[3]}></Jogador_Direita_D>
+                <Jogador_Direita_E time={1} dados_jogador={_times_montados.time_b[4]}></Jogador_Direita_E>
             </Container_Jogadores>
         </Container_Principal>
     </>
