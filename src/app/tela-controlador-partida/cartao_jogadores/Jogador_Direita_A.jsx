@@ -6,17 +6,18 @@ import {useRouter} from "next/navigation";
 export default function Jogador_Direita_A({dados_jogador, time}) {
 
     const router = useRouter()
+    console.log(dados_jogador)
 
     return (<Container_Cartao onClick={function () {
         router.push(`/tela-jogador-estatisticas?id=${dados_jogador.id}&time=${time}`)
     }} style={{borderRadius: '20px 0 0 20px'}} imagem_url={imagem_cartao.src}
                               className="jogador_esquerda_a">
-        <Numero_Camisa>{dados_jogador.numero_camisa}</Numero_Camisa>
+        <Numero_Camisa>{dados_jogador.numeroCamisa}</Numero_Camisa>
         <div style={{display: "flex", alignSelf: "stretch", alignItems: "center"}}>
             <Nome_Jogador style={{textAlign: "right"}}>
                 <pre>{dados_jogador.nome.replace(' ', '\n')}</pre>
             </Nome_Jogador>
-            <Imagem_Jogador style={{backgroundImage: `url(${dados_jogador.imagem_url})`}}></Imagem_Jogador>
+            <Imagem_Jogador style={{backgroundImage: `url(${dados_jogador.imagemUrl})`}}></Imagem_Jogador>
         </div>
     </Container_Cartao>)
 }

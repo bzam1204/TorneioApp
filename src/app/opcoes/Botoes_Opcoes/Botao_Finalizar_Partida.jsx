@@ -79,7 +79,7 @@ const Modal = styled.div`
 
 export default function Botao_Finalizar_Partida() {
     const router = useRouter()
-    const _metadados_partida = useRecoilState(metadados_partida)
+    const [_metadados_partida, setMetadadosPartida] = useRecoilState(metadados_partida)
 
     function voltarParaPartida(partida_id) {
         router.push(`tela-controlador-partida/`)

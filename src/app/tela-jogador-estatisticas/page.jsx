@@ -20,9 +20,6 @@ import Painel_Jogador from "./Painel_Jogador/Painel_Jogador";
 export default function Page() {
     const router = useRouter()
     const searchParams = useSearchParams()
-
-    const event_id = 1
-
     const id = searchParams.get("id")
     const _time = searchParams.get("time")
 

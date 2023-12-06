@@ -32,7 +32,6 @@ async function criaPartida(setPartidaConfig, router, _metadados_partida) {
     }).catch(err => {
         console.log(err)
     })
-
 }
 
 

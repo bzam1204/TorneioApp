@@ -49,9 +49,8 @@ export default function Page() {
     const [conjunto_10_todos_jogadores, setConjunto10TodosJogadores] = useState([])
     const [pagina_atual, setPaginaAtual] = useState(0)
     const [is_loading, setIsLoading] = useState(true);
-
     const router = useRouter()
-    const event_id = 1
+
 
     useEffect(() => {
         buscaTodosJogadoresTime(setConjunto10TodosJogadores, setIsLoading)
