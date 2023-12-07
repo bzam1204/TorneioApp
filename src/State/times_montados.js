@@ -6,85 +6,86 @@ export const times_montados = atom({
             {
                 "id": null,
                 "nome": "JOGADOR VAZIO",
-                "altura": 187,
-                "dataNascimento": "2000-09-21T04:00:00.000Z",
-                "imagemUrl": "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958",
-                "nickname": "brunozamorano",
-                "numeroCamisa": 76
-            }, {
+                "altura": null,
+                "dataNascimento": "null",
+                "imagemUrl": "https://media.canva.com/1/image-resize/1/550_550_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS8ydExNNC9NQUYyUWoydExNNC8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAEClWoOfT1xIAIE6FkZqfG91jYWsRXROQxUuushPKzq4&exp=1701933220&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAHU7COF1QPpC2pBcwTe09bqXXKZ2VxSLiCPaJdqba8x2",
+                "nickname": "null",
+                "numeroCamisa": null
+            },{
                 "id": null,
                 "nome": "JOGADOR VAZIO",
-                "altura": 187,
-                "dataNascimento": "2000-09-21T04:00:00.000Z",
-                "imagemUrl": "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958",
-                "nickname": "brunozamorano",
-                "numeroCamisa": 76
-            }, {
+                "altura": null,
+                "dataNascimento": "null",
+                "imagemUrl": "https://media.canva.com/1/image-resize/1/550_550_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS8ydExNNC9NQUYyUWoydExNNC8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAEClWoOfT1xIAIE6FkZqfG91jYWsRXROQxUuushPKzq4&exp=1701933220&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAHU7COF1QPpC2pBcwTe09bqXXKZ2VxSLiCPaJdqba8x2",
+                "nickname": "null",
+                "numeroCamisa": null
+            },{
                 "id": null,
                 "nome": "JOGADOR VAZIO",
-                "altura": 187,
-                "dataNascimento": "2000-09-21T04:00:00.000Z",
-                "imagemUrl": "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958",
-                "nickname": "brunozamorano",
-                "numeroCamisa": 76
-            }, {
+                "altura": null,
+                "dataNascimento": "null",
+                "imagemUrl": "https://media.canva.com/1/image-resize/1/550_550_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS8ydExNNC9NQUYyUWoydExNNC8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAEClWoOfT1xIAIE6FkZqfG91jYWsRXROQxUuushPKzq4&exp=1701933220&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAHU7COF1QPpC2pBcwTe09bqXXKZ2VxSLiCPaJdqba8x2",
+                "nickname": "null",
+                "numeroCamisa": null
+            },{
                 "id": null,
                 "nome": "JOGADOR VAZIO",
-                "altura": 187,
-                "dataNascimento": "2000-09-21T04:00:00.000Z",
-                "imagemUrl": "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958",
-                "nickname": "brunozamorano",
-                "numeroCamisa": 76
-            }, {
+                "altura": null,
+                "dataNascimento": "null",
+                "imagemUrl": "https://media.canva.com/1/image-resize/1/550_550_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS8ydExNNC9NQUYyUWoydExNNC8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAEClWoOfT1xIAIE6FkZqfG91jYWsRXROQxUuushPKzq4&exp=1701933220&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAHU7COF1QPpC2pBcwTe09bqXXKZ2VxSLiCPaJdqba8x2",
+                "nickname": "null",
+                "numeroCamisa": null
+            },{
                 "id": null,
                 "nome": "JOGADOR VAZIO",
-                "altura": 187,
-                "dataNascimento": "2000-09-21T04:00:00.000Z",
-                "imagemUrl": "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958",
-                "nickname": "brunozamorano",
-                "numeroCamisa": 76
-            },],
+                "altura": null,
+                "dataNascimento": "null",
+                "imagemUrl": "https://media.canva.com/1/image-resize/1/550_550_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS8ydExNNC9NQUYyUWoydExNNC8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAEClWoOfT1xIAIE6FkZqfG91jYWsRXROQxUuushPKzq4&exp=1701933220&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAHU7COF1QPpC2pBcwTe09bqXXKZ2VxSLiCPaJdqba8x2",
+                "nickname": "null",
+                "numeroCamisa": null
+            },
+        ],
         time_b: [
             {
                 "id": null,
                 "nome": "JOGADOR VAZIO",
-                "altura": 187,
-                "dataNascimento": "2000-09-21T04:00:00.000Z",
-                "imagemUrl": "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958",
-                "nickname": "brunozamorano",
-                "numeroCamisa": 76
-            }, {
+                "altura": null,
+                "dataNascimento": "null",
+                "imagemUrl": "https://media.canva.com/1/image-resize/1/550_550_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS8ydExNNC9NQUYyUWoydExNNC8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAEClWoOfT1xIAIE6FkZqfG91jYWsRXROQxUuushPKzq4&exp=1701933220&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAHU7COF1QPpC2pBcwTe09bqXXKZ2VxSLiCPaJdqba8x2",
+                "nickname": "null",
+                "numeroCamisa": null
+            },{
                 "id": null,
                 "nome": "JOGADOR VAZIO",
-                "altura": 187,
-                "dataNascimento": "2000-09-21T04:00:00.000Z",
-                "imagemUrl": "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958",
-                "nickname": "brunozamorano",
-                "numeroCamisa": 76
-            }, {
+                "altura": null,
+                "dataNascimento": "null",
+                "imagemUrl": "https://media.canva.com/1/image-resize/1/550_550_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS8ydExNNC9NQUYyUWoydExNNC8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAEClWoOfT1xIAIE6FkZqfG91jYWsRXROQxUuushPKzq4&exp=1701933220&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAHU7COF1QPpC2pBcwTe09bqXXKZ2VxSLiCPaJdqba8x2",
+                "nickname": "null",
+                "numeroCamisa": null
+            },{
                 "id": null,
                 "nome": "JOGADOR VAZIO",
-                "altura": 187,
-                "dataNascimento": "2000-09-21T04:00:00.000Z",
-                "imagemUrl": "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958",
-                "nickname": "brunozamorano",
-                "numeroCamisa": 76
-            }, {
+                "altura": null,
+                "dataNascimento": "null",
+                "imagemUrl": "https://media.canva.com/1/image-resize/1/550_550_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS8ydExNNC9NQUYyUWoydExNNC8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAEClWoOfT1xIAIE6FkZqfG91jYWsRXROQxUuushPKzq4&exp=1701933220&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAHU7COF1QPpC2pBcwTe09bqXXKZ2VxSLiCPaJdqba8x2",
+                "nickname": "null",
+                "numeroCamisa": null
+            },{
                 "id": null,
                 "nome": "JOGADOR VAZIO",
-                "altura": 187,
-                "dataNascimento": "2000-09-21T04:00:00.000Z",
-                "imagemUrl": "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958",
-                "nickname": "brunozamorano",
-                "numeroCamisa": 76
-            }, {
+                "altura": null,
+                "dataNascimento": "null",
+                "imagemUrl": "https://media.canva.com/1/image-resize/1/550_550_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS8ydExNNC9NQUYyUWoydExNNC8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAEClWoOfT1xIAIE6FkZqfG91jYWsRXROQxUuushPKzq4&exp=1701933220&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAHU7COF1QPpC2pBcwTe09bqXXKZ2VxSLiCPaJdqba8x2",
+                "nickname": "null",
+                "numeroCamisa": null
+            },{
                 "id": null,
                 "nome": "JOGADOR VAZIO",
-                "altura": 187,
-                "dataNascimento": "2000-09-21T04:00:00.000Z",
-                "imagemUrl": "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCy9sEthqm8pg_PtUl1H3KM0XHRoixnho0Oe7g-sbK-SVNr52nc8wj1kJZEc9DBQxTf2jPDBNRtS47GWex4Iy1MGGDC4A=w1911-h958",
-                "nickname": "brunozamorano",
-                "numeroCamisa": 76
+                "altura": null,
+                "dataNascimento": "null",
+                "imagemUrl": "https://media.canva.com/1/image-resize/1/550_550_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS8ydExNNC9NQUYyUWoydExNNC8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAEClWoOfT1xIAIE6FkZqfG91jYWsRXROQxUuushPKzq4&exp=1701933220&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAHU7COF1QPpC2pBcwTe09bqXXKZ2VxSLiCPaJdqba8x2",
+                "nickname": "null",
+                "numeroCamisa": null
             },]
     }
 });

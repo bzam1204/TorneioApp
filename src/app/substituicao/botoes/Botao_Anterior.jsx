@@ -22,9 +22,18 @@ const Container_Botao_Avancar = styled.div`
     background-image: url(${props => props.img_active_url});
   }
 `
-export default function Botao_Anterior() {
+export default function Botao_Anterior({setState}) {
     return (
         <Container_Botao_Avancar
+            onClick={() => {
+                setState(prev => {
+                    if (prev - 1 >= 0) {
+                        return prev - 1
+                    } else {
+                        return prev
+                    }
+                })
+            }}
             img_url={imagem_botao.src}
             img_hover_url={imagem_botao_hover.src}
             img_active_url={imagem_botao_pressionado.src}>

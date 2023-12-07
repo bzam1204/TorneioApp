@@ -1,6 +1,6 @@
 // pages/sorteio.js
 'use client'
-import {useRouter} from 'next/navigation';
+import {useRouter, useSearchParams} from 'next/navigation';
 import {React, useEffect, useState} from 'react';
 import {Container_Jogadores, Container_Principal} from './estilo/estilo_homepage'
 
@@ -46,15 +46,17 @@ export async function buscaTodosJogadoresTime(_set, _setIsLoading) {
 }
 
 export default function Page() {
+    const searchParams = useSearchParams()
     const [conjunto_10_todos_jogadores, setConjunto10TodosJogadores] = useState([])
     const [pagina_atual, setPaginaAtual] = useState(0)
     const [is_loading, setIsLoading] = useState(true);
     const router = useRouter()
+    const partida_id = searchParams.get("partida_id")
 
 
     useEffect(() => {
         buscaTodosJogadoresTime(setConjunto10TodosJogadores, setIsLoading)
-    }, [conjunto_10_todos_jogadores]);
+    }, []);
 
 
     // Render content based on loading state
@@ -73,7 +75,7 @@ export default function Page() {
                 <Jogador_Esquerda_D dados_jogador={conjunto_10_todos_jogadores[pagina_atual][3]}></Jogador_Esquerda_D>
                 <Jogador_Esquerda_E dados_jogador={conjunto_10_todos_jogadores[pagina_atual][4]}></Jogador_Esquerda_E>
             </Container_Jogadores>
-            <Painel_Interacao/>
+            <Painel_Interacao setState={setPaginaAtual}/>
             <Container_Jogadores>
                 <Jogador_Direita_A dados_jogador={conjunto_10_todos_jogadores[pagina_atual][5]}></Jogador_Direita_A>
                 <Jogador_Direita_B dados_jogador={conjunto_10_todos_jogadores[pagina_atual][6]}></Jogador_Direita_B>

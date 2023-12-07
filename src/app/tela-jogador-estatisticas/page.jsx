@@ -22,6 +22,7 @@ export default function Page() {
     const searchParams = useSearchParams()
     const id = searchParams.get("id")
     const _time = searchParams.get("time")
+    const partida_id = searchParams.get("partida_id")
 
     return <>
 
@@ -40,7 +41,7 @@ export default function Page() {
                 <Botao_Direita_B/>
                 <Botao_Direita_C/>
                 <Botao_Direita_D/>
-                <Botao_Direita_E time={_time} jogador_id={id}/>
+                <Botao_Direita_E time={_time} jogador_id={id} partida_id={partida_id}/>
             </Container_Jogadores>
         </Container_Principal>
     </>

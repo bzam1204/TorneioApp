@@ -1,17 +1,38 @@
 'use client'
 import {Container_Cartao, Numero_Camisa, Nome_Jogador, Imagem_Jogador} from "../estilo/cartao_jogador";
 import imagem_cartao from '../../../../public/img/botoes_jogador/esquerda-3.png'
+import {useRouter, useSearchParams} from "next/navigation";
+import {adicionarJogadorNoTime} from "./Jogador_Esquerda_A";
 
 export default function Jogador_Esquerda_C({dados_jogador}) {
+    let router = useRouter()
+    const searchParams = useSearchParams()
+    let _time = null
+    const id = searchParams.get("id")
+    const _time_from_url = searchParams.get("time")
+    const partida_id = parseInt(searchParams.get("partida_id"))
+    _time_from_url === '0' ? _time = false : _time = true;
 
+    if(dados_jogador === undefined) return null
 
-    return (<Container_Cartao  style={{borderRadius: '0 20px 20px 0'}} imagem_url={imagem_cartao.src} className="jogador_esquerda_a">
-        <div style={{display: "flex", alignSelf: "stretch", alignItems:"center"}}>
-            <Imagem_Jogador style={{backgroundImage: `url(${dados_jogador.imagemUrl})`}}></Imagem_Jogador>
-            <Nome_Jogador>
-                <pre>{dados_jogador.nome.replace(' ', '\n')}</pre>
-            </Nome_Jogador>
-        </div>
-        <Numero_Camisa>{dados_jogador.numeroCamisa}</Numero_Camisa>
-    </Container_Cartao>)
+    return (
+        <Container_Cartao
+            onClick={
+                async () => {
+                    await adicionarJogadorNoTime(_time, dados_jogador.id, partida_id)
+                    await router.push(`/tela-controlador-partida?id=${partida_id}`)
+                }
+            }
+            style={{borderRadius: '0 20px 20px 0'}}
+            imagem_url={imagem_cartao.src} className="jogador_esquerda_a">
+
+            <div style={{display: "flex", alignSelf: "stretch", alignItems: "center"}}>
+                <Imagem_Jogador style={{backgroundImage: `url(${dados_jogador.imagemUrl})`}}></Imagem_Jogador>
+                <Nome_Jogador>
+                    <pre>{dados_jogador.nome.replace(' ', '\n')}</pre>
+                </Nome_Jogador>
+            </div>
+            <Numero_Camisa>{dados_jogador.numeroCamisa}</Numero_Camisa>
+        </Container_Cartao>
+    )
 }
