@@ -6,7 +6,7 @@ import {useRecoilState} from "recoil";
 import {metadados_partida} from "../../../State/partida.metadados";
 
 
-export function adicionarJogadorNoTime(_time, _jogador_id, _partida_id) {
+export function adicionarJogadorNoTime(_time, _jogador_id, _partida_id,router) {
 
     const dadosParaEnviar = {
         time: _time,
@@ -41,6 +41,7 @@ export function adicionarJogadorNoTime(_time, _jogador_id, _partida_id) {
         .then(data => {
             console.log('Resposta da API:', data);
             // Lide com a resposta da API conforme necessário
+            router.push(`/tela-controlador-partida?id=${_partida_id}`)
         })
         .catch(error => {
             console.error('Erro na solicitação:', error);
@@ -64,8 +65,7 @@ export default function Jogador_Esquerda_A({dados_jogador}) {
         <Container_Cartao
             onClick={
                 async () => {
-                    await adicionarJogadorNoTime(_time, dados_jogador.id, partida_id)
-                    await router.push(`/tela-controlador-partida?id=${partida_id}`)
+                    await adicionarJogadorNoTime(_time, dados_jogador.id, partida_id, router)
                 }
             }
             style={{borderRadius: '0 20px 20px 0'}}

@@ -18,10 +18,7 @@ export default function Jogador_Direita_A({dados_jogador}) {
         <Container_Cartao
             onClick={
                 async () => {
-                    await adicionarJogadorNoTime(_time, dados_jogador.id, partida_id)
-                    setTimeout(
-                        router.push(`/tela-controlador-partida?id=${partida_id}`)
-                        , 100)
+                    await adicionarJogadorNoTime(_time, dados_jogador.id, partida_id, router)
                 }
             }
             style={{borderRadius: '20px 0 0 20px'}}

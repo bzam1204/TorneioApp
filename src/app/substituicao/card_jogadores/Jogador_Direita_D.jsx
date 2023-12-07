@@ -12,14 +12,13 @@ export default function Jogador_Direita_D({dados_jogador}) {
     const _time_from_url = searchParams.get("time")
     const partida_id = parseInt(searchParams.get("partida_id"))
     _time_from_url === '0' ? _time = false : _time = true;
-    if(dados_jogador === undefined) return null
+    if (dados_jogador === undefined) return null
 
     return (
         <Container_Cartao
             onClick={
                 async () => {
-                    await adicionarJogadorNoTime(_time, dados_jogador.id, partida_id)
-                    await router.push(`/tela-controlador-partida?id=${partida_id}`)
+                    await adicionarJogadorNoTime(_time, dados_jogador.id, partida_id, router)
                 }
             }
             style={{borderRadius: '20px 0 0 20px'}}
