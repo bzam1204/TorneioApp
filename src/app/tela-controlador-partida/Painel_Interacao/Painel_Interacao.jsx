@@ -10,9 +10,12 @@ import Botao_Tempo from "../botoes/Botao_Tempo";
 import Botao_Tela_Inicial from "../botoes/Botao_24_Seg";
 import Botao_Informativo from "../botoes/Botao_Informativo";
 import Frame_Placar from "./Frame_Placar";
+import {useSearchParams} from "next/navigation";
 
 
 export default function Painel_Interacao() {
+    const search_params = useSearchParams()
+    const partida_id = parseInt(search_params.get('id'))
 
     return (<Container_Painel_Interacao>
         <Container_Camada_Interna>

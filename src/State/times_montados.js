@@ -2,7 +2,7 @@ import {atom} from 'recoil'
 
 export const times_montados = atom({
     key: "times_montados", default: {
-        time_a: [
+        time_zero: [
             {
                 "id": null,
                 "nome": "JOGADOR VAZIO",
@@ -45,7 +45,7 @@ export const times_montados = atom({
                 "numeroCamisa": null
             },
         ],
-        time_b: [
+        time_um: [
             {
                 "id": null,
                 "nome": "JOGADOR VAZIO",

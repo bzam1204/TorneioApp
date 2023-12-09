@@ -2,7 +2,6 @@
 import {Container_Cartao, Numero_Camisa, Nome_Jogador, Imagem_Jogador} from "../estilo/cartao_jogador";
 import imagem_cartao from '../../../../public/img/botoes_jogador/esquerda-2.png'
 import {useRouter, useSearchParams} from "next/navigation";
-import {useRecoilState} from "recoil";
 import {adicionarJogadorNoTime} from "./Jogador_Esquerda_A";
 
 export default function Jogador_Esquerda_B({dados_jogador}) {
@@ -13,7 +12,8 @@ export default function Jogador_Esquerda_B({dados_jogador}) {
     const _time_from_url = searchParams.get("time")
     const partida_id = parseInt(searchParams.get("partida_id"))
     _time_from_url === '0' ? _time = false : _time = true;
-    console.log(_time)
+
+    if(dados_jogador === undefined) return null
 
     return (
         <Container_Cartao

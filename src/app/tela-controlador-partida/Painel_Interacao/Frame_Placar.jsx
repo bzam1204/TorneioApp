@@ -5,6 +5,10 @@ import {useRouter} from 'next/navigation';
 
 
 import styled from "styled-components";
+import {useEffect, useState} from "react";
+import socket from "../../../config/socket_config";
+import {useRecoilState} from "recoil";
+import {pontuacao_time_zero, pontuacao_time_um} from "../../../State/partida.metadados";
 
 const Container_Botao_Tela_Inicial = styled.div`
   background-image: url(${props => props.img_url});
@@ -33,12 +37,37 @@ export const Pontuacao = styled.p`
 
 export default function Frame_Placar() {
     const router = useRouter()
+    const [time_zero, setTimeZero] = useRecoilState(pontuacao_time_zero)
+    const [time_um, setTimeUm] = useRecoilState(pontuacao_time_um)
+    const [pontuacao, setPontuacao] = useState(null)
 
-    return (
-        <Container_Botao_Tela_Inicial
-            img_url={imagem_botao.src}>
-            <Pontuacao>123</Pontuacao>
-            <Pontuacao>125</Pontuacao>
-        </Container_Botao_Tela_Inicial>
-    )
+
+    useEffect(() => {
+        if (time_um === 0 && time_zero === 0) {
+            socket.on('pontuacao', (dado) => {
+                setTimeZero(dado.pontuacao.timeA)
+                setTimeUm(dado.pontuacao.timeB)
+                console.log(dado.pontuacao)
+            })
+        }
+    }, [time_zero, time_um])
+
+
+    if (time_zero !== null) {
+        return (
+            <Container_Botao_Tela_Inicial
+                img_url={imagem_botao.src}>
+                <Pontuacao>{time_zero}</Pontuacao>
+                <Pontuacao>{time_um}</Pontuacao>
+            </Container_Botao_Tela_Inicial>
+        )
+    } else {
+        return (
+            <Container_Botao_Tela_Inicial
+                img_url={imagem_botao.src}>
+                <Pontuacao>0</Pontuacao>
+                <Pontuacao>0</Pontuacao>
+            </Container_Botao_Tela_Inicial>
+        )
+    }
 }

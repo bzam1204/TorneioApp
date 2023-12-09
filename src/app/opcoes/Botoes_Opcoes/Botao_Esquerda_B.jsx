@@ -9,7 +9,7 @@ export default function Botao_Esquerda_B() {
 
     return (
         <Container_Cartao onClick={() => {
-            socket.emit('removeMinute')
+            socket.emit('removeminute')
         }} style={{borderRadius: '0 20px 20px 0'}} imagem_url={imagem_cartao.src}>
             <Nome_Opcao style={{textAlign: "center"}}>- Um Minuto</Nome_Opcao>
             <Opcao_Icone>()</Opcao_Icone>

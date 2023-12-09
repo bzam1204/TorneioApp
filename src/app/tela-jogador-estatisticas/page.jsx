@@ -1,6 +1,6 @@
 'use client'
 import {useRouter} from 'next/navigation';
-import {React, useState} from 'react';
+import {React, useEffect, useState} from 'react';
 import {useSearchParams} from 'next/navigation'
 import {Container_Jogadores, Container_Principal} from './estilo/estatisticas'
 
@@ -15,6 +15,9 @@ import Botao_Direita_C from "./Botoes_Estatisticas/Botao_Direita_C";
 import Botao_Direita_D from "./Botoes_Estatisticas/Botao_Direita_D";
 import Botao_Direita_E from "./Botoes_Estatisticas/Botao_Direita_E";
 import Painel_Jogador from "./Painel_Jogador/Painel_Jogador";
+import {useRecoilState} from "recoil";
+import {pontuacao_time_zero, pontuacao_time_um} from "../../State/partida.metadados";
+import socket from "../../config/socket_config";
 
 
 export default function Page() {
@@ -23,6 +26,8 @@ export default function Page() {
     const id = searchParams.get("id")
     const _time = searchParams.get("time")
     const partida_id = searchParams.get("partida_id")
+
+
 
     return <>
 
@@ -33,7 +38,7 @@ export default function Page() {
                 <Botao_Esquerda_B/>
                 <Botao_Esquerda_C/>
                 <Botao_Esquerda_D/>
-                <Botao_Esquerda_E/>
+                <Botao_Esquerda_E partida_id={partida_id}/>
             </Container_Jogadores>
             <Painel_Jogador/>
             <Container_Jogadores>

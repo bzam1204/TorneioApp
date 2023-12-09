@@ -5,12 +5,17 @@ import {useRouter, useSearchParams} from "next/navigation";
 import {useRecoilState} from "recoil";
 import {metadados_partida} from "../../../State/partida.metadados";
 
+export function adicionarJogadorNoTime(_time, _jogador_selecionado_id, _partida_id, router, jogador_id) {
 
-export function adicionarJogadorNoTime(_time, _jogador_id, _partida_id,router) {
+    if(jogador_id !== null) {
+    }
+
+    if(jogador_id === _jogador_selecionado_id) {
+    }
 
     const dadosParaEnviar = {
         time: _time,
-        jogadorId: _jogador_id,
+        jogadorId: _jogador_selecionado_id,
         titular: true,
         partidaId: parseInt(_partida_id),
     };
@@ -27,8 +32,6 @@ export function adicionarJogadorNoTime(_time, _jogador_id, _partida_id,router) {
         },
         body: JSON.stringify(dadosParaEnviar)
     };
-
-    console.log(dadosParaEnviar);
 
 // Realizar a solicitação
     fetch(url, options)
@@ -55,17 +58,16 @@ export default function Jogador_Esquerda_A({dados_jogador}) {
     let router = useRouter()
     const searchParams = useSearchParams()
     let _time = null
-    const id = searchParams.get("id")
+    const jogador_id = searchParams.get("id")
     const _time_from_url = searchParams.get("time")
     const partida_id = parseInt(searchParams.get("partida_id"))
     _time_from_url === '0' ? _time = false : _time = true;
-    console.log(_time)
 
     return (
         <Container_Cartao
             onClick={
                 async () => {
-                    await adicionarJogadorNoTime(_time, dados_jogador.id, partida_id, router)
+                    await adicionarJogadorNoTime(_time, dados_jogador.id, partida_id, router, jogador_id)
                 }
             }
             style={{borderRadius: '0 20px 20px 0'}}

@@ -18,80 +18,43 @@ import {times_montados} from "../../State/times_montados";
 import {metadados_partida} from "../../State/partida.metadados";
 
 
-function geraArrayJogadoresDinamicamente(_jogadores_registrados, _time_array) {
-    let copy_time_array = [..._time_array]
-    _jogadores_registrados.map((jogador, index) => {
-        copy_time_array[index] = jogador.jogador
+function mergeJogadoresVaziosComTodosJogadores(todos_jogadores, array_jogadores_vazios) {
+    let copy_array_jogadores_vazios = [...array_jogadores_vazios]
+    todos_jogadores.map((dados_jogador, index) => {
+        copy_array_jogadores_vazios[index] = dados_jogador.jogador
     })
-    return copy_time_array
+    return copy_array_jogadores_vazios
 }
 
 
-async function buscaJogadoresTime(time, partidaId, timeState) {
-    try {
-        const response = await fetch(`http://localhost:3000/api/time/jogador?id=${partidaId}&time=${time}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+async function buscaJogadoresTime(partidaId, time_zero, time_um, setTimeZero, setTimeUm, setIsLoading) {
+    const response_time_zero = await fetch(`http://localhost:3000/api/time/jogador?id=${partidaId}&time=0`);
+    const jogadores_time_zero = await response_time_zero.json();
+    const response_time_um = await fetch(`http://localhost:3000/api/time/jogador?id=${partidaId}&time=1`);
+    const jogadores_time_um = await response_time_um.json();
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
 
-        const jogadoresTime = await response.json();
-        return geraArrayJogadoresDinamicamente(jogadoresTime, timeState);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        throw error; // Re-throw the error to be caught by the calling code
-    }
+    const merge_time_zero = mergeJogadoresVaziosComTodosJogadores(jogadores_time_zero, time_zero)
+    const merge_time_um = mergeJogadoresVaziosComTodosJogadores(jogadores_time_um, time_um)
+    await setTimeZero(merge_time_zero)
+    await setTimeUm(merge_time_um)
+    await setIsLoading(false)
 }
 
 export default function Page() {
-    const [salva_time_a, setTimeA] = useState([])
-    const [salva_time_b, setTimeB] = useState([])
+    const [time_zero, setTimeZero] = useState([])
+    const [time_um, setTimeUm] = useState([])
     const [is_loading, setIsLoading] = useState(true);
+    const [_times_montados, setTimesMontados] = useRecoilState(times_montados)
     const router = useRouter()
     const search = useSearchParams()
-
-
-    const [_times_montados, setTimesMontados] = useRecoilState(times_montados)
-    const [_metadados_partida, setMetadadosPartida] = useRecoilState(metadados_partida)
-
     const partida_id = parseInt(search.get('id'))
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setIsLoading(true);
-                const jogadoresTimeA = await buscaJogadoresTime(0, partida_id, _times_montados.time_a);
-                setTimeA(jogadoresTimeA);
-            } catch (error) {
-                console.error(error);
-            } finally {
-                console.log('o primeiro já foi')
-            }
-        };
-
-        fetchData();
-    }, [partida_id]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setIsLoading(true);
-                const jogadoresTimeB = await buscaJogadoresTime(1, partida_id, _times_montados.time_b);
-                setTimeB(jogadoresTimeB);
-            } catch (error) {
-                console.error(error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
+        buscaJogadoresTime(partida_id, _times_montados.time_zero, _times_montados.time_zero, setTimeZero, setTimeUm, setIsLoading);
+    }, []);
 
-        fetchData();
-    }, [partida_id]);
 
     if (is_loading) {
         return <p>Loading...</p>;
@@ -100,19 +63,19 @@ export default function Page() {
     return <>
         <Container_Principal>
             <Container_Jogadores>
-                <Jogador_Esquerda_A time={0} dados_jogador={salva_time_a[0]}></Jogador_Esquerda_A>
-                <Jogador_Esquerda_B time={0} dados_jogador={salva_time_a[1]}></Jogador_Esquerda_B>
-                <Jogador_Esquerda_C time={0} dados_jogador={salva_time_a[2]}></Jogador_Esquerda_C>
-                <Jogador_Esquerda_D time={0} dados_jogador={salva_time_a[3]}></Jogador_Esquerda_D>
-                <Jogador_Esquerda_E time={0} dados_jogador={salva_time_a[4]}></Jogador_Esquerda_E>
+                <Jogador_Esquerda_A time={0} dados_jogador={time_zero[0]}></Jogador_Esquerda_A>
+                <Jogador_Esquerda_B time={0} dados_jogador={time_zero[1]}></Jogador_Esquerda_B>
+                <Jogador_Esquerda_C time={0} dados_jogador={time_zero[2]}></Jogador_Esquerda_C>
+                <Jogador_Esquerda_D time={0} dados_jogador={time_zero[3]}></Jogador_Esquerda_D>
+                <Jogador_Esquerda_E time={0} dados_jogador={time_zero[4]}></Jogador_Esquerda_E>
             </Container_Jogadores>
             <Painel_Interacao/>
             <Container_Jogadores>
-                <Jogador_Direita_A time={1} dados_jogador={salva_time_b[0]}></Jogador_Direita_A>
-                <Jogador_Direita_B time={1} dados_jogador={salva_time_b[1]}></Jogador_Direita_B>
-                <Jogador_Direita_C time={1} dados_jogador={salva_time_b[2]}></Jogador_Direita_C>
-                <Jogador_Direita_D time={1} dados_jogador={salva_time_b[3]}></Jogador_Direita_D>
-                <Jogador_Direita_E time={1} dados_jogador={salva_time_b[4]}></Jogador_Direita_E>
+                <Jogador_Direita_A time={1} dados_jogador={time_um[0]}></Jogador_Direita_A>
+                <Jogador_Direita_B time={1} dados_jogador={time_um[1]}></Jogador_Direita_B>
+                <Jogador_Direita_C time={1} dados_jogador={time_um[2]}></Jogador_Direita_C>
+                <Jogador_Direita_D time={1} dados_jogador={time_um[3]}></Jogador_Direita_D>
+                <Jogador_Direita_E time={1} dados_jogador={time_um[4]}></Jogador_Direita_E>
             </Container_Jogadores>
         </Container_Principal>
     </>

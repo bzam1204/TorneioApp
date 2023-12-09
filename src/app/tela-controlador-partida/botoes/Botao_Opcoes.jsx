@@ -4,7 +4,7 @@ import imagem_botao_pressionado from '../../../../public/img/botoes_especiais/op
 
 
 import styled from "styled-components";
-import {useRouter} from "next/navigation";
+import {useRouter, useSearchParams} from "next/navigation";
 
 const Container_Botao_Avancar = styled.div`
   background-image: url(${props => props.img_url});
@@ -25,11 +25,13 @@ const Container_Botao_Avancar = styled.div`
 `
 export default function Botao_Opcoes() {
     const router = useRouter()
+    const search_params = useSearchParams()
+    const partida_id = parseInt(search_params.get('id'))
     return (<Container_Botao_Avancar
         onClick={function () {
             //para o usuario ver a animação inteira
             setTimeout(function () {
-                router.push(`/opcoes`)
+                router.push(`/opcoes?partida_id=${partida_id}`)
             }, 100)
         }}
         img_url={imagem_botao.src}

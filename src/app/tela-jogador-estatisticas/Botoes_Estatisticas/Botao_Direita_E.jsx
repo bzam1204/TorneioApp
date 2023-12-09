@@ -9,7 +9,6 @@ import {useRouter} from "next/navigation";
 
 export default function Botao_Direita_E({jogador_id, time, partida_id}) {
     const router = useRouter()
-    const [_metadados_partida, setPartidaConfig] = useRecoilState(metadados_partida)
 
     return (
         <Container_Cartao onClick={function () {

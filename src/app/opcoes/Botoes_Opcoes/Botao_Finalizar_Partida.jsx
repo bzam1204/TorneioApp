@@ -1,5 +1,5 @@
 'use client'
-import {useRouter} from "next/navigation";
+import {useRouter, useSearchParams} from "next/navigation";
 import imagem_botao_amarelo from '../../../../public/img/botoes_especiais/default_amarelo.png'
 import imagem_botao_hover_amarelo from '../../../../public/img/botoes_especiais/default_amarelo_hovered.png'
 import imagem_botao_pressionado_amarelo from '../../../../public/img/botoes_especiais/default_amarelo_pressionado.png'
@@ -10,6 +10,8 @@ import styled from "styled-components";
 import {useRecoilState} from "recoil";
 import {metadados_partida} from '../../../State/partida.metadados'
 import {useEffect} from "react";
+import socket from "../../../config/socket_config";
+
 
 const Container_Botao = styled.div`
   background-image: url(${props => props.img_url});
@@ -79,14 +81,18 @@ const Modal = styled.div`
 
 export default function Botao_Finalizar_Partida() {
     const router = useRouter()
-    const [_metadados_partida, setMetadadosPartida] = useRecoilState(metadados_partida)
+    const searchParams = useSearchParams()
+
+    const partida_id = searchParams.get("partida_id")
 
     function voltarParaPartida(partida_id) {
-        router.push(`tela-controlador-partida/`)
+        router.push(`tela-controlador-partida?id=${partida_id}`)
     }
 
     function finalizarPartida(partida_id) {
         router.push(`/`)
+        socket.emit('start')
+
     }
 
     return (<Layer id={'modal_finalizar_partida'}>
@@ -95,8 +101,8 @@ export default function Botao_Finalizar_Partida() {
             <Label>Deseja Finalizar a Partida?</Label>
             <Container_Botao
                 //botao amarelo
-                onclick={function () {
-                    finalizarPartida(_metadados_partida.partida_id)
+                onClick={function () {
+                    finalizarPartida()
                 }}
                 img_url={imagem_botao_amarelo.src}
                 img_hover_url={imagem_botao_hover_amarelo.src}
@@ -106,7 +112,7 @@ export default function Botao_Finalizar_Partida() {
             <Container_Botao
                 //botao vermelho
                 onClick={function () {
-                    voltarParaPartida(_metadados_partida.partida_id)
+                    voltarParaPartida(partida_id)
                 }}
                 img_url={imagem_botao_red.src}
                 img_hover_url={imagem_botao_hover_red.src}
