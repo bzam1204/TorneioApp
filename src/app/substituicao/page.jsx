@@ -29,7 +29,7 @@ function divideEmGruposDeDez(_array, _tamanhoGrupo) {
     return grupos;
 }
 
-export async function buscaTodosJogadoresTime(_set, _setIsLoading, partida_id, time) {
+export async function buscasTodosJogadoresTime(_set, _setIsLoading, partida_id, time) {
     const res = await fetch(`http://localhost:3000/api/time/jogador?id=${partida_id}&time=${time}`);
     const jogadores_time = await res.json();
     const response = await fetch('http://localhost:3000/api/jogador')
