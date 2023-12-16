@@ -11,6 +11,8 @@ import {useEffect, useState} from "react";
 import '../estilo/style.css'
 import socket from "../../../config/socket_config";
 
+
+
 const Container_Botao_24_seg = styled.div`
   background-image: url(${props => props.img_url});
   width: calc(100% - 4.68vw);
@@ -70,6 +72,10 @@ function emitUpdatedInfo(setTempo) {
 
 }
 
+function apita () {
+
+}
+
 export default function Botao_24_Seg() {
     const router = useRouter()
     const [_time_is_running, setTimeIsRunning] = useRecoilState(time_is_running)
@@ -80,6 +86,9 @@ export default function Botao_24_Seg() {
         socket.on('update', ({isRunning}) => {
             setTimeIsRunning(isRunning)
             handleBotaoCinza(isRunning)
+            if(tempo_possessao === 12) {
+                apita()
+            }
         })
 
     }, [_time_is_running])

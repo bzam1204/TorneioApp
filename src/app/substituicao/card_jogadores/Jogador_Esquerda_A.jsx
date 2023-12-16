@@ -2,19 +2,18 @@
 import {Container_Cartao, Numero_Camisa, Nome_Jogador, Imagem_Jogador} from "../estilo/cartao_jogador";
 import imagem_cartao from '../../../../public/img/botoes_jogador/esquerda-1.png'
 import {useRouter, useSearchParams} from "next/navigation";
-import {useRecoilState} from "recoil";
-import {metadados_partida} from "../../../State/partida.metadados";
 
-export function adicionarJogadorNoTime(_time, _jogador_selecionado_id, _partida_id, router, jogador_id) {
 
-    if(jogador_id !== null) {
+export function adicionarJogadorNoTime(_time_id, _jogador_selecionado_id, _partida_id, _router, _id_jogador_na_partida) {
+
+    if(_id_jogador_na_partida !== null) {
     }
 
-    if(jogador_id === _jogador_selecionado_id) {
+    if(_id_jogador_na_partida === _jogador_selecionado_id) {
     }
 
-    const dadosParaEnviar = {
-        time: _time,
+    const dados_a_enviar = {
+        time: _time_id,
         jogadorId: _jogador_selecionado_id,
         titular: true,
         partidaId: parseInt(_partida_id),
@@ -28,9 +27,8 @@ export function adicionarJogadorNoTime(_time, _jogador_selecionado_id, _partida_
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            // Adicione quaisquer cabeçalhos adicionais que seu servidor possa exigir
         },
-        body: JSON.stringify(dadosParaEnviar)
+        body: JSON.stringify(dados_a_enviar)
     };
 
 // Realizar a solicitação
@@ -42,9 +40,8 @@ export function adicionarJogadorNoTime(_time, _jogador_selecionado_id, _partida_
             return response.json();
         })
         .then(data => {
-            console.log('Resposta da API:', data);
-            // Lide com a resposta da API conforme necessário
-            router.push(`/tela-controlador-partida?id=${_partida_id}`)
+            //vamos para a tela de controle da partida
+            _router.push(`/tela-controlador-partida?id=${_partida_id}`)
         })
         .catch(error => {
             console.error('Erro na solicitação:', error);
