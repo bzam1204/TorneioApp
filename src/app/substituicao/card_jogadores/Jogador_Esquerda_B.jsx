@@ -5,25 +5,30 @@ import {useRouter, useSearchParams} from "next/navigation";
 import {adicionarJogadorNoTime} from "./Jogador_Esquerda_A";
 
 export default function Jogador_Esquerda_B({dados_jogador}) {
-    let router = useRouter()
-    const searchParams = useSearchParams()
-    let _time = null
-    const id = searchParams.get("id")
-    const _time_from_url = searchParams.get("time")
-    const partida_id = parseInt(searchParams.get("partida_id"))
-    _time_from_url === '0' ? _time = false : _time = true;
-
-    if(dados_jogador === undefined) return null
+    let router = useRouter();
+    const searchParams = useSearchParams();
+    let _time = null;
+    const id_jogador_na_partida = searchParams.get("id");
+    const _time_from_url = searchParams.get("time");
+    const partida_id = parseInt(searchParams.get("partida_id"));
+    _time_from_url === "0" ? (_time = false) : (_time = true);
+    console.log("esquerda A: ", id_jogador_na_partida);
 
     return (
         <Container_Cartao
-            onClick={
-                async () => {
-                    await adicionarJogadorNoTime(_time, dados_jogador.id, partida_id, router)
-                }
-            }
-            style={{borderRadius: '0 20px 20px 0'}}
-            imagem_url={imagem_cartao.src} className="jogador_esquerda_a">
+            onClick={async () => {
+                await adicionarJogadorNoTime(
+                    _time,
+                    dados_jogador.id,
+                    partida_id,
+                    router,
+                    id_jogador_na_partida
+                );
+            }}
+            style={{ borderRadius: "0 20px 20px 0" }}
+            imagem_url={imagem_cartao.src}
+            className="jogador_esquerda_a"
+        >
 
             <div style={{display: "flex", alignSelf: "stretch", alignItems: "center"}}>
                 <Imagem_Jogador style={{backgroundImage: `url(${dados_jogador.imagemUrl})`}}></Imagem_Jogador>

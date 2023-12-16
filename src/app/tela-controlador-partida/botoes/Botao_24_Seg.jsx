@@ -58,8 +58,9 @@ export const Label_24_seg = styled.p`
     user-select: none;
 `;
 
-function resetPossessionTime() {
+function resetPossessionTime(sound_24seg_torcida_nervosa) {
     socket.emit("reset");
+    sound_24seg_torcida_nervosa().stop();
 }
 
 function emitUpdatedInfo(setTempo) {
@@ -80,79 +81,81 @@ export default function Botao_24_Seg() {
         `audioRef_24seg_torcida_nervosa`
     );
 
+    const sound_24seg_torcida_nervosa = () => {
+        return {
+            play: () => {
+                audioRef_24seg_torcida_nervosa.current.play();
+            },
+
+            stop: () => {
+                audioRef_24seg_torcida_nervosa.current.pause();
+                audioRef_24seg_torcida_nervosa.current.currentTime = 0; // Isso irá reiniciar o áudio quando parar
+            },
+            pause: () => {
+                audioRef_24seg_torcida_nervosa.current.pause();
+            },
+        };
+    };
+    const sound_buzzer = () => {
+        return {
+            play: () => {
+                audioRef_buzzer.current.play();
+            },
+
+            stop: () => {
+                audioRef_buzzer.current.pause();
+                audioRef_buzzer.current.currentTime = 0; // Isso irá reiniciar o áudio quando parar
+            },
+            pause: () => {
+                audioRef_buzzer.current.pause();
+            },
+        };
+    };
+    const sound_apito = () => {
+        return {
+            play: () => {
+                audioRef_apito.current.play();
+                setTimeout(() => {
+                    audioRef_apito.current.pause();
+                    audioRef_apito.current.currentTime = 0;
+                }, 400);
+            },
+
+            stop: () => {
+                audioRef_apito.current.pause();
+                audioRef_apito.current.currentTime = 0; // Isso irá reiniciar o áudio quando parar
+            },
+            pause: () => {
+                audioRef_apito.current.pause();
+            },
+        };
+    };
+
     useEffect(() => {
-        const sound_24seg_torcida_nervosa = () => {
-            return {
-                play: () => {
-                    audioRef_24seg_torcida_nervosa.current.play();
-                },
-
-                stop: () => {
-                    audioRef_24seg_torcida_nervosa.current.pause();
-                    audioRef_24seg_torcida_nervosa.current.currentTime = 0; // Isso irá reiniciar o áudio quando parar
-                },
-                pause: () => {
-                    audioRef_24seg_torcida_nervosa.current.pause();
-                },
-            };
-        };
-        const sound_buzzer = () => {
-            return {
-                play: () => {
-                    audioRef_buzzer.current.play();
-                },
-
-                stop: () => {
-                    audioRef_buzzer.current.pause();
-                    audioRef_buzzer.current.currentTime = 0; // Isso irá reiniciar o áudio quando parar
-                },
-                pause: () => {
-                    audioRef_buzzer.current.pause();
-                },
-            };
-        };
-        const sound_apito = () => {
-            return {
-                play: () => {
-                    audioRef_apito.current.play();
-                },
-
-                stop: () => {
-                    audioRef_apito.current.pause();
-                    audioRef_apito.current.currentTime = 0; // Isso irá reiniciar o áudio quando parar
-                },
-                pause: () => {
-                    audioRef_apito.current.pause();
-                },
-            };
-        };
-    }, []);
-
-
-      
-      useEffect(() => {
-        socket.on("update", ({ isRunning }) => {
-          setTimeIsRunning(isRunning);
-            handleBotaoCinza(isRunning);
-          });
-        }, [_time_is_running, setTimeIsRunning]);
-
-        useEffect(() => {
-        socket.on("update", ({ possessionTime }) => {
+        socket.on("update", ({ possessionTime, currentTime }) => {
             setTempoPossessao(possessionTime);
-            if (possessionTime === 22) {
-              sound_24seg_torcida_nervosa().play();
-                alert("12");
-              }
-            console.log(possessionTime === 22);
-          });
-        }, [tempo_possessao]);
-      
+
+            if (possessionTime === 12) sound_24seg_torcida_nervosa().play();
+            if (possessionTime === 0) sound_buzzer().play();
+            if (currentTime === 0) sound_buzzer().play();
+        });
+    }, [tempo_possessao]);
+
+    useEffect(() => {
+        socket.on("update", ({ isRunning, possessionTime, currentTime }) => {
+            setTimeIsRunning(isRunning);
+            handleBotaoCinza(isRunning);
+            if (isRunning === false && possessionTime > 0) {
+                sound_apito().play();
+                sound_24seg_torcida_nervosa().stop();
+            }      
+        });
+    }, [_time_is_running, setTimeIsRunning]);
 
     return (
         <Container_Botao_24_seg
             onClick={() => {
-                resetPossessionTime();
+                resetPossessionTime(sound_24seg_torcida_nervosa);
             }}
             id={"botao_24_seg"}
             img_url={imagem_botao.src}
