@@ -131,6 +131,19 @@ export default function Botao_24_Seg() {
         };
     };
 
+    function timeControlDevice(e) {
+        if (e.code === "ArrowUp") {
+            socket.emit("playpause");
+        }
+
+        if (e.code === "ArrowRight") {
+            resetPossessionTime(sound_24seg_torcida_nervosa);
+        }
+        if (e.code === "ArrowLeft") {
+            sound_apito().play();
+        }
+    }
+
     useEffect(() => {
         socket.on("update", ({ possessionTime, currentTime }) => {
             setTempoPossessao(possessionTime);
@@ -148,9 +161,19 @@ export default function Botao_24_Seg() {
             if (isRunning === false && possessionTime > 0) {
                 sound_apito().play();
                 sound_24seg_torcida_nervosa().stop();
-            }      
+            }
         });
     }, [_time_is_running, setTimeIsRunning]);
+
+    useEffect(
+        function () {
+            document.addEventListener("keydown", timeControlDevice);
+            return function () {
+                document.removeEventListener("keydown", timeControlDevice);
+            };
+        },
+        [_time_is_running]
+    );
 
     return (
         <Container_Botao_24_seg

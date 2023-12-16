@@ -57,7 +57,7 @@ function handleBotaoCinza(_time_is_running) {
     }
 }
 
-function toggleTimeIsRunning(_time_is_running, setTimeIsRunning) {
+export function toggleTimeIsRunning(_time_is_running, setTimeIsRunning) {
 
 
     setTimeIsRunning(!_time_is_running)
