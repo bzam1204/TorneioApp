@@ -12,7 +12,7 @@ export default function Jogador_Esquerda_B({dados_jogador}) {
     const _time_from_url = searchParams.get("time");
     const partida_id = parseInt(searchParams.get("partida_id"));
     _time_from_url === "0" ? (_time = false) : (_time = true);
-    console.log("esquerda A: ", id_jogador_na_partida);
+    if (!dados_jogador) return null;
 
     return (
         <Container_Cartao
