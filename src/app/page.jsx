@@ -19,19 +19,12 @@ async function criaPartida(setPartidaConfig, router, _metadados_partida) {
     }).then(res => {
         return res.json()
     }).then(res => {
-        //atribui o id da partida ao atributo 'partida_id' do estado de metadados da partida
-        partida_id = res.id
-        setPartidaConfig(prev => {
-            return {
-                ...prev,
-                partida_id: res.id
-            }
-        })
-        router.push(`/tela-controlador-partida?id=${partida_id}`)
-
-    }).catch(err => {
-        console.log(err)
+        router.push(`/tela-controlador-partida?id=${res.id}`)
     })
+
+        .catch(err => {
+            console.log(err)
+        })
 }
 
 
@@ -41,10 +34,20 @@ export default function Page() {
     return (
         <Container_Principal className="layer_jogadores_select">
 
-            <div onClick={async function () {
-                await criaPartida(setPartidaConfig, router, _metadados_partida)
-            }} className="botao_adicionar">
-                INICIAR EVENTO
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '32px',
+                justifyContent: 'flex-start',
+                height: '80%',
+                alignItems: 'center'
+            }}>
+
+                <button onClick={async function () {
+                    await criaPartida(setPartidaConfig, router, _metadados_partida)
+                }} className="botao_adicionar">
+                    INICIAR EVENTO
+                </button>
             </div>
 
             <img src="/img/LOGO_BASQUETE_RANKEADA.png" alt=""/>
