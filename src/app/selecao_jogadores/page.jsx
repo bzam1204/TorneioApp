@@ -16,6 +16,7 @@ import Jogador_Direita_D from "./card_jogadores/Jogador_Direita_D";
 import Jogador_Direita_E from "./card_jogadores/Jogador_Direita_E";
 
 import Painel_Interacao from "./Painel_Interacao/Painel_Interacao";
+import {buscaTodosJogadoresTime} from '../substituicao/page'
 
 
 const dado_mockado = {

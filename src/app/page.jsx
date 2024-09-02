@@ -9,13 +9,8 @@ import {metadados_partida} from "../State/partida.metadados";
 
 async function criaPartida(setPartidaConfig, router, _metadados_partida) {
     let partida_id = null
-    await fetch('http://localhost:3000/api/partida', {
-        method: 'POST', headers: {
-            'Content-Type': 'application/json'
-
-        }, body: JSON.stringify({
-            "eventoId": 1, "inicio": null, "fim": null
-        })
+    await fetch('http://localhost:5144/matches/', {
+        method: 'POST', 
     }).then(res => {
         return res.json()
     }).then(res => {

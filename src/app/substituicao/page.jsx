@@ -30,9 +30,9 @@ function divideEmGruposDeDez(_array, _tamanhoGrupo) {
 }
 
 export async function buscaTodosJogadoresTime(_set, _setIsLoading, partida_id, time) {
-    const res = await fetch(`http://localhost:3000/api/time/jogador?id=${partida_id}&time=${time}`);
+    const res = await fetch(`http://localhost:5144/match/${partida_id}/team/${time}/players`);
     const jogadores_time = await res.json();
-    const response = await fetch('http://localhost:3000/api/jogador')
+    const response = await fetch('http://localhost:5122/players')
     const todos_jogadores = await response.json()
 
     //filtrando os jogadores que já estão no time

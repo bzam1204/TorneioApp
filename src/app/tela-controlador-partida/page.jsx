@@ -28,9 +28,9 @@ function mergeJogadoresVaziosComTodosJogadores(todos_jogadores, array_jogadores_
 
 
 async function buscaJogadoresTime(partidaId, time_zero, time_um, setTimeZero, setTimeUm, setIsLoading) {
-    const response_time_zero = await fetch(`http://localhost:3000/api/time/jogador?id=${partidaId}&time=0`);
+    const response_time_zero = await fetch(`http://localhost:5144/match/${partidaId}/team/true/players`);
     const jogadores_time_zero = await response_time_zero.json();
-    const response_time_um = await fetch(`http://localhost:3000/api/time/jogador?id=${partidaId}&time=1`);
+    const response_time_um = await fetch(`http://localhost:5144/match/${partidaId}/team/false/players`);
     const jogadores_time_um = await response_time_um.json();
 
 
@@ -48,12 +48,13 @@ export default function Page() {
     const [_times_montados, setTimesMontados] = useRecoilState(times_montados)
     const router = useRouter()
     const search = useSearchParams()
-    const partida_id = parseInt(search.get('id'))
+    const partida_id = search.get('id');
+    console.log(partida_id)
 
 
-    useEffect(() => {
-        buscaJogadoresTime(partida_id, _times_montados.time_zero, _times_montados.time_zero, setTimeZero, setTimeUm, setIsLoading);
-    }, []);
+    // useEffect(() => {
+    //     buscaJogadoresTime(partida_id, _times_montados.time_zero, _times_montados.time_zero, setTimeZero, setTimeUm, setIsLoading);
+    // }, []);
 
 
     if (is_loading) {
@@ -68,8 +69,10 @@ export default function Page() {
                 <Jogador_Esquerda_C time={0} dados_jogador={time_zero[2]}></Jogador_Esquerda_C>
                 <Jogador_Esquerda_D time={0} dados_jogador={time_zero[3]}></Jogador_Esquerda_D>
                 <Jogador_Esquerda_E time={0} dados_jogador={time_zero[4]}></Jogador_Esquerda_E>
+                asdf
             </Container_Jogadores>
-            <Painel_Interacao/>
+            {/*<Painel_Interacao/>*/}
+            <div></div>
             <Container_Jogadores>
                 <Jogador_Direita_A time={1} dados_jogador={time_um[0]}></Jogador_Direita_A>
                 <Jogador_Direita_B time={1} dados_jogador={time_um[1]}></Jogador_Direita_B>
