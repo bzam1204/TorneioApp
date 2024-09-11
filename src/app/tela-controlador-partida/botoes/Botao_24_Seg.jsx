@@ -3,13 +3,14 @@ import styled from "styled-components";
 import imagem_botao from "../../../../public/img/botoes_especiais/default_red.png";
 import imagem_botao_hover from "../../../../public/img/botoes_especiais/default_red_hovered.png";
 import imagem_botao_pressionado from "../../../../public/img/botoes_especiais/default_red_pressionado.png";
-import {useRouter} from "next/navigation";
-import {useRecoilState} from "recoil";
-import {time_is_running} from "../../../State/time_is_running";
-import {useEffect, useRef, useState} from "react";
+import { useRouter } from "next/navigation";
+import { useRecoilState } from "recoil";
+import { time_is_running } from "../../../State/time_is_running";
+import { useEffect, useRef, useState } from "react";
 
 import "../estilo/style.css";
-import socket from "../../../config/socket_config";
+import connection from "../../../../signalr";
+import axiosInstance from "../../../../axios.config";
 
 const Container_Botao_24_seg = styled.div`
     background-image: url(${(props) => props.img_url});
@@ -59,12 +60,12 @@ export const Label_24_seg = styled.p`
 `;
 
 function resetPossessionTime(sound_24seg_torcida_nervosa) {
-    socket.emit("reset");
+    axiosInstance.post("api/socket/15");
     sound_24seg_torcida_nervosa().stop();
 }
 
 function emitUpdatedInfo(setTempo) {
-    socket.emit("emitUpdatedInfo", (dados) => {
+    connection.emit("emitUpdatedInfo", (dados) => {
         setTempo(dados.currentTime);
     });
 }
@@ -133,7 +134,7 @@ export default function Botao_24_Seg() {
 
     function timeControlDevice(e) {
         if (e.code === "ArrowUp") {
-            socket.emit("playpause");
+            axiosInstance.post("api/socket/17");
         }
 
         if (e.code === "ArrowRight") {
@@ -145,7 +146,7 @@ export default function Botao_24_Seg() {
     }
 
     useEffect(() => {
-        socket.on("update", ({possessionTime, currentTime}) => {
+        connection.on("update", ({ possessionTime, currentTime }) => {
             setTempoPossessao(possessionTime);
 
             if (possessionTime === 12) sound_24seg_torcida_nervosa().play();
@@ -155,14 +156,17 @@ export default function Botao_24_Seg() {
     }, [tempo_possessao]);
 
     useEffect(() => {
-        socket.on("update", ({isRunning, possessionTime, currentTime}) => {
-            setTimeIsRunning(isRunning);
-            handleBotaoCinza(isRunning);
-            if (isRunning === false && possessionTime > 0) {
-                sound_apito().play();
-                sound_24seg_torcida_nervosa().stop();
+        connection.on(
+            "update",
+            ({ isRunning, possessionTime, currentTime }) => {
+                setTimeIsRunning(isRunning);
+                handleBotaoCinza(isRunning);
+                if (isRunning === false && possessionTime > 0) {
+                    sound_apito().play();
+                    sound_24seg_torcida_nervosa().stop();
+                }
             }
-        });
+        );
     }, [_time_is_running, setTimeIsRunning]);
 
     useEffect(
@@ -175,12 +179,11 @@ export default function Botao_24_Seg() {
         [_time_is_running]
     );
     useEffect(() => {
-            socket.on("apito", () => {
-                sound_apito().play();
-                console.log('apito')
-            })
-        }, []
-    );
+        connection.on("apito", () => {
+            sound_apito().play();
+            console.log("apito");
+        });
+    }, []);
 
     return (
         <Container_Botao_24_seg
@@ -196,8 +199,8 @@ export default function Botao_24_Seg() {
                 ref={audioRef_24seg_torcida_nervosa}
                 src="./audio/basquete_sound_24s_torcida_nervosa_cut.mp3"
             />
-            <audio ref={audioRef_buzzer} src="./audio/buzzer.mp3"/>
-            <audio ref={audioRef_apito} src="./audio/apito.mp3"/>
+            <audio ref={audioRef_buzzer} src="./audio/buzzer.mp3" />
+            <audio ref={audioRef_apito} src="./audio/apito.mp3" />
 
             <Label_24_seg>{tempo_possessao}</Label_24_seg>
         </Container_Botao_24_seg>

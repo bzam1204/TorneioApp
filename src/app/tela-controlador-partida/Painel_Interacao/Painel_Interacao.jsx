@@ -7,7 +7,7 @@ import {
 import Botao_Desfazer from '../botoes/Botao_Desfazer'
 import Botao_Opcoes from '../botoes/Botao_Opcoes'
 import Botao_Tempo from "../botoes/Botao_Tempo";
-import Botao_Tela_Inicial from "../botoes/Botao_24_Seg";
+import Btn_24_Seg from "../botoes/Botao_24_Seg";
 import Botao_Informativo from "../botoes/Botao_Informativo";
 import Frame_Placar from "./Frame_Placar";
 import {useSearchParams} from "next/navigation";
@@ -22,7 +22,7 @@ export default function Painel_Interacao() {
             <Frame_Placar/>
             <Botao_Informativo/>
             <Botao_Tempo/>
-            <Botao_Tela_Inicial/>
+            <Btn_24_Seg/>
             <div style={{
                 display: "flex", gap: '16px', justifyContent: "space-between"
             }}>

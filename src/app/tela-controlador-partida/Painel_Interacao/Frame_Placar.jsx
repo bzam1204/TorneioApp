@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 import socket from "../../../config/socket_config";
 import {useRecoilState} from "recoil";
 import {pontuacao_time_zero, pontuacao_time_um} from "../../../State/partida.metadados";
+import connection from '../../../../signalr';
 
 const Container_Botao_Tela_Inicial = styled.div`
   background-image: url(${props => props.img_url});
@@ -44,7 +45,7 @@ export default function Frame_Placar() {
 
     useEffect(() => {
         if (time_um === 0 && time_zero === 0) {
-            socket.on('pontuacao', (dado) => {
+            connection.on('pontuacao', (dado) => {
                 setTimeZero(dado.pontuacao.timeA)
                 setTimeUm(dado.pontuacao.timeB)
                 console.log(dado.pontuacao)

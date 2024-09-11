@@ -5,22 +5,23 @@ import {React} from 'react';
 import {useRecoilState} from "recoil";
 import {Container_Principal} from './homepage/estilo/estilo_homepage'
 import {metadados_partida} from "../State/partida.metadados";
+import { criarPartida } from '../lib/actions';
 
 
-async function criaPartida(setPartidaConfig, router, _metadados_partida) {
-    let partida_id = null
-    await fetch('http://localhost:5144/matches/', {
-        method: 'POST', 
-    }).then(res => {
-        return res.json()
-    }).then(res => {
-        router.push(`/tela-controlador-partida?id=${res.id}`)
-    })
+// async function criaPartida(setPartidaConfig, router, _metadados_partida) {
+//     let partida_id = null
+//     await fetch('http://localhost:5144/matches/', {
+//         method: 'POST', 
+//     }).then(res => {
+//         return res.json()
+//     }).then(res => {
+//         router.push(`/tela-controlador-partida?id=${res.id}`)
+//     })
 
-        .catch(err => {
-            console.log(err)
-        })
-}
+//         .catch(err => {
+//             console.log(err)
+//         })
+// }
 
 
 export default function Page() {
@@ -39,7 +40,7 @@ export default function Page() {
             }}>
 
                 <button onClick={async function () {
-                    await criaPartida(setPartidaConfig, router, _metadados_partida)
+                    await criarPartida(router)
                 }} className="botao_adicionar">
                     INICIAR EVENTO
                 </button>

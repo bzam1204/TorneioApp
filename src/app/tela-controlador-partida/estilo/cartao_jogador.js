@@ -38,7 +38,7 @@ export const Nome_Jogador = styled.div`
 `
 
 export const Numero_Camisa = styled(Nome_Jogador)`
-  font-size: 3.66vw;
+  font-size: 3.66vw; // 
   font-weight: 700;
   width: 6.14vw;
 `
